@@ -102,3 +102,17 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Garages:** placing them under the upper pads (same footprints) is an assumption. The concept cutaway shows one central vehicle bay running from the forward ramp to the rear ramp.
 - **Drawing:** ships appear in their real pad positions, nose toward the bow. Pads in the drawing are tap and drop targets. The slot cards (controls) sit below the drawing.
 - **Removed:** the per-slot dashed "largest confirmed fit" boxes. The oversize flag still uses that size.
+
+## v7 update: free placement on the real top-down (Nov 20, 2026)
+- **Hull image:** the drawing now uses the scorg.tools Liberator top-down (`https://scorg.tools/media/ships/224-top-1000.webp`, saved as `img/liberator-top.webp`).
+  - It's 1000 × 563 px, which matches the game-data 119 × 67 m (8.4 px per metre), so it's used at true scale with the bow on the left.
+  - The internal view shows it dimmed, with an approximate vehicle-bay outline over the centre channel (9–116 m along, ±11.7 m across).
+- **Placement model:** the plan is a list of placements `{n, v: external|internal, x, y (metres), r (degrees), f: loadout}` saved in localStorage `libplan3`. Old `libplan2`/`libfit` plans migrate automatically. There are no slots and no one-per-pad limit.
+- **Adding ships:** one **+ Add ship** button per tab. You can also drag a ship from the list onto the drawing, tap a list ship and then tap the drawing, or use the bottom bar ("Add to external" / "Add to internal"). New ships go to a free pad centre when one is open.
+- **Arranging:** drag ships on the drawing. A selected ship can be turned 15° or 90° (R or Shift+R), nudged with the arrow keys (Shift for 2 m) and removed (Delete).
+- **Warnings:**
+  - Overlap with another ship in the same view (rotated-rectangle test).
+  - A ship that doesn't fit that view per the sheet.
+  - An F ship placed behind the front pad (more than 50 m from the bow).
+  - A ship outside the approximate bay outline on the internal view.
+- **Source:** `tools/plan_block.js` is the source of the plan script; it was spliced into `tpl.html`, so edit `tpl.html` directly from now on.

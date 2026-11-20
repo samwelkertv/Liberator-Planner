@@ -60,10 +60,12 @@ def main(path):
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         page.append(d)
+    libimg = ("data:image/webp;base64," + base64.b64encode(open("img/liberator-top.webp", "rb").read()).decode()) if os.path.exists("img/liberator-top.webp") else ""
     tpl = open("tpl.html", encoding="utf-8").read()
     open("index.html", "w", encoding="utf-8").write(
         tpl.replace("__DATA__", json.dumps(page, ensure_ascii=False, separators=(",", ":")))
-        .replace("__LOAD__", json.dumps(load, ensure_ascii=False, separators=(",", ":"))))
+        .replace("__LOAD__", json.dumps(load, ensure_ascii=False, separators=(",", ":")))
+        .replace("__LIBIMG__", json.dumps(libimg)))
     print(len(out), "entries")
 
 if __name__ == "__main__":
