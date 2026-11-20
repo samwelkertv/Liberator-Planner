@@ -28,7 +28,7 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.no{background:var(--line)}
 .hull{background:var(--hull);border-radius:48% 48% 18px 18px/22% 22% 18px 18px;padding:70px 16px 16px;display:grid;gap:12px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.12),0 12px 26px -16px rgba(0,0,0,.5)}
 .hull.int{border:2px dashed var(--line);background:repeating-linear-gradient(135deg,var(--hull) 0 16px,color-mix(in srgb,var(--hull) 82%,var(--deck)) 16px 32px)}
-.view[hidden]{display:none}
+.view.off{display:none}
 .pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .zone{background:var(--deck);border:2px solid transparent;border-radius:12px;padding:10px 12px 12px;min-height:130px;display:flex;flex-direction:column;transition:border-color .15s,opacity .15s}
 .ship{display:block;width:100%;height:auto;max-height:82vh;margin:0 0 10px;overflow:visible}
@@ -153,7 +153,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 .seg{display:flex;gap:6px;margin:0 0 10px}.seg button{flex:1;min-height:40px}.seg [aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .vlabel{display:none}
 @media (min-width:900px) and (min-aspect-ratio:1/1){.appbar .tabs{display:none}.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-.stage .view,.stage .view[hidden]{display:flex;flex-direction:column;min-height:0;height:100%}.stage .view .ship{flex:1;min-height:0}
+.stage .view,.stage .view.off{display:flex;flex-direction:column;min-height:0;height:100%}.stage .view .ship{flex:1;min-height:0}
 .vlabel{display:block;align-self:center;font:700 17px Rajdhani,sans-serif;border:0;background:none;min-height:30px;padding:0 10px;opacity:.55;color:var(--ink)}.view.active .vlabel{opacity:1;color:var(--acc)}.stage #selbar{flex-wrap:nowrap}}
 #zreset{position:absolute;top:10px;right:10px;z-index:4;min-height:38px;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}#zreset[hidden]{display:none}
 .stk,.xq{width:84px;font:inherit;font-size:15px;min-height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-align:right}.xn{width:100%;font:inherit;font-size:15px;min-height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}.okt{color:var(--ok);font-weight:700}.badt{color:var(--bad);font-weight:700}
@@ -170,8 +170,8 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 <div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button data-panel="loads" aria-expanded="false">Loadouts</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button id="theme" title="Switch light / dark mode"></button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
 </header>
 <main class="stage" aria-label="Deck plan">
-<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><button class="vlabel" data-v="external">External · top deck</button><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
-<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><button class="vlabel" data-v="internal">Internal · vehicle bay</button><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
+<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><button class="vlabel" data-v="external">External · top deck</button><svg class="ship" data-v="external" viewBox="-37.9 -6.4 75.8 134.8" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
+<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal"><button class="vlabel" data-v="internal">Internal · vehicle bay</button><svg class="ship" data-v="internal" viewBox="-37.9 -6.4 75.8 134.8" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
 <div id="selbar" hidden><span id="seln"></span><button data-a="l" aria-label="Turn left 15 degrees">⟲ 15°</button><button data-a="r" aria-label="Turn right 15 degrees">⟳ 15°</button><button data-a="q">Turn 90°</button><button data-a="s">Loadout</button><button data-a="x">Remove</button><button data-a="d" aria-label="Deselect">✕</button></div>
 <span id="msg" role="status"></span><button id="zreset" hidden>Reset zoom</button>
 </main>
@@ -267,7 +267,7 @@ const worst=o=>o.some(x=>x[0]==='bad')?'bad':o.some(x=>x[0]==='warn')?'warn':o.s
 function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>(filt==='all'||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front')))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
 function renderCards(){const r=shown();$('#count').textContent=`${r.length} of ${D.length} ships and vehicles`;
 $('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><span class="grip" aria-hidden="true">⠿</span>${thumb(d)}<span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground':''} · ${dims(d)}</small></span><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
-function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').hidden=v!=='external';$('#v-internal').hidden=v!=='internal';for(const x of $$('.view'))x.classList.toggle('active',x.id==='v-'+v);const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}
+function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').classList.toggle('off',v!=='external');$('#v-internal').classList.toggle('off',v!=='internal');for(const x of $$('.view'))x.classList.toggle('active',x.id==='v-'+v);const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}
 function drawShips(){for(const sv of $$('svg.ship')){const v=sv.dataset.v,int=v==='internal';
 let h=`<g transform="rotate(90)"><image class="lib${int?' int':''}" href="${LIBIMG}" x="0" y="-33.5" width="119" height="67"/>`;
 if(int)h+=`<rect class="fpx" x="9" y="${-BAY.h}" width="${BAY.x0-9}" height="${2*BAY.h}" rx="1"/><rect class="bay" x="${BAY.x0}" y="${-BAY.h}" width="${BAY.x1-BAY.x0}" height="${2*BAY.h}" rx="1"/>`+CARGO.map(c=>`<rect class="cg" x="${c.x}" y="${-BAY.h-c.w}" width="${c.l}" height="${c.w}" rx=".4"/><line class="cgd" x1="${c.x+1}" y1="${-BAY.h}" x2="${c.x+c.l-1}" y2="${-BAY.h}"/>`).join('')+`<rect class="rp" x="${BAY.x0-1.6}" y="${-BAY.h}" width="1.6" height="${2*BAY.h}"/><rect class="rp" x="${BAY.x1}" y="${-BAY.h}" width="2.6" height="${2*BAY.h}"/>`;
@@ -338,7 +338,7 @@ g.fillStyle=cs.backgroundColor;g.fillRect(0,0,cv.width,cv.height);g.fillStyle=cs
 const props=['fill','fill-opacity','stroke','stroke-width','stroke-dasharray','opacity','font-size','font-family','font-weight'];
 for(const[k,i]of[['external',0],['internal',1]]){const sv=$(`svg.ship[data-v=${k}]`),cl=sv.cloneNode(true),a=[sv,...sv.querySelectorAll('*')],b=[cl,...cl.querySelectorAll('*')];
 a.forEach((el,j)=>{const c=getComputedStyle(el);b[j].setAttribute('style',props.map(p=>`${p}:${c.getPropertyValue(p)}`).join(';'))});
-cl.setAttribute('xmlns','http://www.w3.org/2000/svg');cl.setAttribute('viewBox','-36 -3 72 128');cl.setAttribute('width',W);cl.setAttribute('height',H);
+cl.setAttribute('xmlns','http://www.w3.org/2000/svg');cl.setAttribute('viewBox','-37.9 -6.4 75.8 134.8');cl.setAttribute('width',W);cl.setAttribute('height',H);
 const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(cl)],{type:'image/svg+xml'})),im=new Image();
 await new Promise((r,j)=>{im.onload=r;im.onerror=j;im.src=url});const x=PAD+i*(W+PAD);
 g.fillStyle=cs.color;g.font='600 28px "IBM Plex Sans", sans-serif';g.fillText(`${VL[k]} · ${P.filter(p=>p.v===k).length} ships`,x,TOP-14);g.drawImage(im,x,TOP,W,H);URL.revokeObjectURL(url);let yy=TOP+H+44;const fit=t=>{while(g.measureText(t).width>W&&t.length>4)t=t.slice(0,-2);return t};for(const[y,t]of lines[k]){g.font=y==='b'?'600 22px "IBM Plex Sans", sans-serif':'400 18px "IBM Plex Sans", sans-serif';g.fillStyle=y==='w'?'#c0262d':cs.color;g.globalAlpha=y==='s'?.75:1;g.fillText(fit(y==='b'?'• '+t:'   '+t),x,yy);g.globalAlpha=1;yy+=y==='b'?LH:SH}}
@@ -422,7 +422,7 @@ const typing=()=>/input|select|textarea/i.test((document.activeElement||{}).tagN
 document.addEventListener('keydown',e=>{if(pickView||shipId)return;if(e.key==='Escape'){const op=PANELS.find(k=>!$('#p-'+k).hidden);if(op){togglePanel(op,false);return}if(selId){selId=null;renderPlan()}else if(sel>=0){sel=-1;render()}return}
 const p=selId&&byId(selId);if(!p||typing())return;const s=e.shiftKey?2:.5,mvk={ArrowLeft:[0,s],ArrowRight:[0,-s],ArrowUp:[-s,0],ArrowDown:[s,0]}[e.key];
 if(mvk){e.preventDefault();hist.push(snap());p.x=+(p.x+mvk[0]).toFixed(1);p.y=+(p.y+mvk[1]).toFixed(1);clampIn(p);renderPlan()}else if(e.key==='r'||e.key==='R'){turn(e.key==='R'?-15:15)}else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();del(p.id)}});
-const VB0={x:-36,y:-3,w:72,h:128},ZV={z:1,cx:0,cy:61};
+const VB0={x:-37.9,y:-6.4,w:75.8,h:134.8},ZV={z:1,cx:0,cy:61};
 function applyZoom(){const w=VB0.w/ZV.z,h=VB0.h/ZV.z;ZV.cx=Math.min(VB0.x+VB0.w-w/2,Math.max(VB0.x+w/2,ZV.cx));ZV.cy=Math.min(VB0.y+VB0.h-h/2,Math.max(VB0.y+h/2,ZV.cy));for(const sv of $$('svg.ship'))sv.setAttribute('viewBox',`${ZV.cx-w/2} ${ZV.cy-h/2} ${w} ${h}`);$('#zreset').hidden=ZV.z<=1.01}
 const rootAt=(sv,x,y)=>new DOMPoint(x,y).matrixTransform(sv.getScreenCTM().inverse());
 function zoomAt(sv,sx,sy,z,anchor){const A=anchor||rootAt(sv,sx,sy);ZV.z=Math.min(6,Math.max(1,z));applyZoom();const B=rootAt(sv,sx,sy);ZV.cx+=A.x-B.x;ZV.cy+=A.y-B.y;applyZoom()}

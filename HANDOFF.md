@@ -183,3 +183,4 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The Add dialog has an External/Internal switch.
   - Zoom is shared by both views.
 - **Theme fix:** the toggle now sets `data-lp-theme` on `<html>`, with `color-scheme: … !important` on `html` and `body`. The claude.ai viewer sets its own theme (`data-theme` / color-scheme), which overrode the old attribute, so Light did nothing.
+- **v14.1:** the views are now toggled with an `.off` class instead of the `hidden` attribute. The claude.ai viewer appears to force `[hidden]{display:none!important}`, which blocked the side-by-side layout. The drawing is also scaled down 5% for padding: base viewBox `-37.9 -6.4 75.8 134.8`, in the HTML, in `VB0` and in the export.
