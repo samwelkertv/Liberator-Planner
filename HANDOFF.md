@@ -287,3 +287,9 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The Sizes source selector moved into the ⓘ panel.
 
 **Release rule (current):** the user tests on the live site (liberatorplanner.xyz), so push each tested change to `main` (fast-forward) as soon as it is ready.
+- **v24:**
+  - **Buffers:** 5 px collision (red) and 15 px warning (orange).
+  - **Collision Warning:** a single checkbox under Overlays controls both the tints and the warnings (`OPT.tint`, with `OPT.warn` following it).
+  - **Clear:** opens a centred confirmation pop-up whose Clear button unlocks after a 3-second countdown.
+  - **RRR stock:** now crates per item, as size × quantity entries (1/2/4/8/16/24/32 SCU), saved in `STOCK[key] = [{s, q}]`. The panel shows the SCU total against the 400 SCU cargo bays. Refills aren't calculated, because no source gives units per SCU. Old numeric stock values are dropped.
+  - **Theme switch and Sizes selector:** both now live in the ⓘ panel.
