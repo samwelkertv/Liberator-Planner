@@ -279,3 +279,9 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - an outline ring PNG (`ck.ring`), drawn through an SVG mask and coloured by status.
 - **Runtime collision test:** `collide()` first does a quick rotated-box check on the padded boxes, then samples ship A's grid cells against ship B's mask. Ships without a top-down use their size box grown by the same proportion.
 - Exports follow all of these settings.
+- **v23.2:** collision is always the ship outline (the collision-test and outline-shape options were removed at the user's request). Two buffers:
+  - **3 px collision:** red, "Overlaps …" warning, red tint.
+  - **10 px warning:** orange, "Close to …", orange tint and outline. It can be toggled under Overlays (`OPT.warn`).
+  - The build emits `ck` (3 px) and `cw` (10 px) collision shapes per ship.
+  - Fixed a bug where the shape lookup read ships nose-for-tail; ships point toward −u and their local +x maps to −w.
+  - The Sizes source selector moved into the ⓘ panel.

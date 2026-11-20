@@ -29,7 +29,7 @@ def status(cell):
     return base
 
 
-def collision_shape(path, pad=10, grid=96):
+def collision_shape(path, pad=3, grid=96):
     """Pixel collision shape for a nose-up top-down image: alpha mask grown by `pad` px
     (at the image's own resolution) on every side. Returns the padding as fractions of the
     image size, a coarse bit grid for collision tests and an outline ring (data URI) to draw."""
@@ -132,6 +132,7 @@ def main(path):
             d["ta"], d["cf"] = round(h / w, 4), a.get("cf", 1)
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
             d["ck"] = collision_shape(a["top"])
+            d["cw"] = collision_shape(a["top"], pad=10)
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         if aliases.get(d["n"]):
             d["iv"] = aliases[d["n"]][0]  # the variant the top-down image shows
@@ -161,6 +162,7 @@ def main(path):
                     e.update(ta=round(h / w, 4), cf=1, iv=names[0],
                              td="data:image/webp;base64," + base64.b64encode(open(vi["img"], "rb").read()).decode())
                     e["ck"] = collision_shape(vi["img"])
+                    e["cw"] = collision_shape(vi["img"], pad=10)
                 page.append(e)
             split.append((d["n"], [(" / ".join(nm), k) for k, nm in groups.items()]))
             continue
