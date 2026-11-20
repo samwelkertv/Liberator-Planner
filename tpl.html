@@ -36,6 +36,7 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .fp .el{font:600 2.5px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
 .fp .sh{fill:color-mix(in srgb,var(--ok) 30%,transparent);stroke:var(--ok);stroke-width:.35}
 .fp .sh.warn,.fp .sh.unk{fill:color-mix(in srgb,var(--warn) 30%,transparent);stroke:var(--warn)}
+.fp .sh.img{fill:none;stroke-dasharray:.8 .6;stroke-width:.3}
 .fp .sh.over{stroke:var(--bad);stroke-width:.6}
 .fp .nose{fill:var(--ink);opacity:.55}
 .fp .bar{stroke:var(--ink);stroke-width:.35}
@@ -96,16 +97,16 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <header class="band top">
 <h1>Liberator deck planner</h1>
 <p class="sub">Tap + on a pad or garage to pick a ship, or drag one in from the list. Green fits, orange needs tricks.</p>
-<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. Pad layout: official Liberator Q&amp;A. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
+<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. All fits are tested in game. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
 </header>
 <main class="band grid">
 <section class="plan" aria-label="Deck plan">
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
 <div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><div class="hull">
-<div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">XXS ships and ground vehicles. Some larger ships fit only here.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
+<div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">Takes every deck-rated ship, with better height support. Ships marked F fit only here.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 <div class="pair">
-<div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">XS ships.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-<div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">XS ships.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
+<div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
+<div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 </div></div></div>
 <div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><div class="hull int">
 <div class="pair">
@@ -113,12 +114,12 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <div class="zone" data-s="g2"><h3>Garage 2</h3><small class="zs">Inside the ship.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 </div></div></div>
 <div class="tools"><button id="undo">Undo</button><button id="clear">Clear plan</button><button id="copy">Copy plan</button><span id="msg" role="status"></span></div>
-<p class="note">Ships are drawn to one common scale, nose up, from game-data length × beam (grouped rows use the largest variant). No pad or garage measurements are published, so each dashed box is the largest ship confirmed as a good fit there, not a measured size. A ship bigger than that box is flagged red. Several ground vehicles share an identical 8.75 × 6 m game-data box (e.g. Mule, Cyclone, Ursa, STV), which looks like a size class rather than a measured hull. Liberator hull: 119 × 67 × 25 m (game data). Two garages: per the official Q&amp;A (“each of the garages”) and the game data (garage A and B). The Q&amp;A rates the front pad for XXS ships and ground vehicles; ships rated only for the upper pads are allowed there but marked untested.</p>
+<p class="note">Ships are drawn to one common scale, nose up, sized to game-data length × beam (grouped rows use the largest variant). No pad or garage measurements are published, so each dashed box is the largest ship confirmed as a good fit there, not a measured size. A ship bigger than that box is flagged red. Several ground vehicles share an identical 8.75 × 6 m game-data box (e.g. Mule, Cyclone, Ursa, STV), which looks like a size class rather than a measured hull. Liberator hull: 119 × 67 × 25 m (game data). Two garages: per the official Q&amp;A (“each of the garages”) and the game data (garage A and B). Deck-rated ships fit all three external pads. The front pad has better height support; the upper pads currently take ships with a centre of gravity at 5 m or lower, and taller ships are expected to fit later. Top-down images are wiki “Above” shots, cut out and turned nose up; ships without one show a plain footprint.</p>
 </section>
 <section aria-label="Ships and vehicles">
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
 <div class="chips" role="group" aria-label="Filter"><button data-f="all" aria-pressed="true">All</button><button data-f="ship" aria-pressed="false">Ships</button><button data-f="ground" aria-pressed="false">Ground</button><button data-f="in" aria-pressed="false">Fits inside</button><button data-f="front" aria-pressed="false">Front pad only</button></div>
-<div class="key"><span class="b ok">✓ good fit</span><span class="b warn">! needs tricks / barely fits</span><span class="b unk">? not tested</span><span class="b no">✕ doesn't fit</span></div>
+<div class="key"><span class="b ok">✓ good fit</span><span class="b warn">! needs tricks / sketchy</span><span class="b unk">? not tested</span><span class="b no">✕ doesn't fit</span></div>
 <p class="cnt"><span id="count"></span> that fit somewhere on the Liberator</p>
 <div id="cards"></div>
 </section>
@@ -127,13 +128,12 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
 <script>{
 const D=__DATA__;
-const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad, needs tricks',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged',front_unconf:'Front pad not tested (fits upper pads)'};
+const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad only, worked but sketchy',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged'};
 const SL={front:['Front pad','front','external'],up1:['Upper pad 1','top','external'],up2:['Upper pad 2','top','external'],g1:['Garage 1','hangar','internal'],g2:['Garage 2','hangar','internal']};
 const SK=Object.keys(SL);
 const lvl=s=>!s?'no':(s==='fit'||s==='front')?'ok':'warn';
-const cls=s=>s==='untested'||s==='front_unconf'?'unk':lvl(s);
-const frontS=d=>!d.e?null:(d.e.startsWith('front')||d.k==='ground'||d.i)?d.e:'front_unconf';
-const st=(d,z)=>z==='hangar'?d.i:z==='top'?(d.e&&!d.e.startsWith('front')?d.e:null):frontS(d);
+const cls=s=>s==='untested'?'unk':lvl(s);
+const st=(d,z)=>z==='hangar'?d.i:z==='top'?(d.e&&!d.e.startsWith('front')?d.e:null):d.e;
 const fitS=(d,s)=>st(d,SL[s][1]);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
@@ -141,11 +141,11 @@ const byName=n=>D.find(d=>d.n===n);
 const NF='doesn’t fit';
 const ENV={};for(const z of ['front','top','hangar']){const g=D.filter(d=>d.L&&lvl(st(d,z))==='ok');ENV[z]={L:Math.max(...g.map(d=>d.L)),B:Math.max(...g.map(d=>d.B))}}
 const VW=Math.max(...Object.values(ENV).map(e=>e.B))+6,VH=Math.max(...Object.values(ENV).map(e=>e.L))+9;
-const m=x=>+x.toFixed(1),dims=d=>d.L?`${m(d.L)} × ${m(d.B)} m`:'size unknown';
+const m=x=>+x.toFixed(1),dims=d=>d.L?`${m(d.L)} × ${m(d.B)}${d.H?' × '+m(d.H):''} m`:'size unknown';
 const over=(d,s)=>{const e=ENV[SL[s][1]];return !!d.L&&(d.L>e.L||d.B>e.B)};
 const thumb=d=>d.t?`<img class="th" src="${d.t}" alt="" loading="lazy">`:'<span class="th"></span>';
 function deck(s,d){const e=ENV[SL[s][1]],cx=VW/2,cy=(VH+3)/2;let h=`<rect class="env" x="${cx-e.B/2}" y="${cy-e.L/2}" width="${e.B}" height="${e.L}" rx="1"/><text class="el" x="${cx}" y="${cy-e.L/2-1}" text-anchor="middle">largest confirmed fit ${m(e.L)} × ${m(e.B)} m</text>`;
-if(d&&d.L){const f=fitS(d,s),c=over(d,s)?' over':'';h+=`<rect class="sh ${cls(f)}${c}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx} ${cy-d.L/2+.6}l${Math.min(1.6,d.B/3)} ${Math.min(2.4,d.L/3)}h${-2*Math.min(1.6,d.B/3)}z"/>`}
+if(d&&d.L){const f=fitS(d,s),c=over(d,s)?' over':'';h+=d.td?`<rect class="sh ${cls(f)}${c} img" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx=".6"/><image href="${d.td}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" preserveAspectRatio="xMidYMid meet"/>`:`<rect class="sh ${cls(f)}${c}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx} ${cy-d.L/2+.6}l${Math.min(1.6,d.B/3)} ${Math.min(2.4,d.L/3)}h${-2*Math.min(1.6,d.B/3)}z"/>`}
 h+=`<path class="bar" d="M1 ${VH-1.2}h10M1 ${VH-2}v1.6M11 ${VH-2}v1.6"/><text class="el" x="12" y="${VH-.6}">10 m</text>`;return h}
 const blank=()=>Object.fromEntries(SK.map(k=>[k,null]));
 let plan=blank(),hist=[],sel=-1,filt='all',drag=null,ghost=null,dragged=false,tm,pickSlot=null,view='external';
@@ -196,7 +196,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sel>=0&&!pickSlot){
 const zoneAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('.zone'):null};
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
 window.addEventListener('pointermove',e=>{if(!drag)return;
-if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=thumb(D[drag.i])+esc(D[drag.i].n);document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
+if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=(D[drag.i].td?`<img src="${D[drag.i].td}" alt="" style="height:64px;width:auto">`:thumb(D[drag.i]))+esc(D[drag.i].n);document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
 ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';const z=zoneAt(e.clientX,e.clientY);for(const el of $$('.zone'))el.classList.toggle('hov',el===z);
 const t=document.elementFromPoint(e.clientX,e.clientY);const tab=t&&t.closest('[role=tab]');if(tab&&tab.dataset.v!==view)setView(tab.dataset.v)});
 const end=e=>{if(!drag)return;if(ghost){const z=e.type==='pointerup'?zoneAt(e.clientX,e.clientY):null;ghost.remove();ghost=null;for(const el of $$('.zone'))el.classList.remove('hov');dragged=true;setTimeout(()=>{dragged=false},80);if(z)place(z.dataset.s,drag.i)}drag=null};

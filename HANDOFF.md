@@ -65,3 +65,14 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Garages:** two is now sourced. The Q&A asks about "each of the garages", and the game data has ports `hardpoint_cargo_garage_a` and `_b`.
 - **Front pad:** the Q&A rates it for XXS ships and ground vehicles. A ship rated only for the upper pads is allowed there but shown as "not tested".
 - **Refresh assets:** run `python tools/fetch_assets.py`, then `python build.py STAR_CITIZEN_SHIP_FITTING_LIST.xlsx`. The fetch needs network access to starcitizen.tools, media.starcitizen.tools and api.star-citizen.wiki. The `liberator-planner` cloud environment allows these.
+
+## v4 update (Sam's corrections, Nov 20, 2026)
+- **The xlsx is the only fit source, and everything in it is tested in game.** An Ext ✔ ship fits all three external pads.
+  - F on green fits the front pad only. F on orange worked there but was sketchy.
+  - The Q&A-based "front pad not tested" rule from v3 is removed.
+- **Height:** the front pad has better height support. For now the upper pads take ships with a centre of gravity at 5 m or lower, and taller ships are expected to fit later. This comes from Sam's in-game testing; there's no centre-of-gravity data to check it against, so the app shows height (L × B × H) but doesn't enforce it.
+- **Top-down images:** most wiki ship pages have an "in space - Above" shot. `tools/find_topdown.py` lists them, then `tools/topdown.py` cuts each one out of its background and turns it nose up into `img/top/`.
+  - Overrides and skips live in `tools/topdown_fix.json`.
+  - 78 of 97 entries have one. The others show a plain footprint because the wiki has no usable top-down or the cutout failed: Command Module, Marauder, Pitbull, Hyun, Basher, S-65 Stingray, Reliant, Meteor, Skylark, Blade, Glaive, Khartu-al, Scythe, MDC, PTV, STV, UTV, G12, Nova.
+- **Thumbnails:** done in v3, and lowest priority.
+- **Rebuild order:** `tools/fetch_assets.py`, then `tools/find_topdown.py`, then `tools/topdown.py`, then `build.py`.

@@ -54,6 +54,8 @@ def main(path):
                 d[k] = a[k]
         if a.get("img") and os.path.exists(a["img"]):
             d["t"] = "data:image/webp;base64," + base64.b64encode(open(a["img"], "rb").read()).decode()
+        if a.get("top") and os.path.exists(a["top"]):
+            d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
         page.append(d)
     tpl = open("tpl.html", encoding="utf-8").read()
     open("index.html", "w", encoding="utf-8").write(

@@ -1,0 +1,41 @@
+{
+ "Gladius": {
+  "file": "File:Gladius in space - Above.jpg"
+ },
+ "Reliant / Variants": {
+  "skip": true
+ },
+ "Khartu-al": {
+  "skip": true
+ },
+ "Ursa": {
+  "file": "File:Ursa on Lyria - Above - Cutout SCT Stripe BG.jpg"
+ },
+ "Cyclone / Variants": {
+  "file": "File:Cyclone on Lyria - Above - Cutout SCT Stripe BG.jpg"
+ },
+ "Glaive": {
+  "skip": true
+ },
+ "Scythe": {
+  "skip": true
+ },
+ "Blade": {
+  "skip": true
+ },
+ "Pitbull": {
+  "skip": true
+ },
+ "Meteor": {
+  "skip": true
+ },
+ "STV (buggy)": {
+  "skip": true
+ },
+ "PTV (Golf cart)": {
+  "skip": true
+ },
+ "ATLS / GEO / ITKI": {
+  "rot": 90
+ }
+}
