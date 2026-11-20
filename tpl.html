@@ -12,7 +12,7 @@
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
-body.hasbar{padding-bottom:150px}
+
 .band{padding:clamp(20px,3vw,40px) max(5vw,16px)}
 h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wrap:balance}
 .top{max-width:1240px;margin:0 auto;padding-bottom:8px}
@@ -128,37 +128,58 @@ svg.ship.hov{outline:3px solid var(--acc);outline-offset:2px;border-radius:8px}
 #placed{display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
 .pl.on{outline:2px solid var(--acc)}.pl.bad{border-left-color:var(--bad)}
 .pl .chg i.is{opacity:1}.is.bad{color:var(--bad);font-weight:600}.is.warn{color:var(--warn)}.is.unk{color:var(--unk)}
+html,body{height:100%}body{overflow:hidden}
+.app{height:100vh;height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr)}
+.appbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--line);position:relative;z-index:6}
+.appbar h1{font-size:22px;margin:0;white-space:nowrap}.appbar .tabs{margin:0;flex:0 1 260px}.appbar .tabs button{min-height:40px;font-size:16px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}.acts button{min-height:40px;padding:0 12px}.acts .add{width:auto;border-style:solid;background:var(--acc);color:#fff;border-color:var(--acc)}
+.acts [aria-expanded=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.stage{position:relative;min-height:0;padding:8px}.stage .view{height:100%}
+.stage .ship{width:100%;height:100%;max-height:none;margin:0}
+.stage #selbar{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:4;width:max-content;max-width:calc(100% - 24px);margin:0;box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+#msg{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:4;background:var(--ink);color:var(--bg);padding:6px 14px;border-radius:999px;font-size:14px;pointer-events:none;max-width:calc(100% - 24px);text-align:center}#msg:empty{display:none}
+.panel{position:fixed;top:var(--hdr,60px);bottom:0;width:min(440px,100vw);background:var(--bg);overflow:auto;z-index:5;padding:0 14px 100px;box-shadow:0 0 36px -12px rgba(0,0,0,.55)}
+.panel.right{right:0}.panel.left{left:0;width:min(340px,100vw)}.panel.wide{width:min(780px,100vw)}.panel[hidden]{display:none}
+.ph{position:sticky;top:0;background:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;z-index:1}
+.ph h2{font:700 22px/1.1 Rajdhani,sans-serif;margin:0}
+.panel #placed{grid-template-columns:minmax(0,1fr)}
+.panel .sub{font-size:15px}
+@media(max-width:600px){.appbar h1{display:none}.appbar{gap:6px;padding:6px 8px}.appbar .tabs{flex:1 1 100%}.acts{margin-left:0}.acts button{padding:0 9px;min-height:38px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
-<header class="band top">
-<h1>Liberator deck planner</h1>
-<p class="sub">Add ships with + Add ship or drag them in from the list, then drag them around the drawing to see how they pack. Green fits, orange needs tricks, red overlaps.</p>
-<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. All fits are tested in game. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
-</header>
-<main class="band grid">
-<section class="plan" aria-label="Deck plan">
+<div class="app">
+<header class="appbar">
+<h1>Liberator planner</h1>
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
-<div class="vtools"><button class="add" id="addbtn">+ Add ship</button><span class="hint">Drag ships to arrange them. Select one to turn it (R), nudge it (arrow keys), open its stats or remove it.</span></div>
+<div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="clear">Clear</button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
+</header>
+<main class="stage" aria-label="Deck plan">
 <div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
 <div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
 <div id="selbar" hidden><span id="seln"></span><button data-a="l" aria-label="Turn left 15 degrees">⟲ 15°</button><button data-a="r" aria-label="Turn right 15 degrees">⟳ 15°</button><button data-a="q">Turn 90°</button><button data-a="s">Stats</button><button data-a="x">Remove</button><button data-a="d" aria-label="Deselect">✕</button></div>
-<div id="placed"></div>
-<div class="tools"><button id="undo">Undo</button><button id="clear">Clear plan</button><button id="copy">Copy plan</button><span id="msg" role="status"></span></div>
-<p class="note">Liberator top-down: scorg.tools render. It is 1000 × 563 px, which matches the game-data 119 × 67 m, so it is used at true scale. Ships are drawn at the same scale, using the shape of their top-down image, with the longest side set to the larger game-data dimension of the variant you picked in Stats. Game-data boxes are sometimes padded or square, so the image proportions are used instead. Grouped rows default to their first variant. The Clipper is drawn with its wings folded, as they are when landed. Overlapping ships are flagged red. The vehicle-bay outline on the internal view is approximate: it follows the centre channel, since the concept cutaway shows the bay beneath it. Fit ratings come from the sheet: deck-rated ships fit anywhere outside, and F ships only on the front pad.</p>
-</section>
-<section aria-label="Ships and vehicles">
+<span id="msg" role="status"></span>
+</main>
+<aside class="panel right" id="p-list" aria-label="Ships and vehicles" hidden><div class="ph"><h2>Ships</h2><button class="pclose" aria-label="Close panel">✕</button></div>
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
 <div class="chips" role="group" aria-label="Filter"><button data-f="all" aria-pressed="true">All</button><button data-f="ship" aria-pressed="false">Ships</button><button data-f="ground" aria-pressed="false">Ground</button><button data-f="in" aria-pressed="false">Fits inside</button><button data-f="front" aria-pressed="false">Front pad only</button></div>
 <div class="key"><span class="b ok">✓ good fit</span><span class="b warn">! needs tricks / sketchy</span><span class="b unk">? not tested</span><span class="b no">✕ doesn't fit</span></div>
 <p class="cnt"><span id="count"></span> that fit somewhere on the Liberator</p>
 <div id="cards"></div>
-</section>
-</main>
-<section class="band rrr" aria-labelledby="rrrh"><h2 id="rrrh">RRR restock list</h2>
+</aside>
+<aside class="panel left" id="p-placed" aria-label="Placed ships" hidden><div class="ph"><h2>Placed</h2><button class="pclose" aria-label="Close panel">✕</button></div><div id="placed"></div></aside>
+<aside class="panel right wide" id="p-rrr" aria-labelledby="rrrh" hidden><div class="ph"><h2 id="rrrh">RRR restock list</h2><button class="pclose" aria-label="Close panel">✕</button></div>
 <p class="sub">What the ships in your plan carry at full load, with your loadout changes applied. Use it to stock ammo, missiles and countermeasures, and to see the fuel and hull totals the Liberator will refill and repair.</p>
 <p class="note">In 4.10.3, RRR works in the internal garage through the mobiGlas landing services app, drawing on supplies in the adjacent cargo bay. RRR on the pads is planned for 5.0 (starcitizen.tools, citing patch notes and a Spectrum dev comment). The wiki doesn't say which cargo-bay supplies each refill uses. Fuel figures are game-data capacities.</p>
 <div class="tools"><button id="rcopy">Copy restock list</button></div>
-<div id="rrr"></div></section>
+<div id="rrr"></div>
+</aside>
+<aside class="panel right" id="p-info" aria-label="About" hidden><div class="ph"><h2>About</h2><button class="pclose" aria-label="Close panel">✕</button></div>
+<p class="sub">Add ships with + Add ship or drag them in from the list, then drag them around the drawing to see how they pack. Green fits, orange needs tricks, red overlaps.</p>
+<p class="note">Drag ships on the drawing to arrange them. Select one to turn it (R / Shift+R), nudge it (arrow keys, Shift for 2 m) or remove it (Delete). From the Ships panel, drag a ship onto the drawing, or tap it and then tap the drawing.</p>
+<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. All fits are tested in game. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
+<p class="note">Liberator top-down: scorg.tools render. It is 1000 × 563 px, which matches the game-data 119 × 67 m, so it is used at true scale. Ships are drawn at the same scale, using the shape of their top-down image, with the longest side set to the larger game-data dimension of the variant you picked in Stats. Game-data boxes are sometimes padded or square, so the image proportions are used instead. Grouped rows default to their first variant. The Clipper is drawn with its wings folded, as they are when landed. Overlapping ships are flagged red. The vehicle-bay outline on the internal view is approximate: it follows the centre channel, since the concept cutaway shows the bay beneath it. Fit ratings come from the sheet: deck-rated ships fit anywhere outside, and F ships only on the front pad.</p>
+</aside>
+</div>
 <div id="bar" hidden><div class="bi"><div><b id="bn"></b><span id="bd"></span></div><div class="bb"><button data-v="external">Add to external</button><button data-v="internal">Add to internal</button><button id="bx" aria-label="Deselect">✕</button></div></div></div>
 <dialog id="sd" aria-labelledby="sdt"><div class="dh"><h3 id="sdt"></h3><button id="sx" aria-label="Close">✕</button></div><div id="sb"></div></dialog>
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
@@ -217,6 +238,7 @@ function hit(p,q){const A=corners(p),B=corners(q);for(const C of[A,B])for(let i=
 function issues(p){const d=byName(p.n),f=fitV(d,p.v),o=[];
 if(!f)o.push(['bad',`${p.v==='external'?'Deck':'Garage'}: ${NF}`]);else if(lvl(f)!=='ok')o.push([cls(f),L[f]]);
 if(p.v==='external'&&d.e&&d.e.startsWith('front')&&p.x>FRONT_END)o.push(['warn','F ship: fits only on the front pad']);
+if(p.v==='external'&&(p.x<0||p.x>119||Math.abs(p.y)>33.5))o.push(['warn','Off the ship']);
 if(p.v==='internal'&&corners(p).some(([x,y])=>x<BAY.x0||x>BAY.x1||Math.abs(y)>BAY.h))o.push(['warn','Outside the approximate vehicle-bay outline']);
 for(const q of P)if(q!==p&&q.v===p.v&&hit(p,q))o.push(['bad',`Overlaps ${q.n}`]);return o}
 const worst=o=>o.some(x=>x[0]==='bad')?'bad':o.some(x=>x[0]==='warn')?'warn':o.some(x=>x[0]==='unk')?'unk':'ok';
@@ -239,7 +261,7 @@ const sp=selId&&byId(selId);$('#selbar').hidden=!sp;if(sp)$('#seln').textContent
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0)dt.classList.add(lvl(fitV(D[sel],t.dataset.v)))}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-v]')){const l=lvl(fitV(d,b.dataset.v));b.disabled=l==='no';b.className=l}}
-drawShips();$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
+drawShips();$('#pcount').textContent=P.filter(p=>p.v===view).length||'';$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
 function renderShip(){const c=cfg(shipId);if(!c){closeShip();return}
 $('#sdt').textContent=`${c.d.n} · ${VL[c.p.v]}`;
 if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
@@ -273,12 +295,16 @@ const C=Object.entries(R.C).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${
 const H=R.H.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
 $('#rrr').innerHTML=`<div class="rg"><div><h3>Ballistic ammo</h3>${tb(['Weapon','#Guns','#Rounds'],A)}<p class="note">Energy weapons regenerate and need no ammo.</p></div><div><h3>Missiles</h3>${tb(['Missile','#Count'],M)}<h3>Countermeasures</h3>${tb(['Launcher','#Charges'],C)}</div><div><h3>Fuel</h3>${tb(['Tank','#Capacity'],[`<tr><td>Hydrogen, all ships</td><td class="n">${+R.fu.toFixed(2)}</td></tr>`,`<tr><td>Quantum, all ships</td><td class="n">${+R.qf.toFixed(2)}</td></tr>`])}<h3>Repair</h3>${tb(['Ship','#Hull HP'],H)}${R.none.length?`<p class="note">No loadout data: ${esc(R.none.join(', '))}.</p>`:''}</div></div>`}
 $('#rcopy').addEventListener('click',async()=>{const R=rrrData();const T=['Liberator RRR restock list','Ballistic ammo:',...Object.entries(R.A).map(([k,a])=>`  ${k}: ${a.r} rounds (${a.g} guns)`),'Missiles:',...Object.entries(R.M).map(([k,v])=>`  ${k}: ${v}`),'Countermeasures:',...Object.entries(R.C).map(([k,v])=>`  ${k}: ${v}`),`Fuel: hydrogen ${+R.fu.toFixed(2)}, quantum ${+R.qf.toFixed(2)}`,'Hull HP:',...R.H.map(([k,v])=>`  ${k}: ${v}`)];try{await navigator.clipboard.writeText(T.join('\n'));flash('Restock list copied.')}catch(e){flash('Copy was blocked here.')}});
+const PANELS=['list','placed','rrr','info'];
+function togglePanel(n,force){const el=$('#p-'+n),open=force??el.hidden;if(open)for(const k of PANELS)if(k!==n&&(k!=='placed'&&n!=='placed'||innerWidth<900))$('#p-'+k).hidden=true;el.hidden=!open;for(const b of $$('[data-panel]'))b.setAttribute('aria-expanded',String(!$('#p-'+b.dataset.panel).hidden))}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b){togglePanel(b.dataset.panel);return}const c=e.target.closest('.pclose');if(c)togglePanel(c.closest('.panel').id.slice(2),false)});
+const hdr=()=>document.documentElement.style.setProperty('--hdr',$('.appbar').offsetHeight+'px');addEventListener('resize',hdr);hdr();
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function freeSpot(v,i){const d=D[i],t={id:-1,n:d.n,v,x:0,y:0,r:0};const xs=v==='external'?(d.e&&d.e.startsWith('front')?[21,30,15]:[66,99.3,21]):[];for(let x=(v==='internal'?BAY.x0:8)+(d.L||4)/2;x<=114;x+=1)xs.push(x);
 for(const y of[0,-6,6,-12,12])for(const x of xs){t.x=x;t.y=y;if(!P.some(q=>q.v===v&&hit(t,q))&&(v!=='internal'||!corners(t).some(([a,b])=>a<BAY.x0||a>BAY.x1||Math.abs(b)>BAY.h)))return[x,y]}return[v==='internal'?60:30,0]}
 function add(v,i,at){const d=D[i],f=fitV(d,v);if(lvl(f)==='no'){flash(`${d.n} ${NF} ${v==='external'?'on the deck':'in the bay'}.`);return}
-hist.push(snap());const[x,y]=at||freeSpot(v,i);const p={id:uid++,n:d.n,v,x:+x.toFixed(1),y:+y.toFixed(1),r:0,f:null};P.push(p);selId=p.id;if(v!==view)setView(v);flash(`${d.n} added to ${VL[v].toLowerCase()}${lvl(f)==='warn'?` (${L[f].toLowerCase()})`:''}. Drag it to arrange.`);renderPlan()}
+hist.push(snap());const[x,y]=at||freeSpot(v,i);const p={id:uid++,n:d.n,v,x:+x.toFixed(1),y:+y.toFixed(1),r:0,f:null};P.push(p);selId=p.id;if(sel>=0){sel=-1;renderCards()}if(v!==view)setView(v);flash(`${d.n} added to ${VL[v].toLowerCase()}${lvl(f)==='warn'?` (${L[f].toLowerCase()})`:''}. Drag it to arrange.`);renderPlan()}
 function renderPick(){const v=pickView,q=$('#dq').value.trim().toLowerCase();
 const r=D.map((d,i)=>[d,i,fitV(d,v)]).filter(([d,,f])=>f&&(!q||(d.n+' '+d.m).toLowerCase().includes(q))).sort((a,b)=>(lvl(a[2])==='ok'?0:1)-(lvl(b[2])==='ok'?0:1));
 $('#dl').innerHTML=r.length?r.map(([d,i,f])=>`<button class="opt" data-i="${i}">${thumb(d)}<span style="flex:1"><b>${esc(d.n)}</b><small>${esc(d.m)} · ${dims(d)}</small></span><span class="b ${cls(f)}">${L[f]}</span></button>`).join(''):'<p class="empty">Nothing that fits here matches.</p>'}
@@ -304,7 +330,7 @@ $('#clear').addEventListener('click',()=>{if(!P.length)return;hist.push(snap());
 $('#copy').addEventListener('click',async()=>{const t=['Liberator plan',...['external','internal'].flatMap(v=>[`${VL[v]}:`,...(P.filter(p=>p.v===v).map(p=>{const d=byName(p.n),c=cfg(p.id),o=issues(p).filter(x=>x[0]!=='ok').map(x=>x[1]);return `  ${d.n} (${pdims(p)})${c&&c.ship?` [${c.f.v}${nmod(c)?', modified: '+Object.keys(c.f.m).map(i=>{const k=c.f.m[i];return pretty(c.ship.slots[i].id)+' → '+(k==null?'empty':IT[k].n)}).join('; '):''}]`:''}${o.length?' — '+o.join('; '):''}`}).concat(P.some(p=>p.v===v)?[]:['  —']))])].join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
 const svgPt=(sv,x,y)=>{const r=new DOMPoint(x,y).matrixTransform(sv.getScreenCTM().inverse());return{x:r.y,y:-r.x}};
 const typing=()=>/input|select|textarea/i.test((document.activeElement||{}).tagName||'');
-document.addEventListener('keydown',e=>{if(pickView||shipId)return;if(e.key==='Escape'){if(selId){selId=null;renderPlan()}else if(sel>=0){sel=-1;render()}return}
+document.addEventListener('keydown',e=>{if(pickView||shipId)return;if(e.key==='Escape'){const op=PANELS.find(k=>!$('#p-'+k).hidden);if(op){togglePanel(op,false);return}if(selId){selId=null;renderPlan()}else if(sel>=0){sel=-1;render()}return}
 const p=selId&&byId(selId);if(!p||typing())return;const s=e.shiftKey?2:.5,mvk={ArrowLeft:[0,s],ArrowRight:[0,-s],ArrowUp:[-s,0],ArrowDown:[s,0]}[e.key];
 if(mvk){e.preventDefault();hist.push(snap());p.x=+(p.x+mvk[0]).toFixed(1);p.y=+(p.y+mvk[1]).toFixed(1);renderPlan()}else if(e.key==='r'||e.key==='R'){turn(e.key==='R'?-15:15)}else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();del(p.id)}});
 for(const sv of $$('svg.ship')){
@@ -318,7 +344,7 @@ const up=()=>{if(mv){mv=null;renderPlan()}};sv.addEventListener('pointerup',up);
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
 const svgAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('svg.ship'):null};
 window.addEventListener('pointermove',e=>{if(!drag)return;
-if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=(D[drag.i].td?`<img src="${D[drag.i].td}" alt="" style="height:64px;width:auto">`:thumb(D[drag.i]))+esc(D[drag.i].n);document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
+if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=(D[drag.i].td?`<img src="${D[drag.i].td}" alt="" style="height:64px;width:auto">`:thumb(D[drag.i]))+esc(D[drag.i].n);document.body.append(ghost);if(innerWidth<900)togglePanel('list',false);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
 ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';const s=svgAt(e.clientX,e.clientY);for(const x of $$('svg.ship'))x.classList.toggle('hov',x===s);
 const t=document.elementFromPoint(e.clientX,e.clientY);const tab=t&&t.closest('[role=tab]');if(tab&&tab.dataset.v!==view)setView(tab.dataset.v)});
 const end=e=>{if(!drag)return;if(ghost){const s=e.type==='pointerup'?svgAt(e.clientX,e.clientY):null;ghost.remove();ghost=null;for(const x of $$('svg.ship'))x.classList.remove('hov');dragged=true;setTimeout(()=>{dragged=false},80);if(s){const pt=svgPt(s,e.clientX,e.clientY);add(s.dataset.v,drag.i,[pt.x,pt.y])}}drag=null};

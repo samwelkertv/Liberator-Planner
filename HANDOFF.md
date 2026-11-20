@@ -126,3 +126,14 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Clipper:** drawn wings-folded, as when landed. Its image is cropped to the fuselage and engine pods via `"crop"` in `tools/topdown_fix.json`; the crop fraction is kept in `cf` so the scale still comes from the full wingspan.
 - **Touch dragging:** a touch that starts on a placed ship no longer scrolls the page, so ships can be dragged on phones and tablets.
 - `tools/plan_block.js` is removed; the plan script lives in `tpl.html`.
+
+## v9 update: app layout (Nov 20, 2026)
+- **Full-screen layout:** the page no longer scrolls. A header bar holds the External/Internal tabs and the buttons + Add ship, Ships, Placed (count), RRR, Undo, Copy, Clear and ⓘ. The drawing fills the rest of the screen.
+- **Pop-out panels:** the ship list, placed ships, the RRR list and About/sources (`#p-list`, `#p-placed`, `#p-rrr`, `#p-info`).
+  - The Placed panel sits on the left and can stay open alongside a right-hand panel on wide screens; right-hand panels replace each other.
+  - On narrow screens only one panel is open at a time.
+  - Escape closes the open panel.
+  - Starting a drag from the Ships panel closes it on screens narrower than 900 px, so you can drop onto the drawing.
+- **Floating controls:** the selected-ship toolbar floats at the bottom of the drawing, and messages float at the top.
+- **Arrow:** drawn with its outer wing panels folded (`"crop": [0.237, 0.759]` in `tools/topdown_fix.json`). The fold line is estimated from the panel seams in the top-down.
+- **Off-ship warning:** external ships whose centre is off the hull get an "Off the ship" warning.
