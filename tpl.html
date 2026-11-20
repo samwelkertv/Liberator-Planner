@@ -8,7 +8,7 @@
    PICTURE: the hull, bow up: external view (front pad + two upper pads) and internal view (two garages)
    COLOUR and TYPE: hangar steel greys, one blue selection accent, green/orange/pink fit status; Rajdhani + IBM Plex Sans
    LAYOUT: deck plan left (sticky), ship list right; stacks plan-first on phones with a bottom place bar */
-:root{color-scheme:light dark;--bg:light-dark(#eceeeb,#0f1316);--ink:light-dark(#13181b,#e6ebe8);--hull:light-dark(#c9d1d4,#222a2f);--deck:light-dark(#b3bec3,#2c363c);--line:light-dark(#8f9ca2,#46535b);--card:light-dark(#fff,#182026);--ok:light-dark(#1d7f45,#4fca85);--warn:light-dark(#b45500,#ff9b45);--unk:light-dark(#9c3f70,#e690bf);--acc:light-dark(#0a6a94,#5bc0ec)}
+:root{color-scheme:light dark;--bg:light-dark(#eceeeb,#0f1316);--ink:light-dark(#13181b,#e6ebe8);--hull:light-dark(#c9d1d4,#222a2f);--deck:light-dark(#b3bec3,#2c363c);--line:light-dark(#8f9ca2,#46535b);--card:light-dark(#fff,#182026);--ok:light-dark(#1d7f45,#4fca85);--warn:light-dark(#b45500,#ff9b45);--unk:light-dark(#9c3f70,#e690bf);--acc:light-dark(#0a6a94,#5bc0ec);--bad:light-dark(#c0262d,#ff6b6b)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
@@ -30,7 +30,19 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .view[hidden]{display:none}
 .pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .zone{background:var(--deck);border:2px solid transparent;border-radius:12px;padding:10px 12px 12px;min-height:130px;display:flex;flex-direction:column;transition:border-color .15s,opacity .15s}
-.zone[data-s=front]{margin:0 14%}
+.zone[data-s=front]{width:calc(50% - 6px);margin:0 auto}
+.fp{display:block;width:100%;height:auto;margin:2px 0 8px}
+.fp .env{fill:color-mix(in srgb,var(--hull) 55%,transparent);stroke:var(--line);stroke-width:.25;stroke-dasharray:1 .7}
+.fp .el{font:600 2.5px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
+.fp .sh{fill:color-mix(in srgb,var(--ok) 30%,transparent);stroke:var(--ok);stroke-width:.35}
+.fp .sh.warn,.fp .sh.unk{fill:color-mix(in srgb,var(--warn) 30%,transparent);stroke:var(--warn)}
+.fp .sh.over{stroke:var(--bad);stroke-width:.6}
+.fp .nose{fill:var(--ink);opacity:.55}
+.fp .bar{stroke:var(--ink);stroke-width:.35}
+.th{width:64px;height:40px;border-radius:6px;object-fit:cover;flex:none;background:var(--deck)}
+.pl .th{width:72px;height:auto;border-radius:0;align-self:stretch}
+.ovr{color:var(--bad);font-weight:600}
+@media(max-width:600px){.pl .th{display:none}}
 .zone h3{font:700 20px/1.1 Rajdhani,sans-serif;margin:0}
 .zs{display:block;font-size:13px;opacity:.75;margin:2px 0 8px}
 .zone.ok{border-color:var(--ok)}.zone.warn{border-color:var(--warn)}.zone.no{opacity:.4}
@@ -38,7 +50,7 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .slot{margin-top:auto}
 .add{width:100%;border-style:dashed;font-weight:600}
 .pl{display:flex;align-items:stretch;background:var(--card);border-radius:10px;border-left:5px solid var(--ok);overflow:hidden}
-.pl.warn{border-left-color:var(--warn)}.pl.unk{border-left-color:var(--unk)}
+.pl.warn{border-left-color:var(--warn)}.pl.over{border-left-color:var(--bad)}.pl.unk{border-left-color:var(--unk)}
 .pl .chg{flex:1;border:0;border-radius:0;text-align:left;padding:6px 10px;display:grid;line-height:1.25}
 .pl .chg i{font-style:normal;font-size:13px;opacity:.8}
 .pl .rm{border:0;border-radius:0;width:44px;padding:0}
@@ -65,7 +77,7 @@ input[type=search]{width:100%;font-size:16px;font-family:inherit;min-height:44px
 .b.warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
 .b.unk{background:color-mix(in srgb,var(--unk) 16%,transparent);color:var(--unk)}
 .b.no{opacity:.45;background:color-mix(in srgb,var(--ink) 8%,transparent)}
-.ghost{position:fixed;pointer-events:none;z-index:9;background:var(--acc);color:#fff;padding:8px 12px;border-radius:10px;font-weight:600;transform:translate(-50%,-130%);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.ghost{display:flex;align-items:center;gap:8px;position:fixed;pointer-events:none;z-index:9;background:var(--acc);color:#fff;padding:8px 12px;border-radius:10px;font-weight:600;transform:translate(-50%,-130%);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
 #bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:5;box-shadow:0 -8px 24px -14px rgba(0,0,0,.4)}
 #bar[hidden]{display:none}
 .bi{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
@@ -84,24 +96,24 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <header class="band top">
 <h1>Liberator deck planner</h1>
 <p class="sub">Tap + on a pad or garage to pick a ship, or drag one in from the list. Green fits, orange needs tricks.</p>
-<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. Pad layout: official Liberator Q&amp;A.</p>
+<p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. Pad layout: official Liberator Q&amp;A. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
 </header>
 <main class="band grid">
 <section class="plan" aria-label="Deck plan">
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
 <div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><div class="hull">
-<div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">XXS ships and ground vehicles. Some ships fit only here.</small><div class="slot"></div></div>
+<div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">XXS ships and ground vehicles. Some larger ships fit only here.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 <div class="pair">
-<div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">XS ships.</small><div class="slot"></div></div>
-<div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">XS ships.</small><div class="slot"></div></div>
+<div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">XS ships.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
+<div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">XS ships.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 </div></div></div>
 <div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><div class="hull int">
 <div class="pair">
-<div class="zone" data-s="g1"><h3>Garage 1</h3><small class="zs">Inside the ship.</small><div class="slot"></div></div>
-<div class="zone" data-s="g2"><h3>Garage 2</h3><small class="zs">Inside the ship.</small><div class="slot"></div></div>
+<div class="zone" data-s="g1"><h3>Garage 1</h3><small class="zs">Inside the ship.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
+<div class="zone" data-s="g2"><h3>Garage 2</h3><small class="zs">Inside the ship.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
 </div></div></div>
 <div class="tools"><button id="undo">Undo</button><button id="clear">Clear plan</button><button id="copy">Copy plan</button><span id="msg" role="status"></span></div>
-<p class="note">Not to scale: no pad or ship measurements yet. Two garages is an assumption based on the Liberator being sold as carrying three ships and two vehicles. Ships that fit the upper pads are also allowed on the front pad.</p>
+<p class="note">Ships are drawn to one common scale, nose up, from game-data length × beam (grouped rows use the largest variant). No pad or garage measurements are published, so each dashed box is the largest ship confirmed as a good fit there, not a measured size. A ship bigger than that box is flagged red. Several ground vehicles share an identical 8.75 × 6 m game-data box (e.g. Mule, Cyclone, Ursa, STV), which looks like a size class rather than a measured hull. Liberator hull: 119 × 67 × 25 m (game data). Two garages: per the official Q&amp;A (“each of the garages”) and the game data (garage A and B). The Q&amp;A rates the front pad for XXS ships and ground vehicles; ships rated only for the upper pads are allowed there but marked untested.</p>
 </section>
 <section aria-label="Ships and vehicles">
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
@@ -115,32 +127,42 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
 <script>{
 const D=__DATA__;
-const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad, needs tricks',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged'};
+const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad, needs tricks',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged',front_unconf:'Front pad not tested (fits upper pads)'};
 const SL={front:['Front pad','front','external'],up1:['Upper pad 1','top','external'],up2:['Upper pad 2','top','external'],g1:['Garage 1','hangar','internal'],g2:['Garage 2','hangar','internal']};
 const SK=Object.keys(SL);
 const lvl=s=>!s?'no':(s==='fit'||s==='front')?'ok':'warn';
-const cls=s=>s==='untested'?'unk':lvl(s);
-const st=(d,z)=>z==='hangar'?d.i:z==='top'?(d.e&&!d.e.startsWith('front')?d.e:null):d.e;
+const cls=s=>s==='untested'||s==='front_unconf'?'unk':lvl(s);
+const frontS=d=>!d.e?null:(d.e.startsWith('front')||d.k==='ground'||d.i)?d.e:'front_unconf';
+const st=(d,z)=>z==='hangar'?d.i:z==='top'?(d.e&&!d.e.startsWith('front')?d.e:null):frontS(d);
 const fitS=(d,s)=>st(d,SL[s][1]);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 const byName=n=>D.find(d=>d.n===n);
 const NF='doesn’t fit';
+const ENV={};for(const z of ['front','top','hangar']){const g=D.filter(d=>d.L&&lvl(st(d,z))==='ok');ENV[z]={L:Math.max(...g.map(d=>d.L)),B:Math.max(...g.map(d=>d.B))}}
+const VW=Math.max(...Object.values(ENV).map(e=>e.B))+6,VH=Math.max(...Object.values(ENV).map(e=>e.L))+9;
+const m=x=>+x.toFixed(1),dims=d=>d.L?`${m(d.L)} × ${m(d.B)} m`:'size unknown';
+const over=(d,s)=>{const e=ENV[SL[s][1]];return !!d.L&&(d.L>e.L||d.B>e.B)};
+const thumb=d=>d.t?`<img class="th" src="${d.t}" alt="" loading="lazy">`:'<span class="th"></span>';
+function deck(s,d){const e=ENV[SL[s][1]],cx=VW/2,cy=(VH+3)/2;let h=`<rect class="env" x="${cx-e.B/2}" y="${cy-e.L/2}" width="${e.B}" height="${e.L}" rx="1"/><text class="el" x="${cx}" y="${cy-e.L/2-1}" text-anchor="middle">largest confirmed fit ${m(e.L)} × ${m(e.B)} m</text>`;
+if(d&&d.L){const f=fitS(d,s),c=over(d,s)?' over':'';h+=`<rect class="sh ${cls(f)}${c}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx} ${cy-d.L/2+.6}l${Math.min(1.6,d.B/3)} ${Math.min(2.4,d.L/3)}h${-2*Math.min(1.6,d.B/3)}z"/>`}
+h+=`<path class="bar" d="M1 ${VH-1.2}h10M1 ${VH-2}v1.6M11 ${VH-2}v1.6"/><text class="el" x="12" y="${VH-.6}">10 m</text>`;return h}
 const blank=()=>Object.fromEntries(SK.map(k=>[k,null]));
 let plan=blank(),hist=[],sel=-1,filt='all',drag=null,ghost=null,dragged=false,tm,pickSlot=null,view='external';
 try{const s=JSON.parse(localStorage.getItem('libplan2')||'null');if(s&&SK.every(k=>k in s))plan=s}catch(e){}
 const save=()=>{try{localStorage.setItem('libplan2',JSON.stringify(plan))}catch(e){}};
 const sym=s=>({ok:'✓',unk:'?',warn:'!',no:'✕'})[cls(s)];
 const badge=(s,name)=>`<span class="b ${cls(s)}" title="${esc(name+': '+(s?L[s]:NF))}">${s&&s.startsWith('front')?'Front pad':name} ${sym(s)}</span>`;
-const desc=d=>`Deck: ${d.e?L[d.e]:NF} · Garage: ${d.i?L[d.i]:NF}`;
+const desc=d=>`${dims(d)} · Deck: ${d.e?L[d.e]:NF} · Garage: ${d.i?L[d.i]:NF}`;
 function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>(filt==='all'||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front')))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
 function renderCards(){const r=shown();$('#count').textContent=`${r.length} of ${D.length} ships and vehicles`;
-$('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><span class="grip" aria-hidden="true">⠿</span><span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground vehicle':''}</small></span><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
+$('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><span class="grip" aria-hidden="true">⠿</span>${thumb(d)}<span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground':''} · ${dims(d)}</small></span><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
 function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').hidden=v!=='external';$('#v-internal').hidden=v!=='internal';try{localStorage.setItem('libview',v)}catch(e){}}
 function renderPlan(){
 for(const s of SK){const el=$(`.zone[data-s=${s}]`);el.classList.remove('ok','warn','no');if(sel>=0)el.classList.add(lvl(fitS(D[sel],s)));
 const n=plan[s],d=n&&byName(n),f=d?fitS(d,s):null;
-el.querySelector('.slot').innerHTML=d?`<div class="pl ${cls(f)}"><button class="chg" data-s="${s}" aria-label="Change ${esc(n)}"><b>${esc(n)}</b>${lvl(f)==='warn'?`<i>${L[f]}</i>`:''}</button><button class="rm" data-s="${s}" aria-label="Remove ${esc(n)}">✕</button></div>`:`<button class="add" data-s="${s}">+ Add ship</button>`}
+const o=d&&over(d,s),e=ENV[SL[s][1]];el.querySelector('.fp').setAttribute('viewBox',`0 0 ${VW} ${VH}`);el.querySelector('.fp').innerHTML=deck(s,d);
+el.querySelector('.slot').innerHTML=d?`<div class="pl ${cls(f)}${o?' over':''}">${thumb(d)}<button class="chg" data-s="${s}" aria-label="Change ${esc(n)}"><b>${esc(n)}</b><i>${dims(d)}</i>${lvl(f)==='warn'?`<i>${L[f]}</i>`:''}${o?`<i class="ovr">Bigger than any confirmed good fit here (${m(e.L)} × ${m(e.B)} m)</i>`:''}</button><button class="rm" data-s="${s}" aria-label="Remove ${esc(n)}">✕</button></div>`:`<button class="add" data-s="${s}">+ Add ship</button>`}
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0){const ls=SK.filter(s=>SL[s][2]===t.dataset.v).map(s=>lvl(fitS(D[sel],s)));dt.classList.add(ls.includes('ok')?'ok':ls.includes('warn')?'warn':'no')}}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-p]')){const l=lvl(fitS(d,b.dataset.p));b.disabled=l==='no';b.className=l}}
@@ -151,7 +173,7 @@ function place(s,i){const d=D[i],f=fitS(d,s);if(lvl(f)==='no'){flash(`${d.n} ${N
 hist.push(JSON.stringify(plan));plan[s]=d.n;if(SL[s][2]!==view)setView(SL[s][2]);flash(`${d.n} → ${SL[s][0]}${lvl(f)==='warn'?` (${L[f].toLowerCase()})`:''}`);renderPlan()}
 function renderPick(){const s=pickSlot,q=$('#dq').value.trim().toLowerCase();
 const r=D.map((d,i)=>[d,i,fitS(d,s)]).filter(([d,,f])=>f&&(!q||(d.n+' '+d.m).toLowerCase().includes(q))).sort((a,b)=>(lvl(a[2])==='ok'?0:1)-(lvl(b[2])==='ok'?0:1));
-$('#dl').innerHTML=(plan[s]?`<button class="opt" data-clear="1"><span><b>Leave empty</b><small>Remove ${esc(plan[s])}</small></span></button>`:'')+(r.length?r.map(([d,i,f])=>`<button class="opt" data-i="${i}"><span><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground vehicle':''}</small></span><span class="b ${cls(f)}">${L[f]}</span></button>`).join(''):'<p class="empty">Nothing that fits here matches.</p>')}
+$('#dl').innerHTML=(plan[s]?`<button class="opt" data-clear="1"><span><b>Leave empty</b><small>Remove ${esc(plan[s])}</small></span></button>`:'')+(r.length?r.map(([d,i,f])=>`<button class="opt" data-i="${i}">${thumb(d)}<span style="flex:1"><b>${esc(d.n)}</b><small>${esc(d.m)} · ${dims(d)}${over(d,s)?' · <span class="ovr">oversize</span>':''}</small></span><span class="b ${cls(f)}">${L[f]}</span></button>`).join(''):'<p class="empty">Nothing that fits here matches.</p>')}
 function openPick(s){pickSlot=s;$('#dt').textContent=SL[s][0];$('#dq').value='';renderPick();const g=$('#dlg');try{g.showModal()}catch(e){g.setAttribute('open','')}$('#dq').focus()}
 const closePick=()=>{const g=$('#dlg');try{g.close()}catch(e){g.removeAttribute('open')}pickSlot=null};
 $('#dq').addEventListener('input',renderPick);
@@ -169,12 +191,12 @@ $('#q').addEventListener('input',renderCards);
 $('.chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;for(const x of $$('.chips [data-f]'))x.setAttribute('aria-pressed',String(x===b));renderCards()});
 $('#undo').addEventListener('click',()=>{if(hist.length){plan=JSON.parse(hist.pop());renderPlan();flash('Undone.')}});
 $('#clear').addEventListener('click',()=>{if(!SK.some(k=>plan[k]))return;hist.push(JSON.stringify(plan));plan=blank();renderPlan();flash('Plan cleared. Undo brings it back.')});
-$('#copy').addEventListener('click',async()=>{const t='Liberator plan\n'+SK.map(s=>`${SL[s][0]}: ${plan[s]||'—'}`).join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
+$('#copy').addEventListener('click',async()=>{const t='Liberator plan\n'+SK.map(s=>{const d=plan[s]&&byName(plan[s]);return `${SL[s][0]}: ${d?d.n+' ('+dims(d)+')':'—'}`}).join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sel>=0&&!pickSlot){sel=-1;render()}});
 const zoneAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('.zone'):null};
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
 window.addEventListener('pointermove',e=>{if(!drag)return;
-if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.textContent=D[drag.i].n;document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
+if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=thumb(D[drag.i])+esc(D[drag.i].n);document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
 ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';const z=zoneAt(e.clientX,e.clientY);for(const el of $$('.zone'))el.classList.toggle('hov',el===z);
 const t=document.elementFromPoint(e.clientX,e.clientY);const tab=t&&t.closest('[role=tab]');if(tab&&tab.dataset.v!==view)setView(tab.dataset.v)});
 const end=e=>{if(!drag)return;if(ghost){const z=e.type==='pointerup'?zoneAt(e.clientX,e.clientY):null;ghost.remove();ghost=null;for(const el of $$('.zone'))el.classList.remove('hov');dragged=true;setTimeout(()=>{dragged=false},80);if(z)place(z.dataset.s,drag.i)}drag=null};

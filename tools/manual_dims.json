@@ -1,0 +1,36 @@
+{
+ "G12 / A": {
+  "wiki": "G12",
+  "L": 7.25,
+  "B": 5.8,
+  "H": 2.75,
+  "src": "starcitizen.tools G12 infobox (not in game data)"
+ },
+ "Fortune": {
+  "wiki": "Fortune"
+ },
+ "Hull-A": {
+  "wiki": "Hull A"
+ },
+ "Hull-B": {
+  "wiki": "Hull B"
+ },
+ "Starlite": {
+  "wiki": "Starlite"
+ },
+ "85X": {
+  "wiki": "85X"
+ },
+ "Scythe": {
+  "wiki": "Scythe"
+ },
+ "Ballista": {
+  "wiki": "Ballista"
+ },
+ "Centurion": {
+  "wiki": "Centurion"
+ },
+ "Spartan": {
+  "wiki": "Spartan"
+ }
+}

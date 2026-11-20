@@ -3,8 +3,10 @@
 Usage: python build.py STAR_CITIZEN_SHIP_FITTING_LIST.xlsx
 Reads tab "COMBINED SHEET", Liberator Ext. (col M) / Int. (col N), rows 4-105.
 Writes data.json and index.html (from tpl.html, replacing __DATA__).
+If assets.json exists (from tools/fetch_assets.py), ship sizes and thumbnails
+(img/*.webp, inlined as data URIs) are merged into the page.
 """
-import json, sys
+import base64, json, os, sys
 import openpyxl
 
 TRICKS = {"FFE69138", "FFFF9900"}   # orange shades -> "needs tricks / barely fit" (E69138 is an assumption)
@@ -43,9 +45,19 @@ def main(path):
             out.append({"n": " ".join(str(b).split()), "m": " ".join(str(maker).split()),
                         "k": kind, "e": e, "i": i})
     json.dump(out, open("data.json", "w"), ensure_ascii=False, indent=1)
+    assets = json.load(open("assets.json", encoding="utf-8")) if os.path.exists("assets.json") else {}
+    page = []
+    for d in out:
+        a, d = assets.get(d["n"], {}), dict(d)
+        for k in ("L", "B", "H"):
+            if a.get(k) is not None:
+                d[k] = a[k]
+        if a.get("img") and os.path.exists(a["img"]):
+            d["t"] = "data:image/webp;base64," + base64.b64encode(open(a["img"], "rb").read()).decode()
+        page.append(d)
     tpl = open("tpl.html", encoding="utf-8").read()
     open("index.html", "w", encoding="utf-8").write(
-        tpl.replace("__DATA__", json.dumps(out, ensure_ascii=False, separators=(",", ":"))))
+        tpl.replace("__DATA__", json.dumps(page, ensure_ascii=False, separators=(",", ":"))))
     print(len(out), "entries")
 
 if __name__ == "__main__":

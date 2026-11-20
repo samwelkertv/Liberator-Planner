@@ -52,3 +52,16 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 ## User notes
 - Sam is the user. He wants concise replies and doesn't want unsourced numbers stated. If a figure isn't sourced, say so rather than estimating it.
 - He keeps a tight eye on token and quota use, so prefer cheap, batched work.
+
+## v3 update (Nov 20, 2026)
+- **Thumbnails:** all 97 entries. Each is the starcitizen.tools page image, saved to `img/*.webp` (192×120) and inlined into `index.html` as a data URI.
+- **Sizes:** game-data length, beam and height via `api.star-citizen.wiki/api/v2/vehicles`. Grouped rows use the largest variant listed in `tools/aliases.json`. The G12 isn't in game data, so its size comes from the wiki infobox (`tools/manual_dims.json`).
+  - Several ground vehicles share an identical 8.75 × 6 m box (Mule, Cyclone, Ursa, STV and others). It looks like a size class rather than a hull measurement.
+- **Top-down images:** the wiki has none for most ships, so the pads show to-scale footprint rectangles, nose up.
+- **Scale:** every pad and garage uses one common metre scale.
+  - No pad or garage dimensions are published anywhere I found. Each slot's dashed box is the largest ship rated a good fit there: front 51 × 40, upper 46 × 35, garage 32 × 27.4 m.
+  - A ship bigger than its slot's box is flagged red.
+  - Overlap between neighbouring pads can't be checked, because the pad positions aren't sourced.
+- **Garages:** two is now sourced. The Q&A asks about "each of the garages", and the game data has ports `hardpoint_cargo_garage_a` and `_b`.
+- **Front pad:** the Q&A rates it for XXS ships and ground vehicles. A ship rated only for the upper pads is allowed there but shown as "not tested".
+- **Refresh assets:** run `python tools/fetch_assets.py`, then `python build.py STAR_CITIZEN_SHIP_FITTING_LIST.xlsx`. The fetch needs network access to starcitizen.tools, media.starcitizen.tools and api.star-citizen.wiki. The `liberator-planner` cloud environment allows these.

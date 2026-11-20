@@ -1,0 +1,1139 @@
+{
+ "Avenger (ALL)": {
+  "variants": [
+   "Avenger Titan",
+   "Avenger Stalker",
+   "Avenger Warlock",
+   "Avenger Titan Renegade"
+  ],
+  "L": 20,
+  "B": 15,
+  "H": 6.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/avenger-all.webp",
+  "page": "https://starcitizen.tools/Avenger_Titan"
+ },
+ "Eclipse": {
+  "variants": [
+   "Eclipse"
+  ],
+  "L": 24.5,
+  "B": 24.5,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/eclipse.webp",
+  "page": "https://starcitizen.tools/Eclipse"
+ },
+ "Gladius": {
+  "variants": [
+   "Gladius",
+   "Gladius Valiant",
+   "Gladius Pirate"
+  ],
+  "L": 21,
+  "B": 17.5,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/gladius.webp",
+  "page": "https://starcitizen.tools/Gladius"
+ },
+ "Redeemer": {
+  "variants": [
+   "Redeemer"
+  ],
+  "L": 51,
+  "B": 25,
+  "H": 14,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/redeemer.webp",
+  "page": "https://starcitizen.tools/Redeemer"
+ },
+ "Sabre / Variants": {
+  "variants": [
+   "Sabre",
+   "Sabre Comet",
+   "Sabre Firebird",
+   "Sabre Peregrine",
+   "Sabre Raven"
+  ],
+  "L": 24.5,
+  "B": 24.5,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/sabre-variants.webp",
+  "page": "https://starcitizen.tools/Sabre"
+ },
+ "Vanguard / Variants": {
+  "variants": [
+   "Vanguard Warden",
+   "Vanguard Harbinger",
+   "Vanguard Sentinel",
+   "Vanguard Hoplite"
+  ],
+  "L": 48,
+  "B": 40,
+  "H": 9.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/vanguard-variants.webp",
+  "page": "https://starcitizen.tools/Vanguard_Warden"
+ },
+ "Arrow": {
+  "variants": [
+   "Arrow"
+  ],
+  "L": 17.25,
+  "B": 12.25,
+  "H": 4.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/arrow.webp",
+  "page": "https://starcitizen.tools/Arrow"
+ },
+ "C8 PIsces": {
+  "variants": [
+   "C8 Pisces",
+   "C8X Pisces Expedition",
+   "C8R Pisces Rescue"
+  ],
+  "L": 16,
+  "B": 12,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/c8-pisces.webp",
+  "page": "https://starcitizen.tools/C8_Pisces"
+ },
+ "F7A/C-Variants": {
+  "variants": [
+   "F7C Hornet Mk II",
+   "F7A Hornet Mk II",
+   "F7C-M Super Hornet Mk II",
+   "F7C-R Hornet Tracker Mk II",
+   "F7C-S Hornet Ghost Mk II",
+   "F7C Hornet Mk I",
+   "F7A Hornet Mk I"
+  ],
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/f7a-c-variants.webp",
+  "page": "https://starcitizen.tools/F7C_Hornet_Mk_II"
+ },
+ "F8A / F8C": {
+  "variants": [
+   "F8C Lightning",
+   "F8A Lightning"
+  ],
+  "L": 26,
+  "B": 25,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/f8a-f8c.webp",
+  "page": "https://starcitizen.tools/F8C_Lightning"
+ },
+ "Gladiator": {
+  "variants": [
+   "Gladiator"
+  ],
+  "L": 22.75,
+  "B": 21,
+  "H": 6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/gladiator.webp",
+  "page": "https://starcitizen.tools/Gladiator"
+ },
+ "Hawk": {
+  "variants": [
+   "Hawk"
+  ],
+  "L": 23,
+  "B": 17,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hawk.webp",
+  "page": "https://starcitizen.tools/Hawk"
+ },
+ "Hurricane": {
+  "variants": [
+   "Hurricane"
+  ],
+  "L": 24,
+  "B": 18.5,
+  "H": 6.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hurricane.webp",
+  "page": "https://starcitizen.tools/Hurricane"
+ },
+ "Terrapin/Medic": {
+  "variants": [
+   "Terrapin",
+   "Terrapin Medic"
+  ],
+  "L": 20,
+  "B": 16.5,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/terrapin-medic.webp",
+  "page": "https://starcitizen.tools/Terrapin"
+ },
+ "MPUV / Variants": {
+  "variants": [
+   "MPUV Personnel",
+   "MPUV Cargo",
+   "MPUV Tractor"
+  ],
+  "L": 10.5,
+  "B": 9,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mpuv-variants.webp",
+  "page": "https://starcitizen.tools/MPUV_Personnel"
+ },
+ "SRV": {
+  "variants": [
+   "SRV"
+  ],
+  "L": 31.5,
+  "B": 21.5,
+  "H": 9.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/srv.webp",
+  "page": "https://starcitizen.tools/SRV"
+ },
+ "Mustang / Variants": {
+  "variants": [
+   "Mustang Alpha",
+   "Mustang Beta",
+   "Mustang Gamma",
+   "Mustang Delta",
+   "Mustang Omega"
+  ],
+  "L": 21.5,
+  "B": 18,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mustang-variants.webp",
+  "page": "https://starcitizen.tools/Mustang_Alpha"
+ },
+ "Nomad": {
+  "variants": [
+   "Nomad"
+  ],
+  "L": 27,
+  "B": 19,
+  "H": 10,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/nomad.webp",
+  "page": "https://starcitizen.tools/Nomad"
+ },
+ "Ares": {
+  "variants": [
+   "Ares Star Fighter Ion",
+   "Ares Star Fighter Inferno"
+  ],
+  "L": 30,
+  "B": 27,
+  "H": 6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/ares.webp",
+  "page": "https://starcitizen.tools/Ares_Star_Fighter_Ion"
+ },
+ "Intrepid": {
+  "variants": [
+   "Intrepid"
+  ],
+  "L": 23.07,
+  "B": 20.18,
+  "H": 6.13,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/intrepid.webp",
+  "page": "https://starcitizen.tools/Intrepid"
+ },
+ "Bucaneer": {
+  "variants": [
+   "Buccaneer"
+  ],
+  "L": 16.75,
+  "B": 15.25,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/bucaneer.webp",
+  "page": "https://starcitizen.tools/Buccaneer"
+ },
+ "Clipper": {
+  "variants": [
+   "Clipper"
+  ],
+  "L": 26.5,
+  "B": 21,
+  "H": 18,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/clipper.webp",
+  "page": "https://starcitizen.tools/Clipper"
+ },
+ "Command Module (IC)": {
+  "variants": [
+   "Command Module"
+  ],
+  "L": 20,
+  "B": 16,
+  "H": 6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/command-module-ic.webp",
+  "page": "https://starcitizen.tools/Command_module"
+ },
+ "Cutlass / Variants": {
+  "variants": [
+   "Cutlass Black",
+   "Cutlass Blue",
+   "Cutlass Red",
+   "Cutlass Steel"
+  ],
+  "L": 37.5,
+  "B": 26.5,
+  "H": 11.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/cutlass-variants.webp",
+  "page": "https://starcitizen.tools/Cutlass_Black"
+ },
+ "Cutter / Variants": {
+  "variants": [
+   "Cutter",
+   "Cutter Rambler",
+   "Cutter Scout"
+  ],
+  "L": 20,
+  "B": 16,
+  "H": 6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/cutter-variants.webp",
+  "page": "https://starcitizen.tools/Cutter"
+ },
+ "Golem": {
+  "variants": [
+   "Golem"
+  ],
+  "L": 15.5,
+  "B": 7,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/golem.webp",
+  "page": "https://starcitizen.tools/Golem"
+ },
+ "Golem OX": {
+  "variants": [
+   "Golem OX"
+  ],
+  "L": 15.5,
+  "B": 7,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/golem-ox.webp",
+  "page": "https://starcitizen.tools/Golem_OX"
+ },
+ "Herald": {
+  "variants": [
+   "Herald"
+  ],
+  "L": 24.75,
+  "B": 12.5,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/herald.webp",
+  "page": "https://starcitizen.tools/Herald"
+ },
+ "Marauder": {
+  "variants": [
+   "Marauder"
+  ],
+  "L": 20,
+  "B": 19,
+  "H": 6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/marauder.webp",
+  "page": "https://starcitizen.tools/Marauder"
+ },
+ "Pitbull": {
+  "variants": [
+   "Pitbull"
+  ],
+  "L": 6,
+  "B": 6,
+  "H": 3,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/pitbull.webp",
+  "page": "https://starcitizen.tools/Pitbull"
+ },
+ "Vulture": {
+  "variants": [
+   "Vulture"
+  ],
+  "L": 34,
+  "B": 16,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/vulture.webp",
+  "page": "https://starcitizen.tools/Vulture"
+ },
+ "Prowler": {
+  "variants": [
+   "Prowler"
+  ],
+  "L": 34,
+  "B": 32,
+  "H": 15,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/prowler.webp",
+  "page": "https://starcitizen.tools/Prowler"
+ },
+ "Prowler Utility": {
+  "variants": [
+   "Prowler Utility"
+  ],
+  "L": 34,
+  "B": 32,
+  "H": 15,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/prowler-utility.webp",
+  "page": "https://starcitizen.tools/Prowler_Utility"
+ },
+ "Talon": {
+  "variants": [
+   "Talon",
+   "Talon Shrike"
+  ],
+  "L": 24,
+  "B": 15,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/talon.webp",
+  "page": "https://starcitizen.tools/Talon"
+ },
+ "Hyun": {
+  "variants": [
+   "Hyun"
+  ],
+  "L": 36.8,
+  "B": 31.9,
+  "H": 22.6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hyun.webp",
+  "page": "https://starcitizen.tools/Hy%C5%ABn"
+ },
+ "Basher": {
+  "variants": [
+   "Basher"
+  ],
+  "L": 13.7,
+  "B": 11.3,
+  "H": 4.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/basher.webp",
+  "page": "https://starcitizen.tools/Basher"
+ },
+ "Shiv": {
+  "variants": [
+   "Shiv"
+  ],
+  "L": 37.5,
+  "B": 26.5,
+  "H": 11.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/shiv.webp",
+  "page": "https://starcitizen.tools/Shiv"
+ },
+ "Merlin": {
+  "variants": [
+   "P-52 Merlin"
+  ],
+  "L": 12,
+  "B": 7.75,
+  "H": 3.25,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/merlin.webp",
+  "page": "https://starcitizen.tools/P-52_Merlin"
+ },
+ "Archimedes": {
+  "variants": [
+   "P-72 Archimedes"
+  ],
+  "L": 12,
+  "B": 7.75,
+  "H": 3.25,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/archimedes.webp",
+  "page": "https://starcitizen.tools/P-72_Archimedes"
+ },
+ "L-21 / L-22": {
+  "variants": [
+   "L-21 Wolf",
+   "L-22 Alpha Wolf"
+  ],
+  "L": 21.5,
+  "B": 10.5,
+  "H": 4.2,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/l-21-l-22.webp",
+  "page": "https://starcitizen.tools/L-21_Wolf"
+ },
+ "S-65 Stingray": {
+  "variants": [
+   "S-65 Stingray"
+  ],
+  "L": 20.447,
+  "B": 15.1,
+  "H": 8.231,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/s-65-stingray.webp",
+  "page": "https://starcitizen.tools/S-65_Stingray"
+ },
+ "Fury / Variants": {
+  "variants": [
+   "Fury",
+   "Fury LX",
+   "Fury MX"
+  ],
+  "L": 7,
+  "B": 5.4,
+  "H": 3,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/fury-variants.webp",
+  "page": "https://starcitizen.tools/Fury"
+ },
+ "Guardian / QI": {
+  "variants": [
+   "Guardian",
+   "Guardian QI"
+  ],
+  "L": 24.3,
+  "B": 16.3,
+  "H": 9.1,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/guardian-qi.webp",
+  "page": "https://starcitizen.tools/Guardian"
+ },
+ "Guardian MX": {
+  "variants": [
+   "Guardian MX"
+  ],
+  "L": 26,
+  "B": 17,
+  "H": 10,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/guardian-mx.webp",
+  "page": "https://starcitizen.tools/Guardian_MX"
+ },
+ "Razor / variants": {
+  "variants": [
+   "Razor",
+   "Razor EX",
+   "Razor LX"
+  ],
+  "L": 12.5,
+  "B": 9,
+  "H": 3,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/razor-variants.webp",
+  "page": "https://starcitizen.tools/Razor"
+ },
+ "Fortune": {
+  "variants": [
+   "MISC Fortune"
+  ],
+  "L": 26.5,
+  "B": 16.5,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/fortune.webp",
+  "page": "https://starcitizen.tools/Fortune"
+ },
+ "Freelancer / MIS / DUR": {
+  "variants": [
+   "MISC Freelancer",
+   "MISC Freelancer MIS",
+   "MISC Freelancer DUR"
+  ],
+  "L": 38,
+  "B": 23.5,
+  "H": 9.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/freelancer-mis-dur.webp",
+  "page": "https://starcitizen.tools/Freelancer"
+ },
+ "Hull-A": {
+  "variants": [
+   "MISC Hull A"
+  ],
+  "L": 30,
+  "B": 12.5,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hull-a.webp",
+  "page": "https://starcitizen.tools/Hull_A"
+ },
+ "Hull-B": {
+  "variants": [
+   "MISC Hull B"
+  ],
+  "L": 71,
+  "B": 16.7,
+  "H": 10.7,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hull-b.webp",
+  "page": "https://starcitizen.tools/Hull_B"
+ },
+ "Prospector": {
+  "variants": [
+   "MISC Prospector"
+  ],
+  "L": 26.5,
+  "B": 16.5,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/prospector.webp",
+  "page": "https://starcitizen.tools/Prospector"
+ },
+ "Reliant / Variants": {
+  "variants": [
+   "MISC Reliant Kore",
+   "MISC Reliant Mako",
+   "MISC Reliant Sen",
+   "MISC Reliant Tana"
+  ],
+  "L": 28.5,
+  "B": 14.75,
+  "H": 4.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/reliant-variants.webp",
+  "page": "https://starcitizen.tools/Reliant_Kore"
+ },
+ "Starlite": {
+  "variants": [
+   "MISC Starlite"
+  ],
+  "L": 32,
+  "B": 19.9,
+  "H": 9.07,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/starlite.webp",
+  "page": "https://starcitizen.tools/Starlite"
+ },
+ "100i / Variants": {
+  "variants": [
+   "100i",
+   "125a",
+   "135c"
+  ],
+  "L": 19,
+  "B": 12,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/100i-variants.webp",
+  "page": "https://starcitizen.tools/100i"
+ },
+ "300i / Variants": {
+  "variants": [
+   "300i",
+   "315p",
+   "325a",
+   "350r"
+  ],
+  "L": 27.5,
+  "B": 17,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/300i-variants.webp",
+  "page": "https://starcitizen.tools/300i"
+ },
+ "85X": {
+  "variants": [
+   "85X Limited"
+  ],
+  "L": 14,
+  "B": 13.5,
+  "H": 4,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/85x.webp",
+  "page": "https://starcitizen.tools/85X"
+ },
+ "M50": {
+  "variants": [
+   "M50 Interceptor"
+  ],
+  "L": 11.5,
+  "B": 11,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/m50.webp",
+  "page": "https://starcitizen.tools/M50"
+ },
+ "M80": {
+  "variants": [
+   "M80"
+  ],
+  "L": 11.5,
+  "B": 11,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/m80.webp",
+  "page": "https://starcitizen.tools/M80"
+ },
+ "Aurora MkI": {
+  "variants": [
+   "Aurora Mk I ES",
+   "Aurora Mk I LN",
+   "Aurora Mk I LX",
+   "Aurora Mk I MR",
+   "Aurora Mk I CL",
+   "Aurora Mk I SE"
+  ],
+  "L": 19,
+  "B": 8.75,
+  "H": 4.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/aurora-mki.webp",
+  "page": "https://starcitizen.tools/Aurora_Mk_I_ES"
+ },
+ "Aurora MkII": {
+  "variants": [
+   "Aurora Mk II"
+  ],
+  "L": 27.7,
+  "B": 27.4,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/aurora-mkii.webp",
+  "page": "https://starcitizen.tools/Aurora_Mk_II"
+ },
+ "Meteor": {
+  "variants": [
+   "Meteor"
+  ],
+  "L": 30,
+  "B": 17,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/meteor.webp",
+  "page": "https://starcitizen.tools/Meteor"
+ },
+ "Mantis": {
+  "variants": [
+   "Mantis"
+  ],
+  "L": 30,
+  "B": 17,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mantis.webp",
+  "page": "https://starcitizen.tools/Mantis"
+ },
+ "Salvation": {
+  "variants": [
+   "Salvation"
+  ],
+  "L": 14.5,
+  "B": 8.5,
+  "H": 4,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/salvation.webp",
+  "page": "https://starcitizen.tools/Salvation"
+ },
+ "Scorpius": {
+  "variants": [
+   "Scorpius",
+   "Scorpius Antares"
+  ],
+  "L": 32,
+  "B": 24,
+  "H": 13,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/scorpius.webp",
+  "page": "https://starcitizen.tools/Scorpius"
+ },
+ "Skylark": {
+  "variants": [
+   "Skylark"
+  ],
+  "L": 7,
+  "B": 6.5,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/skylark.webp",
+  "page": "https://starcitizen.tools/Skylark"
+ },
+ "Zeus / Variants": {
+  "variants": [
+   "Zeus Mk II ES",
+   "Zeus Mk II CL"
+  ],
+  "L": 46,
+  "B": 35,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/zeus-variants.webp",
+  "page": "https://starcitizen.tools/Zeus_Mk_II_ES"
+ },
+ "Blade": {
+  "variants": [
+   "Blade"
+  ],
+  "L": 20.5,
+  "B": 16.5,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/blade.webp",
+  "page": "https://starcitizen.tools/Blade"
+ },
+ "Defender": {
+  "variants": [
+   "Defender"
+  ],
+  "L": 24.5,
+  "B": 24.5,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/defender.webp",
+  "page": "https://starcitizen.tools/Defender"
+ },
+ "Glaive": {
+  "variants": [
+   "Glaive"
+  ],
+  "L": 33,
+  "B": 24,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/glaive.webp",
+  "page": "https://starcitizen.tools/Glaive"
+ },
+ "Khartu-al": {
+  "variants": [
+   "Khartu-al"
+  ],
+  "L": 32,
+  "B": 13.5,
+  "H": 8.75,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/khartu-al.webp",
+  "page": "https://starcitizen.tools/Khartu-al"
+ },
+ "San'tok.yāi": {
+  "variants": [
+   "San'tok.yāi"
+  ],
+  "L": 24,
+  "B": 23,
+  "H": 23,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/san-tok-y-i.webp",
+  "page": "https://starcitizen.tools/San%27tok.y%C4%81i"
+ },
+ "Scythe": {
+  "variants": [
+   "Vanduul Scythe"
+  ],
+  "L": 33,
+  "B": 24,
+  "H": 9,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/scythe.webp",
+  "page": "https://starcitizen.tools/Scythe"
+ },
+ "Ballista": {
+  "variants": [
+   "HM6 Ballista"
+  ],
+  "L": 17,
+  "B": 7,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/ballista.webp",
+  "page": "https://starcitizen.tools/Ballista"
+ },
+ "Centurion": {
+  "variants": [
+   "HM6 Centurion"
+  ],
+  "L": 17,
+  "B": 7,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/centurion.webp",
+  "page": "https://starcitizen.tools/Centurion"
+ },
+ "Spartan": {
+  "variants": [
+   "HM6 Spartan"
+  ],
+  "L": 17,
+  "B": 7,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/spartan.webp",
+  "page": "https://starcitizen.tools/Spartan"
+ },
+ "Nox": {
+  "variants": [
+   "Nox",
+   "Nox Kue"
+  ],
+  "L": 5.15,
+  "B": 1.45,
+  "H": 1.32,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/nox.webp",
+  "page": "https://starcitizen.tools/Nox"
+ },
+ "ATLS / GEO / ITKI": {
+  "variants": [
+   "ATLS",
+   "ATLS GEO",
+   "Argo ATLS IKTI",
+   "Argo ATLS GEO IKTI"
+  ],
+  "L": 3.2,
+  "B": 1.6,
+  "H": 1.6,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/atls-geo-itki.webp",
+  "page": "https://starcitizen.tools/ATLS"
+ },
+ "CSV-SM": {
+  "variants": [
+   "CSV-SM"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/csv-sm.webp",
+  "page": "https://starcitizen.tools/CSV-SM"
+ },
+ "Hoverquad": {
+  "variants": [
+   "HoverQuad"
+  ],
+  "L": 5.15,
+  "B": 1.45,
+  "H": 1.32,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hoverquad.webp",
+  "page": "https://starcitizen.tools/HoverQuad"
+ },
+ "Dragonfly": {
+  "variants": [
+   "Dragonfly",
+   "Dragonfly Yellowjacket"
+  ],
+  "L": 7,
+  "B": 2.5,
+  "H": 2,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/dragonfly.webp",
+  "page": "https://starcitizen.tools/Dragonfly"
+ },
+ "Mule": {
+  "variants": [
+   "Mule"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mule.webp",
+  "page": "https://starcitizen.tools/Mule"
+ },
+ "MDC (PDC)": {
+  "variants": [
+   "MDC"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mdc-pdc.webp",
+  "page": "https://starcitizen.tools/MDC"
+ },
+ "MTC": {
+  "variants": [
+   "MTC"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mtc.webp",
+  "page": "https://starcitizen.tools/MTC"
+ },
+ "PTV (Golf cart)": {
+  "variants": [
+   "PTV"
+  ],
+  "L": 3.5,
+  "B": 2.5,
+  "H": 2.2,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/ptv-golf-cart.webp",
+  "page": "https://starcitizen.tools/PTV"
+ },
+ "ROC": {
+  "variants": [
+   "ROC"
+  ],
+  "L": 6,
+  "B": 3.9,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/roc.webp",
+  "page": "https://starcitizen.tools/ROC"
+ },
+ "ROC-DS": {
+  "variants": [
+   "ROC-DS"
+  ],
+  "L": 6.6,
+  "B": 5,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/roc-ds.webp",
+  "page": "https://starcitizen.tools/ROC-DS"
+ },
+ "STV (buggy)": {
+  "variants": [
+   "STV"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/stv-buggy.webp",
+  "page": "https://starcitizen.tools/STV"
+ },
+ "UTV (big buggy)": {
+  "variants": [
+   "UTV"
+  ],
+  "L": 4,
+  "B": 2.6,
+  "H": 2.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/utv-big-buggy.webp",
+  "page": "https://starcitizen.tools/UTV"
+ },
+ "Pulse / LX": {
+  "variants": [
+   "Pulse",
+   "Pulse LX"
+  ],
+  "L": 3.5,
+  "B": 2.5,
+  "H": 1.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/pulse-lx.webp",
+  "page": "https://starcitizen.tools/Pulse"
+ },
+ "G12 / A": {
+  "variants": [],
+  "L": 7.25,
+  "B": 5.8,
+  "H": 2.75,
+  "dsrc": "starcitizen.tools G12 infobox (not in game data)",
+  "img": "img/g12-a.webp",
+  "page": "https://starcitizen.tools/G12"
+ },
+ "X1 / Variants": {
+  "variants": [
+   "X1",
+   "X1 Force",
+   "X1 Velocity"
+  ],
+  "L": 5.19,
+  "B": 1.87,
+  "H": 1.55,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/x1-variants.webp",
+  "page": "https://starcitizen.tools/X1"
+ },
+ "Lynx": {
+  "variants": [
+   "Lynx"
+  ],
+  "L": 7.75,
+  "B": 5.7,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/lynx.webp",
+  "page": "https://starcitizen.tools/Lynx"
+ },
+ "Ursa": {
+  "variants": [
+   "Ursa",
+   "Ursa Medivac",
+   "Ursa Fortuna"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/ursa.webp",
+  "page": "https://starcitizen.tools/Ursa"
+ },
+ "Cyclone / Variants": {
+  "variants": [
+   "Cyclone",
+   "Cyclone AA",
+   "Cyclone RC",
+   "Cyclone RN",
+   "Cyclone TR"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/cyclone-variants.webp",
+  "page": "https://starcitizen.tools/Cyclone"
+ },
+ "Cyclone MT": {
+  "variants": [
+   "Cyclone MT"
+  ],
+  "L": 8.75,
+  "B": 6,
+  "H": 3.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/cyclone-mt.webp",
+  "page": "https://starcitizen.tools/Cyclone_MT"
+ },
+ "Nova": {
+  "variants": [
+   "Nova"
+  ],
+  "L": 20,
+  "B": 12,
+  "H": 11,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/nova.webp",
+  "page": "https://starcitizen.tools/Nova"
+ },
+ "Storm": {
+  "variants": [
+   "Storm"
+  ],
+  "L": 10.25,
+  "B": 7.65,
+  "H": 4,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/storm.webp",
+  "page": "https://starcitizen.tools/Storm"
+ },
+ "Storm AA": {
+  "variants": [
+   "Storm AA"
+  ],
+  "L": 10.25,
+  "B": 7.65,
+  "H": 4,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/storm-aa.webp",
+  "page": "https://starcitizen.tools/Storm_AA"
+ }
+}
