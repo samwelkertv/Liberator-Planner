@@ -149,6 +149,11 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 .ph h2{font:700 22px/1.1 Rajdhani,sans-serif;margin:0}
 .panel #placed{grid-template-columns:minmax(0,1fr)}.pv{font:700 18px/1.2 Rajdhani,sans-serif;margin:6px 0 0}.pv small{opacity:.6}
 .panel .sub{font-size:15px}
+#zreset{position:absolute;top:10px;right:10px;z-index:4;min-height:38px;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}#zreset[hidden]{display:none}
+.stk,.xq{width:84px;font:inherit;font-size:15px;min-height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-align:right}.xn{width:100%;font:inherit;font-size:15px;min-height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}.okt{color:var(--ok);font-weight:700}.badt{color:var(--bad);font-weight:700}
+.curl{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:10px}.curl div{display:grid}.curl small,.lrow small{opacity:.7;font-size:13px;display:block}.curl i{font-style:normal;font-size:13px}
+.lnew,.lren{display:flex;gap:6px;margin-bottom:12px}.lnew input,.lren input{flex:1;font:inherit;min-height:44px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.lrow{background:var(--card);border-radius:10px;padding:8px 10px;margin-bottom:6px;display:grid;gap:6px;border-left:5px solid transparent}.lrow.on{border-left-color:var(--acc)}.lbtn{display:flex;flex-wrap:wrap;gap:6px}.lbtn button{min-height:38px;padding:0 10px}
 @media(max-width:600px){.appbar h1{display:none}.appbar{gap:6px;padding:6px 8px}.appbar .tabs{flex:1 1 100%}.acts{margin-left:0}.acts button{padding:0 9px;min-height:38px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
@@ -156,13 +161,13 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 <header class="appbar">
 <h1>Liberator planner</h1>
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
-<div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
+<div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button data-panel="loads" aria-expanded="false">Loadouts</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
 </header>
 <main class="stage" aria-label="Deck plan">
 <div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
 <div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
 <div id="selbar" hidden><span id="seln"></span><button data-a="l" aria-label="Turn left 15 degrees">⟲ 15°</button><button data-a="r" aria-label="Turn right 15 degrees">⟳ 15°</button><button data-a="q">Turn 90°</button><button data-a="s">Loadout</button><button data-a="x">Remove</button><button data-a="d" aria-label="Deselect">✕</button></div>
-<span id="msg" role="status"></span>
+<span id="msg" role="status"></span><button id="zreset" hidden>Reset zoom</button>
 </main>
 <aside class="panel right" id="p-list" aria-label="Ships and vehicles" hidden><div class="ph"><h2>Ships</h2><button class="pclose" aria-label="Close panel">✕</button></div>
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
@@ -173,14 +178,15 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 </aside>
 <aside class="panel left" id="p-placed" aria-label="Placed ships" hidden><div class="ph"><h2>Placed</h2><button class="pclose" aria-label="Close panel">✕</button></div><div id="placed"></div></aside>
 <aside class="panel right wide" id="p-rrr" aria-labelledby="rrrh" hidden><div class="ph"><h2 id="rrrh">RRR restock list</h2><button class="pclose" aria-label="Close panel">✕</button></div>
-<p class="sub">What the ships in your plan carry at full load, with your loadout changes applied. Use it to stock ammo, missiles and countermeasures, and to see the fuel and hull totals the Liberator will refill and repair.</p>
+<p class="sub">Enter what you keep on board to see how many full refills it covers. What the ships in your plan carry at full load, with your loadout changes applied. Use it to stock ammo, missiles and countermeasures, and to see the fuel and hull totals the Liberator will refill and repair.</p>
 <p class="note">In 4.10.3, RRR works in the internal garage through the mobiGlas landing services app, drawing on supplies in the adjacent cargo bay. RRR on the pads is planned for 5.0 (starcitizen.tools, citing patch notes and a Spectrum dev comment). The wiki doesn't say which cargo-bay supplies each refill uses. Fuel figures are game-data capacities.</p>
 <div class="tools"><button id="rcopy">Copy restock list</button></div>
 <div id="rrr"></div>
 </aside>
+<aside class="panel right" id="p-loads" aria-label="Loadouts" hidden><div class="ph"><h2>Loadouts</h2><button class="pclose" aria-label="Close panel">✕</button></div><div id="loads"></div></aside>
 <aside class="panel right" id="p-info" aria-label="About" hidden><div class="ph"><h2>About</h2><button class="pclose" aria-label="Close panel">✕</button></div>
 <p class="sub">Add ships with + Add ship or drag them in from the list, then drag them around the drawing to see how they pack. Green fits, orange needs tricks, red overlaps.</p>
-<p class="note">Drag ships on the drawing to arrange them. Select one to turn it (R / Shift+R), nudge it (arrow keys, Shift for 2 m) or remove it (Delete). From the Ships panel, drag a ship onto the drawing, or tap it and then tap the drawing.</p>
+<p class="note">Drag ships on the drawing to arrange them. Select one to turn it (R / Shift+R), nudge it (arrow keys, Shift for 2 m) or remove it (Delete). From the Ships panel, drag a ship onto the drawing, or tap it and then tap the drawing. Zoom in with two fingers, a trackpad pinch or the mouse wheel. When zoomed in, drag the background to pan, and use Reset zoom to go back.</p>
 <p class="src">Fit data: Pegaxsus Ship Fit List, LIVE 4.10.3, updated Nov 16, 2026. All fits are tested in game. Ship sizes: game data via api.star-citizen.wiki. Images: starcitizen.tools.</p>
 <p class="note">Liberator top-down: scorg.tools render. It is 1000 × 563 px, which matches the game-data 119 × 67 m, so it is used at true scale. Ships are drawn at the same scale as length × width footprints, for the variant you picked in Stats, with the top-down image fitted inside. Sizes come from the starcitizen.tools infoboxes where the page matches the game-data vehicle. Some of those use store-page figures because the game-data boxes are padded (the M80, for example). Otherwise the game-data size via api.star-citizen.wiki is used. Grouped rows default to their first variant. Internal view: the three cargo bays use their game-data sizes (192, 128 and 80 SCU grids). Their positions are approximate: the wiki puts the cargo on the starboard side of the garage, and the concept cutaway puts it mid-ship. Dashed edges mark the doors into the garage. The ramps follow the wiki: vehicles load from the rear ramp and unload over the forward ramp and landing pad. The Clipper and Arrow are drawn with their wings folded, as they are when landed. The fold lines are estimated from the top-down images. On the internal view, ships can't go on the front pad (it's outside), but they can sit at the door just behind it. Overlapping ships are flagged red. The vehicle-bay outline on the internal view is approximate: it follows the centre channel, since the concept cutaway shows the bay beneath it. Fit ratings come from the sheet: deck-rated ships fit anywhere outside, and F ships only on the front pad.</p>
 </aside>
@@ -271,7 +277,7 @@ const sp=selId&&byId(selId);$('#selbar').hidden=!sp;if(sp)$('#seln').textContent
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0)dt.classList.add(lvl(fitV(D[sel],t.dataset.v)))}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-v]')){const l=lvl(fitV(d,b.dataset.v));b.disabled=l==='no';b.className=l}}
-drawShips();$('#pcount').textContent=P.length||'';$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
+renderLoads();drawShips();$('#pcount').textContent=P.length||'';$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
 function renderShip(){const c=cfg(shipId);if(!c){closeShip();return}
 $('#sdt').textContent=`${c.d.n} · loadout & stats`;
 if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
@@ -297,15 +303,25 @@ for(const p of P){const c=cfg(p.id);if(!c.ship){none.push(c.d.n);continue}const 
 for(const[k,v]of S.ammo){const a=A[k]=A[k]||{g:0,r:0,w:new Set()};a.g++;a.r+=v;a.w.add(c.d.n)}
 for(const[k,v]of S.mis)M[k]=(M[k]||0)+v;for(const[k,v]of S.cm)C[k]=(C[k]||0)+v;
 fu+=c.ship.fuel||0;qf+=c.ship.qfuel||0;H.push([`${c.d.n} (${VL[p.v]})`,c.ship.hull])}return{A,M,C,H,fu,qf,none}}
-function renderRRR(){const R=rrrData();if(!R.H.length&&!R.none.length){$('#rrr').innerHTML='<p class="empty">Place ships to build the restock list.</p>';return}
+let STOCK={},EXTRA=[];try{STOCK=JSON.parse(localStorage.getItem('libstock')||'{}')||{};EXTRA=JSON.parse(localStorage.getItem('libextra')||'[]')||[]}catch(e){}
+const saveStock=()=>{try{localStorage.setItem('libstock',JSON.stringify(STOCK));localStorage.setItem('libextra',JSON.stringify(EXTRA))}catch(e){}};
+const refl=(k,need)=>{const v=STOCK[k];if(v==null||v===''||!need)return'';const r=v/need;return `<span class="${r>=1?'okt':'badt'}">${r>=10?Math.floor(r):(Math.floor(r*10)/10)}×</span>`};
+const stk=(k,need,step=1)=>`<td class="n"><input class="stk" type="number" min="0" step="${step}" inputmode="decimal" data-k="${esc(k)}" data-need="${need}" value="${STOCK[k]??''}" aria-label="On board"></td><td class="n rf">${refl(k,need)}</td>`;
+function renderRRR(){const R=rrrData();
 const tb=(hd,rows)=>rows.length?`<table><thead><tr>${hd.map(x=>`<th${x.startsWith('#')?' class="n"':''}>${x.replace(/^#/,'')}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>`:'<p class="empty">None.</p>';
-const A=Object.entries(R.A).sort((a,b)=>b[1].r-a[1].r).map(([k,a])=>`<tr><td>${esc(k)}<br><small>${esc([...a.w].join(', '))}</small></td><td class="n">${a.g}</td><td class="n">${fmt(a.r)}</td></tr>`);
-const M=Object.entries(R.M).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${v}</td></tr>`);
-const C=Object.entries(R.C).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
+const A=Object.entries(R.A).sort((a,b)=>b[1].r-a[1].r).map(([k,a])=>`<tr><td>${esc(k)}<br><small>${a.g} guns · ${esc([...a.w].join(', '))}</small></td><td class="n">${fmt(a.r)}</td>${stk('ammo:'+k,a.r)}</tr>`);
+const M=Object.entries(R.M).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${v}</td>${stk('mis:'+k,v)}</tr>`);
+const C=Object.entries(R.C).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td>${stk('cm:'+k,v)}</tr>`);
+const F=[`<tr><td>Hydrogen</td><td class="n">${+R.fu.toFixed(2)}</td>${stk('fuel:h',+R.fu.toFixed(2),.1)}</tr>`,`<tr><td>Quantum</td><td class="n">${+R.qf.toFixed(2)}</td>${stk('fuel:q',+R.qf.toFixed(2),.1)}</tr>`];
 const H=R.H.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
-$('#rrr').innerHTML=`<div class="rg"><div><h3>Ballistic ammo</h3>${tb(['Weapon','#Guns','#Rounds'],A)}<p class="note">Energy weapons regenerate and need no ammo.</p></div><div><h3>Missiles</h3>${tb(['Missile','#Count'],M)}<h3>Countermeasures</h3>${tb(['Launcher','#Charges'],C)}</div><div><h3>Fuel</h3>${tb(['Tank','#Capacity'],[`<tr><td>Hydrogen, all ships</td><td class="n">${+R.fu.toFixed(2)}</td></tr>`,`<tr><td>Quantum, all ships</td><td class="n">${+R.qf.toFixed(2)}</td></tr>`])}<h3>Repair</h3>${tb(['Ship','#Hull HP'],H)}${R.none.length?`<p class="note">No loadout data: ${esc(R.none.join(', '))}.</p>`:''}</div></div>`}
-$('#rcopy').addEventListener('click',async()=>{const R=rrrData();const T=['Liberator RRR restock list','Ballistic ammo:',...Object.entries(R.A).map(([k,a])=>`  ${k}: ${a.r} rounds (${a.g} guns)`),'Missiles:',...Object.entries(R.M).map(([k,v])=>`  ${k}: ${v}`),'Countermeasures:',...Object.entries(R.C).map(([k,v])=>`  ${k}: ${v}`),`Fuel: hydrogen ${+R.fu.toFixed(2)}, quantum ${+R.qf.toFixed(2)}`,'Hull HP:',...R.H.map(([k,v])=>`  ${k}: ${v}`)];try{await navigator.clipboard.writeText(T.join('\n'));flash('Restock list copied.')}catch(e){flash('Copy was blocked here.')}});
-const PANELS=['list','placed','rrr','info'];
+const X=EXTRA.map((x,i)=>`<tr><td><input class="xn" data-i="${i}" value="${esc(x.n||'')}" placeholder="Supply name" aria-label="Supply name"></td><td class="n"><input class="xq" data-i="${i}" type="number" min="0" inputmode="decimal" value="${x.q??''}" aria-label="Quantity"></td><td class="n"><button class="xdel" data-i="${i}" aria-label="Remove supply">✕</button></td></tr>`);
+const hd=['Item','#Full load','#On board','#Refills'];
+$('#rrr').innerHTML=`${R.H.length?'':'<p class="empty">Place ships to see what they need. You can still list supplies below.</p>'}<div class="rg"><div><h3>Ballistic ammo</h3>${tb(['Weapon','#Rounds','#On board','#Refills'],A)}<p class="note">Energy weapons regenerate and need no ammo.</p></div><div><h3>Missiles</h3>${tb(hd,M)}<h3>Countermeasures</h3>${tb(['Launcher','#Charges','#On board','#Refills'],C)}</div><div><h3>Fuel</h3>${tb(['Tank','#All ships','#On board','#Refills'],F)}<h3>Repair</h3>${tb(['Ship','#Hull HP'],H)}${R.none.length?`<p class="note">No loadout data: ${esc(R.none.join(', '))}.</p>`:''}</div><div><h3>Other supplies on board</h3>${X.length?`<table><tbody>${X.join('')}</tbody></table>`:'<p class="empty">Nothing listed.</p>'}<div class="tools"><button id="xadd">+ Add supply</button></div><p class="note">For anything the ships don't list, such as repair materials, medical supplies or spare parts.</p></div></div>`}
+$('#rrr').addEventListener('input',e=>{const t=e.target;if(t.classList.contains('stk')){const k=t.dataset.k;if(t.value==='')delete STOCK[k];else STOCK[k]=+t.value;t.closest('tr').querySelector('.rf').innerHTML=refl(k,+t.dataset.need)}
+else if(t.classList.contains('xn'))EXTRA[+t.dataset.i].n=t.value;else if(t.classList.contains('xq'))EXTRA[+t.dataset.i].q=t.value===''?'':+t.value;else return;saveStock();renderLoads()});
+$('#rrr').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.id==='xadd'){EXTRA.push({n:'',q:''});saveStock();renderRRR();const l=$$('#rrr .xn');if(l.length)l[l.length-1].focus();renderLoads()}else if(b.classList.contains('xdel')){EXTRA.splice(+b.dataset.i,1);saveStock();renderRRR();renderLoads()}});
+$('#rcopy').addEventListener('click',async()=>{const R=rrrData(),ob=k=>STOCK[k]!=null?` · on board ${STOCK[k]}`:'';const T=['Liberator RRR restock list','Ballistic ammo:',...Object.entries(R.A).map(([k,a])=>`  ${k}: ${a.r} rounds (${a.g} guns)${ob('ammo:'+k)}`),'Missiles:',...Object.entries(R.M).map(([k,v])=>`  ${k}: ${v}${ob('mis:'+k)}`),'Countermeasures:',...Object.entries(R.C).map(([k,v])=>`  ${k}: ${v}${ob('cm:'+k)}`),`Fuel: hydrogen ${+R.fu.toFixed(2)}${ob('fuel:h')}, quantum ${+R.qf.toFixed(2)}${ob('fuel:q')}`,'Hull HP:',...R.H.map(([k,v])=>`  ${k}: ${v}`),...(EXTRA.length?['Other supplies:',...EXTRA.filter(x=>x.n).map(x=>`  ${x.n}: ${x.q}`)]:[])];try{await navigator.clipboard.writeText(T.join('\n'));flash('Restock list copied.')}catch(e){flash('Copy was blocked here.')}});
+const PANELS=['list','placed','rrr','loads','info'];
 function togglePanel(n,force){const el=$('#p-'+n),open=force??el.hidden;if(open)for(const k of PANELS)if(k!==n&&(k!=='placed'&&n!=='placed'||innerWidth<900))$('#p-'+k).hidden=true;el.hidden=!open;for(const b of $$('[data-panel]'))b.setAttribute('aria-expanded',String(!$('#p-'+b.dataset.panel).hidden))}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b){togglePanel(b.dataset.panel);return}const c=e.target.closest('.pclose');if(c)togglePanel(c.closest('.panel').id.slice(2),false)});
 const hdr=()=>document.documentElement.style.setProperty('--hdr',$('.appbar').offsetHeight+'px');addEventListener('resize',hdr);hdr();
@@ -316,7 +332,7 @@ g.fillStyle=cs.backgroundColor;g.fillRect(0,0,cv.width,cv.height);g.fillStyle=cs
 const props=['fill','fill-opacity','stroke','stroke-width','stroke-dasharray','opacity','font-size','font-family','font-weight'];
 for(const[k,i]of[['external',0],['internal',1]]){const sv=$(`svg.ship[data-v=${k}]`),cl=sv.cloneNode(true),a=[sv,...sv.querySelectorAll('*')],b=[cl,...cl.querySelectorAll('*')];
 a.forEach((el,j)=>{const c=getComputedStyle(el);b[j].setAttribute('style',props.map(p=>`${p}:${c.getPropertyValue(p)}`).join(';'))});
-cl.setAttribute('xmlns','http://www.w3.org/2000/svg');cl.setAttribute('width',W);cl.setAttribute('height',H);
+cl.setAttribute('xmlns','http://www.w3.org/2000/svg');cl.setAttribute('viewBox','-36 -3 72 128');cl.setAttribute('width',W);cl.setAttribute('height',H);
 const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(cl)],{type:'image/svg+xml'})),im=new Image();
 await new Promise((r,j)=>{im.onload=r;im.onerror=j;im.src=url});const x=PAD+i*(W+PAD);
 g.fillStyle=cs.color;g.font='600 28px "IBM Plex Sans", sans-serif';g.fillText(`${VL[k]} · ${P.filter(p=>p.v===k).length} ships`,x,TOP-14);g.drawImage(im,x,TOP,W,H);URL.revokeObjectURL(url);let yy=TOP+H+44;const fit=t=>{while(g.measureText(t).width>W&&t.length>4)t=t.slice(0,-2);return t};for(const[y,t]of lines[k]){g.font=y==='b'?'600 22px "IBM Plex Sans", sans-serif':'400 18px "IBM Plex Sans", sans-serif';g.fillStyle=y==='w'?'#c0262d':cs.color;g.globalAlpha=y==='s'?.75:1;g.fillText(fit(y==='b'?'• '+t:'   '+t),x,yy);g.globalAlpha=1;yy+=y==='b'?LH:SH}}
@@ -327,6 +343,39 @@ $('#exd').addEventListener('click',async()=>{if(!exBlob)return;const dl=await dl
 if(dl){try{await dl.save({filename:'liberator-plan.png',data:exBlob});flash('Image saved.')}catch(e){flash(e&&e.code==='declined'?'Save cancelled.':'Saving is not available here. Right-click or long-press the image instead.')}return}
 const a=document.createElement('a');a.href=URL.createObjectURL(exBlob);a.download='liberator-plan.png';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
 $('#exx').addEventListener('click',()=>{try{$('#ex').close()}catch(e){$('#ex').removeAttribute('open')}});
+let DB=null,LOADS=[],curId=null,loadsReady=false,renId=null,delId=null;try{curId=localStorage.getItem('libcur')||null}catch(e){}
+const setCur=()=>{try{localStorage.setItem('libcur',curId||'')}catch(e){}renderLoads()};
+const snapState=()=>({plan:P.map(({id,...r})=>r),my:MY,stock:STOCK,extra:EXTRA});
+const sig=o=>JSON.stringify([o.plan||[],o.my||{},o.stock||{},o.extra||[]]);
+const clone=o=>JSON.parse(JSON.stringify(o));
+function applyState(o){hist.push(snap());P=(o.plan||[]).map(q=>({...clone(q),id:uid++}));MY=clone(o.my||{});STOCK=clone(o.stock||{});EXTRA=clone(o.extra||[]);saveMy();saveStock();selId=null;render()}
+const lid=()=>'l'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+async function lwrite(id,data){const{id:_,...body}=data;try{await DB.collection('loadouts').doc(id).set(clone(body));return true}catch(e){flash(e&&e.code==='quota_exceeded'?'Storage is full: delete a loadout first.':'Could not save the loadout.');return false}}
+function renderLoads(){const el=$('#loads');if(!el)return;
+if(!DB){el.innerHTML=`<p class="note">${loadsReady?'Saving loadouts isn’t available in this view. Your plan is still kept in this browser.':'Connecting…'}</p>`;return}
+const cur=LOADS.find(l=>l.id===curId),dirty=!cur||sig(cur)!==sig(snapState());
+let h=`<div class="curl"><div><small>Current</small><b>${cur?esc(cur.name):'Unsaved plan'}</b>${cur?(dirty?'<i class="is warn">Unsaved changes</i>':'<i class="is">Saved</i>'):''}</div>${cur?`<button id="lsave"${dirty?'':' disabled'}>Save</button>`:''}</div>
+<form id="lnew" class="lnew"><input id="lname" placeholder="New loadout name" maxlength="60" aria-label="New loadout name"><button>Save as new</button></form>`;
+h+=LOADS.length?LOADS.slice().sort((a,b)=>(!!b.isDefault-!!a.isDefault)||String(a.name).localeCompare(String(b.name))).map(l=>{const pl=l.plan||[],e=pl.filter(q=>q.v==='external').length;
+return `<div class="lrow${l.id===curId?' on':''}">${renId===l.id?`<form class="lren" data-id="${l.id}"><input value="${esc(l.name)}" maxlength="60" aria-label="Loadout name"><button>OK</button></form>`:`<div><b>${esc(l.name)}</b>${l.isDefault?' <span class="b ok">Default</span>':''}<small>${e} outside · ${pl.length-e} inside${l.updatedAt?' · '+new Date(l.updatedAt).toLocaleString():''}</small></div>`}<div class="lbtn"><button data-l="load" data-id="${l.id}">Load</button>${l.isDefault?'':`<button data-l="def" data-id="${l.id}">Make default</button>`}<button data-l="ren" data-id="${l.id}">Rename</button><button data-l="del" data-id="${l.id}">${delId===l.id?'Delete?':'✕'}</button></div></div>`}).join(''):'<p class="empty">No saved loadouts yet.</p>';
+h+='<p class="note">A loadout saves your ship arrangement, each ship’s variant and parts, your saved ship setups and your RRR stock. The default loadout opens when this browser has no plan saved, for example on another device.</p>';
+el.innerHTML=h}
+$('#loads').addEventListener('submit',async e=>{e.preventDefault();if(!DB)return;const f=e.target;
+if(f.id==='lnew'){const n=$('#lname').value.trim()||`Loadout ${LOADS.length+1}`,id=lid();if(await lwrite(id,{name:n,...snapState(),updatedAt:Date.now(),isDefault:!LOADS.length})){curId=id;setCur();flash(`Saved “${n}”.`)}}
+else if(f.classList.contains('lren')){const n=f.querySelector('input').value.trim();renId=null;if(n)await DB.collection('loadouts').doc(f.dataset.id).update({name:n}).catch(()=>flash('Could not rename.'));renderLoads()}});
+$('#loads').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b||!DB||b.closest('form'))return;
+if(b.id==='lsave'){const c=LOADS.find(l=>l.id===curId);if(c&&await lwrite(c.id,{...c,...snapState(),updatedAt:Date.now()}))flash('Loadout saved.');return}
+const id=b.dataset.id,l=LOADS.find(x=>x.id===id),a=b.dataset.l;if(!l)return;if(a!=='del')delId=null;
+if(a==='load'){applyState(l);curId=id;setCur();flash(`Loaded “${l.name}”.`)}
+else if(a==='def'){for(const x of LOADS)if(x.isDefault)await DB.collection('loadouts').doc(x.id).update({isDefault:false}).catch(()=>{});await DB.collection('loadouts').doc(id).update({isDefault:true}).catch(()=>flash('Could not update.'))}
+else if(a==='ren'){renId=id;renderLoads();const i=$('#loads .lren input');if(i){i.focus();i.select()}}
+else if(a==='del'){if(delId!==id){delId=id;renderLoads();return}delId=null;await DB.collection('loadouts').doc(id).delete().catch(()=>flash('Could not delete.'));if(curId===id){curId=null;setCur()}}});
+(async()=>{const c=window.claude&&window.claude.use?await window.claude.use('db').catch(()=>null):null;loadsReady=true;DB=c;if(!DB){renderLoads();return}
+let first=true;DB.collection('loadouts').onSnapshot(qs=>{LOADS=qs.docs.map(d=>({id:d.id,...d.data()}));
+if(first&&!qs.metadata.fromCache){first=false;
+if(!LOADS.length){if(P.length||Object.keys(MY).length||Object.keys(STOCK).length||EXTRA.length){const id=lid();lwrite(id,{name:'Default',...snapState(),updatedAt:Date.now(),isDefault:true}).then(ok=>{if(ok){curId=id;setCur();flash('Saved your current plan as the “Default” loadout.')}})}}
+else if(!P.length&&!LOADS.some(l=>l.id===curId)){const d=LOADS.find(l=>l.isDefault)||LOADS[0];applyState(d);hist=[];curId=d.id;setCur();flash(`Loaded your default loadout “${d.name}”.`)}}
+renderLoads()},()=>{DB=null;renderLoads()})})();
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function freeSpot(v,i){const d=D[i],t={id:-1,n:d.n,v,x:0,y:0,r:0};const xs=v==='external'?(d.e&&d.e.startsWith('front')?[21,30,15]:[66,99.3,21]):[];for(let x=(v==='internal'?BAY.x0:8)+(d.L||4)/2;x<=114;x+=1)xs.push(x);
@@ -361,14 +410,28 @@ const typing=()=>/input|select|textarea/i.test((document.activeElement||{}).tagN
 document.addEventListener('keydown',e=>{if(pickView||shipId)return;if(e.key==='Escape'){const op=PANELS.find(k=>!$('#p-'+k).hidden);if(op){togglePanel(op,false);return}if(selId){selId=null;renderPlan()}else if(sel>=0){sel=-1;render()}return}
 const p=selId&&byId(selId);if(!p||typing())return;const s=e.shiftKey?2:.5,mvk={ArrowLeft:[0,s],ArrowRight:[0,-s],ArrowUp:[-s,0],ArrowDown:[s,0]}[e.key];
 if(mvk){e.preventDefault();hist.push(snap());p.x=+(p.x+mvk[0]).toFixed(1);p.y=+(p.y+mvk[1]).toFixed(1);clampIn(p);renderPlan()}else if(e.key==='r'||e.key==='R'){turn(e.key==='R'?-15:15)}else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();del(p.id)}});
+const VB0={x:-36,y:-3,w:72,h:128},ZV={z:1,cx:0,cy:61};
+function applyZoom(){const w=VB0.w/ZV.z,h=VB0.h/ZV.z;ZV.cx=Math.min(VB0.x+VB0.w-w/2,Math.max(VB0.x+w/2,ZV.cx));ZV.cy=Math.min(VB0.y+VB0.h-h/2,Math.max(VB0.y+h/2,ZV.cy));for(const sv of $$('svg.ship'))sv.setAttribute('viewBox',`${ZV.cx-w/2} ${ZV.cy-h/2} ${w} ${h}`);$('#zreset').hidden=ZV.z<=1.01}
+const rootAt=(sv,x,y)=>new DOMPoint(x,y).matrixTransform(sv.getScreenCTM().inverse());
+function zoomAt(sv,sx,sy,z,anchor){const A=anchor||rootAt(sv,sx,sy);ZV.z=Math.min(6,Math.max(1,z));applyZoom();const B=rootAt(sv,sx,sy);ZV.cx+=A.x-B.x;ZV.cy+=A.y-B.y;applyZoom()}
+$('#zreset').addEventListener('click',()=>{ZV.z=1;applyZoom()});
+const TP=new Map();let pinch=null,pan=null;
 for(const sv of $$('svg.ship')){
-sv.addEventListener('touchstart',e=>{if(e.target.closest('.pc'))e.preventDefault()},{passive:false});
-sv.addEventListener('pointerdown',e=>{if(e.button>0)return;const g=e.target.closest('.pc');const pt=svgPt(sv,e.clientX,e.clientY);
+sv.addEventListener('touchstart',e=>{if(e.target.closest('.pc')||e.touches.length>1)e.preventDefault()},{passive:false});
+sv.addEventListener('wheel',e=>{e.preventDefault();zoomAt(sv,e.clientX,e.clientY,ZV.z*Math.exp(-e.deltaY*(e.ctrlKey?.01:.0015)))},{passive:false});
+sv.addEventListener('pointerdown',e=>{if(e.button>0)return;
+if(e.pointerType==='touch'){TP.set(e.pointerId,{x:e.clientX,y:e.clientY});if(TP.size===2){if(mv){if(mv.moved&&hist.length)P=JSON.parse(hist.pop());mv=null}pan=null;const[a,b]=[...TP.values()];pinch={sv,d0:Math.hypot(a.x-b.x,a.y-b.y)||1,z0:ZV.z,anchor:rootAt(sv,(a.x+b.x)/2,(a.y+b.y)/2)};renderPlan();return}if(TP.size>2)return}
+const g=e.target.closest('.pc');const pt=svgPt(sv,e.clientX,e.clientY);
 if(g){const p=byId(+g.dataset.id);e.preventDefault();mv={p,sx:pt.x,sy:pt.y,x0:p.x,y0:p.y,moved:false,sv};selId=p.id;sv.setPointerCapture(e.pointerId);drawShips();return}
-if(sel>=0){add(sv.dataset.v,sel,[pt.x,pt.y]);return}if(selId){selId=null;renderPlan()}});
-sv.addEventListener('pointermove',e=>{if(!mv||mv.sv!==sv)return;const pt=svgPt(sv,e.clientX,e.clientY),dx=pt.x-mv.sx,dy=pt.y-mv.sy;if(!mv.moved){if(Math.hypot(dx,dy)<.4)return;hist.push(snap());mv.moved=true}
+if(sel>=0){add(sv.dataset.v,sel,[pt.x,pt.y]);return}
+if(ZV.z>1.01){pan={sv,anchor:rootAt(sv,e.clientX,e.clientY),moved:false,x:e.clientX,y:e.clientY};sv.setPointerCapture(e.pointerId);return}
+if(selId){selId=null;renderPlan()}});
+sv.addEventListener('pointermove',e=>{if(TP.has(e.pointerId))TP.set(e.pointerId,{x:e.clientX,y:e.clientY});
+if(pinch&&TP.size>=2){e.preventDefault();const[a,b]=[...TP.values()];zoomAt(pinch.sv,(a.x+b.x)/2,(a.y+b.y)/2,pinch.z0*Math.hypot(a.x-b.x,a.y-b.y)/pinch.d0,pinch.anchor);return}
+if(pan&&pan.sv===sv){e.preventDefault();if(Math.hypot(e.clientX-pan.x,e.clientY-pan.y)>4)pan.moved=true;zoomAt(sv,e.clientX,e.clientY,ZV.z,pan.anchor);return}
+if(!mv||mv.sv!==sv)return;const pt=svgPt(sv,e.clientX,e.clientY),dx=pt.x-mv.sx,dy=pt.y-mv.sy;if(!mv.moved){if(Math.hypot(dx,dy)<.4)return;hist.push(snap());mv.moved=true}
 e.preventDefault();mv.p.x=+Math.min(130,Math.max(-12,mv.x0+dx)).toFixed(1);mv.p.y=+Math.min(40,Math.max(-40,mv.y0+dy)).toFixed(1);clampIn(mv.p);drawShips()});
-const up=()=>{if(mv){mv=null;renderPlan()}};sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up)}
+const up=e=>{TP.delete(e.pointerId);if(TP.size<2)pinch=null;if(pan){if(!pan.moved&&selId){selId=null;renderPlan()}pan=null}if(mv){mv=null;renderPlan()}};sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up)}
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
 const svgAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('svg.ship'):null};
 window.addEventListener('pointermove',e=>{if(!drag)return;

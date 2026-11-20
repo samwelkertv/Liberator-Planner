@@ -164,3 +164,15 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - New "Save as my <ship> setup" saves the variant and part changes per ship name in localStorage `libmy`. Every new ship of that name starts with it. "Use my setup" and "Forget my setup" also appear.
 - **Folded-wing ships:** the Clipper and Arrow show their landed width plus the full wingspan in their size text.
 - **Pitbull cutout (v12.1):** new `"texture"` option in `tools/topdown_fix.json` cuts the ship out by surface texture, colour and brightness, ignoring the background grid lines. The Pitbull uses `{"texture": 25}` in place of the rectangle crop.
+
+## v13 update (Nov 20, 2026)
+- **Loadouts:** a new Loadouts panel. Each loadout is saved to the artifact database (the `db` capability), collection `loadouts`, one document per loadout: `{name, plan, my, stock, extra, updatedAt, isDefault}`.
+  - The panel offers Save (overwrite the current loadout, with an "unsaved changes" flag), Save as new, Load, Make default, Rename (inline) and Delete (click twice).
+  - On first load with an empty database, the browser's current plan is saved as "Default".
+  - A browser with no plan, such as a new device, opens the default loadout.
+  - The current loadout id is kept in localStorage `libcur`.
+- **RRR stock planning:** each ammo, missile, countermeasure and fuel row has an "On board" input and shows "Refills" (stock ÷ full load: green at 1× or more, red below).
+  - "Other supplies on board" is a free list of name and quantity, for items like repair materials.
+  - Stock is saved in localStorage `libstock`/`libextra`, and in each loadout.
+- **Zoom and pan (zoom in only, 1–6×):** two-finger pinch on touch, trackpad pinch or mouse wheel on desktop. When zoomed in, drag the background to pan; a two-finger pinch also pans. A "Reset zoom" button appears while zoomed. The export always uses the full view.
+- **Pitbull:** confirmed on the texture cutout (setting 25), the first of the three tried.
