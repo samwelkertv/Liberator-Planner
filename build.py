@@ -109,7 +109,7 @@ def main(path):
     if os.path.exists("wiki_dims.json"):
         for n, w in json.load(open("wiki_dims.json", encoding="utf-8")).items():
             s = load["ships"].get(n)
-            if s and not s.get("L"):
+            if s and s.get("ds") != "store":  # wiki beats game data when the store page has no size
                 s.update(L=w["L"], B=w["B"], ds="wiki", **({"H": w["H"]} if w.get("H") else {}))
     if os.path.exists("tools/dim_overrides.json"):  # official figures that beat the wiki, e.g. from dimension graphics
         for n, w in json.load(open("tools/dim_overrides.json", encoding="utf-8")).items():
