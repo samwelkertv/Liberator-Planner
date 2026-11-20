@@ -90,3 +90,15 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - Per the wiki, RRR in 4.10.3 works in the internal garage through the landing services app, and pad RRR is planned for 5.0. The wiki doesn't document which cargo-bay supply items each refill uses.
 - **Liberator top-down:** none exists on the wiki or RSI pages, external or internal. The closest are the isometric interior cutaways (`Anvil-liberator-interior-concept-01/02.png`), which aren't used.
 - **Rebuild order:** `fetch_assets.py`, `find_topdown.py`, `topdown.py`, `fetch_loadouts.py`, then `build.py`.
+
+## v6 update: Liberator hull drawn to scale (Nov 20, 2026)
+- **Outline source:** both views now draw the Liberator outline to scale, bow on the left. Sam found a community top-down on Google; the outline and pad positions are traced from it, made symmetric and scaled to the game-data 119 × 67 m. It's marked as approximate in the app, and the image itself isn't in the repo.
+- **Coordinates:** the `LIB` constant in `tpl.html`, in metres, measured along from the bow and across from the centreline.
+  - Front pad: 7.8–34.3 m
+  - Ramp: 34.3–50 m
+  - Upper pad 1: 50–84 m
+  - Upper pad 2: 85–115.9 m
+  - Centre channel: ±12.5 m wide
+- **Garages:** placing them under the upper pads (same footprints) is an assumption. The concept cutaway shows one central vehicle bay running from the forward ramp to the rear ramp.
+- **Drawing:** ships appear in their real pad positions, nose toward the bow. Pads in the drawing are tap and drop targets. The slot cards (controls) sit below the drawing.
+- **Removed:** the per-slot dashed "largest confirmed fit" boxes. The oversize flag still uses that size.

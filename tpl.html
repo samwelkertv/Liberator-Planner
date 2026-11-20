@@ -30,16 +30,20 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .view[hidden]{display:none}
 .pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .zone{background:var(--deck);border:2px solid transparent;border-radius:12px;padding:10px 12px 12px;min-height:130px;display:flex;flex-direction:column;transition:border-color .15s,opacity .15s}
-.zone[data-s=front]{width:calc(50% - 6px);margin:0 auto}
-.fp{display:block;width:100%;height:auto;margin:2px 0 8px}
-.fp .env{fill:color-mix(in srgb,var(--hull) 55%,transparent);stroke:var(--line);stroke-width:.25;stroke-dasharray:1 .7}
-.fp .el{font:600 2.5px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
-.fp .sh{fill:color-mix(in srgb,var(--ok) 30%,transparent);stroke:var(--ok);stroke-width:.35}
-.fp .sh.warn,.fp .sh.unk{fill:color-mix(in srgb,var(--warn) 30%,transparent);stroke:var(--warn)}
-.fp .sh.img{fill:none;stroke-dasharray:.8 .6;stroke-width:.3}
-.fp .sh.over{stroke:var(--bad);stroke-width:.6}
-.fp .nose{fill:var(--ink);opacity:.55}
-.fp .bar{stroke:var(--ink);stroke-width:.35}
+.ship{display:block;width:100%;height:auto;margin:0 0 10px;overflow:visible}
+.ship .hullp{fill:var(--hull);stroke:var(--line);stroke-width:.3}.ship .hullp.int{fill:color-mix(in srgb,var(--hull) 70%,var(--deck))}
+.ship .chan{fill:color-mix(in srgb,var(--deck) 60%,var(--bg))}.ship .ramp{fill:var(--deck);opacity:.6}.ship .eng{fill:var(--line);opacity:.5}
+.ship .pad{fill:var(--deck);stroke:var(--line);stroke-width:.3}.ship .hz{cursor:pointer}
+.ship .hz.ok .pad{stroke:var(--ok);stroke-width:.8}.ship .hz.warn .pad{stroke:var(--warn);stroke-width:.8}.ship .hz.no{opacity:.4}.ship .hz.hov .pad{stroke:var(--acc);stroke-width:1}
+.zones{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.ship .env{fill:color-mix(in srgb,var(--hull) 55%,transparent);stroke:var(--line);stroke-width:.25;stroke-dasharray:1 .7}
+.ship .el{font:600 2.5px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
+.ship .sh{fill:color-mix(in srgb,var(--ok) 30%,transparent);stroke:var(--ok);stroke-width:.35}
+.ship .sh.warn,.ship .sh.unk{fill:color-mix(in srgb,var(--warn) 30%,transparent);stroke:var(--warn)}
+.ship .sh.img{fill:none;stroke-dasharray:.8 .6;stroke-width:.3}
+.ship .sh.over{stroke:var(--bad);stroke-width:.6}
+.ship .nose{fill:var(--ink);opacity:.55}
+.ship .bar{stroke:var(--ink);stroke-width:.35}
 .th{width:64px;height:40px;border-radius:6px;object-fit:cover;flex:none;background:var(--deck)}
 .pl .th{width:72px;height:auto;border-radius:0;align-self:stretch}
 .ovr{color:var(--bad);font-weight:600}
@@ -112,6 +116,7 @@ select{font:inherit;font-size:15px;min-height:40px;max-width:100%;padding:0 8px;
 table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
 th,td{text-align:left;padding:5px 6px;border-bottom:1px solid color-mix(in srgb,var(--line) 40%,transparent);vertical-align:top}
 th{font-size:12px;opacity:.7;font-weight:600}td.n,th.n{text-align:right}
+.pl{flex-wrap:wrap}.pl .chg{flex:1 1 100%;min-height:52px}.pl .ld,.pl .rm{flex:1;min-height:40px;border-top:1px solid color-mix(in srgb,var(--line) 50%,transparent)}.pl .ld{border-left:0}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <header class="band top">
@@ -122,19 +127,10 @@ th{font-size:12px;opacity:.7;font-weight:600}td.n,th.n{text-align:right}
 <main class="band grid">
 <section class="plan" aria-label="Deck plan">
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
-<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><div class="hull">
-<div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">Takes every deck-rated ship, with better height support. Ships marked F fit only here.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-<div class="pair">
-<div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-<div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-</div></div></div>
-<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><div class="hull int">
-<div class="pair">
-<div class="zone" data-s="g1"><h3>Garage 1</h3><small class="zs">Inside the ship.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-<div class="zone" data-s="g2"><h3>Garage 2</h3><small class="zs">Inside the ship.</small><svg class="fp" aria-hidden="true"></svg><div class="slot"></div></div>
-</div></div></div>
+<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-3 -38 126 76" role="img" aria-label="Liberator top deck, bow on the left, drawn to scale"></svg><div class="zones"><div class="zone" data-s="front"><h3>Front pad</h3><small class="zs">Every deck-rated ship, with better height support. F ships fit only here.</small><div class="slot"></div></div><div class="zone" data-s="up1"><h3>Upper pad 1</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><div class="slot"></div></div><div class="zone" data-s="up2"><h3>Upper pad 2</h3><small class="zs">For now, ships with a centre of gravity at 5 m or lower.</small><div class="slot"></div></div></div></div>
+<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-3 -38 126 76" role="img" aria-label="Liberator vehicle bay, bow on the left, drawn to scale"></svg><div class="zones"><div class="zone" data-s="g1"><h3>Garage 1</h3><small class="zs">Inside the ship. RRR works here.</small><div class="slot"></div></div><div class="zone" data-s="g2"><h3>Garage 2</h3><small class="zs">Inside the ship. RRR works here.</small><div class="slot"></div></div></div></div>
 <div class="tools"><button id="undo">Undo</button><button id="clear">Clear plan</button><button id="copy">Copy plan</button><span id="msg" role="status"></span></div>
-<p class="note">Ships are drawn to one common scale, nose up, sized to game-data length × beam (grouped rows use the largest variant). No pad or garage measurements are published, so each dashed box is the largest ship confirmed as a good fit there, not a measured size. A ship bigger than that box is flagged red. Several ground vehicles share an identical 8.75 × 6 m game-data box (e.g. Mule, Cyclone, Ursa, STV), which looks like a size class rather than a measured hull. Liberator hull: 119 × 67 × 25 m (game data). Two garages: per the official Q&amp;A (“each of the garages”) and the game data (garage A and B). Deck-rated ships fit all three external pads. The front pad has better height support; the upper pads currently take ships with a centre of gravity at 5 m or lower, and taller ships are expected to fit later. Top-down images are wiki “Above” shots, cut out and turned nose up; ships without one show a plain footprint.</p>
+<p class="note">The Liberator outline and pad positions are traced from a community top-down image (bow on the left), scaled to the game-data length of 119 m. Treat them as approximate. Placing the garages under the upper pads is an assumption. Ships are drawn to the same scale, sized to game-data length × beam (grouped rows use the largest variant). A ship bigger than the largest confirmed good fit for its slot is flagged red. Several ground vehicles share an identical 8.75 × 6 m game-data box (e.g. Mule, Cyclone, Ursa, STV), which looks like a size class rather than a measured hull. Liberator hull: 119 × 67 × 25 m (game data). Two garages: per the official Q&amp;A (“each of the garages”) and the game data (garage A and B). Deck-rated ships fit all three external pads. The front pad has better height support; the upper pads currently take ships with a centre of gravity at 5 m or lower, and taller ships are expected to fit later. Top-down images are wiki “Above” shots, cut out and turned nose up; ships without one show a plain footprint.</p>
 </section>
 <section aria-label="Ships and vehicles">
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
@@ -186,9 +182,7 @@ const VW=Math.max(...Object.values(ENV).map(e=>e.B))+6,VH=Math.max(...Object.val
 const m=x=>+x.toFixed(1),dims=d=>d.L?`${m(d.L)} × ${m(d.B)}${d.H?' × '+m(d.H):''} m`:'size unknown';
 const over=(d,s)=>{const e=ENV[SL[s][1]];return !!d.L&&(d.L>e.L||d.B>e.B)};
 const thumb=d=>d.t?`<img class="th" src="${d.t}" alt="" loading="lazy">`:'<span class="th"></span>';
-function deck(s,d){const e=ENV[SL[s][1]],cx=VW/2,cy=(VH+3)/2;let h=`<rect class="env" x="${cx-e.B/2}" y="${cy-e.L/2}" width="${e.B}" height="${e.L}" rx="1"/><text class="el" x="${cx}" y="${cy-e.L/2-1}" text-anchor="middle">largest confirmed fit ${m(e.L)} × ${m(e.B)} m</text>`;
-if(d&&d.L){const f=fitS(d,s),c=over(d,s)?' over':'';h+=d.td?`<rect class="sh ${cls(f)}${c} img" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx=".6"/><image href="${d.td}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" preserveAspectRatio="xMidYMid meet"/>`:`<rect class="sh ${cls(f)}${c}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx} ${cy-d.L/2+.6}l${Math.min(1.6,d.B/3)} ${Math.min(2.4,d.L/3)}h${-2*Math.min(1.6,d.B/3)}z"/>`}
-h+=`<path class="bar" d="M1 ${VH-1.2}h10M1 ${VH-2}v1.6M11 ${VH-2}v1.6"/><text class="el" x="12" y="${VH-.6}">10 m</text>`;return h}
+
 const blank=()=>Object.fromEntries(SK.map(k=>[k,null]));
 let shipSlot=null,plan=blank(),hist=[],sel=-1,filt='all',drag=null,ghost=null,dragged=false,tm,pickSlot=null,view='external';
 try{const s=JSON.parse(localStorage.getItem('libplan2')||'null');if(s&&SK.every(k=>k in s))plan=s}catch(e){}
@@ -203,12 +197,12 @@ function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-
 function renderPlan(){
 for(const s of SK){const el=$(`.zone[data-s=${s}]`);el.classList.remove('ok','warn','no');if(sel>=0)el.classList.add(lvl(fitS(D[sel],s)));
 const n=plan[s],d=n&&byName(n),f=d?fitS(d,s):null;
-const o=d&&over(d,s),e=ENV[SL[s][1]];el.querySelector('.fp').setAttribute('viewBox',`0 0 ${VW} ${VH}`);el.querySelector('.fp').innerHTML=deck(s,d);
+const o=d&&over(d,s),e=ENV[SL[s][1]];
 el.querySelector('.slot').innerHTML=d?`<div class="pl ${cls(f)}${o?' over':''}">${thumb(d)}<button class="chg" data-s="${s}" aria-label="Change ${esc(n)}"><b>${esc(n)}</b><i>${dims(d)}</i>${lvl(f)==='warn'?`<i>${L[f]}</i>`:''}${o?`<i class="ovr">Bigger than any confirmed good fit here (${m(e.L)} × ${m(e.B)} m)</i>`:''}${(()=>{const c=cfg(s);if(!c||!c.ship)return'';const S=stats(c);return `<i class="st">${fmt(S.dps)} DPS · ${fmt(S.sh)} shield${nmod(c)?' · <span class="mod">modified</span>':''}</i>`})()}</button><button class="ld" data-s="${s}" aria-label="Stats and loadout for ${esc(n)}">Stats</button><button class="rm" data-s="${s}" aria-label="Remove ${esc(n)}">✕</button></div>`:`<button class="add" data-s="${s}">+ Add ship</button>`}
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0){const ls=SK.filter(s=>SL[s][2]===t.dataset.v).map(s=>lvl(fitS(D[sel],s)));dt.classList.add(ls.includes('ok')?'ok':ls.includes('warn')?'warn':'no')}}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-p]')){const l=lvl(fitS(d,b.dataset.p));b.disabled=l==='no';b.className=l}}
-$('#undo').disabled=!hist.length;save();try{localStorage.setItem('libfit',JSON.stringify(fit))}catch(e){};renderRRR();if(shipSlot)renderShip()}
+drawShips();$('#undo').disabled=!hist.length;save();try{localStorage.setItem('libfit',JSON.stringify(fit))}catch(e){};renderRRR();if(shipSlot)renderShip()}
 function renderShip(){const s=shipSlot,c=cfg(s);if(!c){closeShip();return}
 $('#sdt').textContent=`${c.d.n} · ${SL[s][0]}`;
 if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
@@ -242,6 +236,18 @@ const C=Object.entries(R.C).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${
 const H=R.H.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
 $('#rrr').innerHTML=`<div class="rg"><div><h3>Ballistic ammo</h3>${tb(['Weapon','#Guns','#Rounds'],A)}<p class="note">Energy weapons regenerate and need no ammo.</p></div><div><h3>Missiles</h3>${tb(['Missile','#Count'],M)}<h3>Countermeasures</h3>${tb(['Launcher','#Charges'],C)}</div><div><h3>Fuel</h3>${tb(['Tank','#Capacity'],[`<tr><td>Hydrogen, all ships</td><td class="n">${+R.fu.toFixed(2)}</td></tr>`,`<tr><td>Quantum, all ships</td><td class="n">${+R.qf.toFixed(2)}</td></tr>`])}<h3>Repair</h3>${tb(['Ship','#Hull HP'],H)}${R.none.length?`<p class="note">No loadout data: ${esc(R.none.join(', '))}.</p>`:''}</div></div>`}
 $('#rcopy').addEventListener('click',async()=>{const R=rrrData();const L=['Liberator RRR restock list','Ballistic ammo:',...Object.entries(R.A).map(([k,a])=>`  ${k}: ${a.r} rounds (${a.g} guns)`),'Missiles:',...Object.entries(R.M).map(([k,v])=>`  ${k}: ${v}`),'Countermeasures:',...Object.entries(R.C).map(([k,v])=>`  ${k}: ${v}`),`Fuel: hydrogen ${+R.fu.toFixed(2)}, quantum ${+R.qf.toFixed(2)}`,'Hull HP:',...R.H.map(([k,v])=>`  ${k}: ${v}`)];try{await navigator.clipboard.writeText(L.join('\n'));flash('Restock list copied.')}catch(e){flash('Copy was blocked here.')}});
+const LIB={hull:[[7.8,12.5],[0,18.1],[1.1,22.4],[6.7,29.9],[75.3,29.9],[75.9,33.5],[100.8,33.5],[101,27.1],[119,27.1],[119,12.8],[116,12.8]],pad:{front:[7.8,34.3],up1:[50,84],up2:[85,115.9],g1:[50,84],g2:[85,115.9]}};
+const HP=[...LIB.hull,...LIB.hull.slice().reverse().map(([a,b])=>[a,-b])].map(p=>p.join(',')).join(' ');
+function drawShips(){for(const sv of $$('svg.ship')){const v=sv.dataset.v,int=v==='internal';
+let h=`<polygon class="hullp${int?' int':''}" points="${HP}"/><rect class="chan" x="7.8" y="-12.5" width="108.2" height="25"/><rect class="eng" x="101" y="12.8" width="18" height="14.3"/><rect class="eng" x="101" y="-27.1" width="18" height="14.3"/>`;
+h+=int?`<text class="el" x="21" y="1" text-anchor="middle">forward ramp</text><text class="el" x="42" y="1" text-anchor="middle">bay</text>`:`<rect class="ramp" x="34.3" y="-12.5" width="15.7" height="25"/><text class="el" x="42.15" y="1" text-anchor="middle">ramp</text>`;
+for(const s of SK.filter(s=>SL[s][2]===v)){const[a,b]=LIB.pad[s],cx=(a+b)/2,d=plan[s]&&byName(plan[s]),f=d?fitS(d,s):null,c=sel>=0?lvl(fitS(D[sel],s)):'';
+h+=`<g class="hz ${c}" data-s="${s}"><rect class="pad" x="${a}" y="-12.5" width="${b-a}" height="25" rx=".8"/><text class="el" x="${a+1}" y="-9.6">${SL[s][0]}</text>`;
+if(d&&d.L){const oc=over(d,s)?' over':'',k=Math.min(1.6,d.B/3),n=Math.min(2.4,d.L/3);
+h+=d.td?`<g transform="translate(${cx} 0) rotate(-90)"><image href="${d.td}" x="${-d.B/2}" y="${-d.L/2}" width="${d.B}" height="${d.L}" preserveAspectRatio="xMidYMid meet"/><rect class="sh ${cls(f)}${oc} img" x="${-d.B/2}" y="${-d.L/2}" width="${d.B}" height="${d.L}" rx=".6"/></g>`:`<rect class="sh ${cls(f)}${oc}" x="${cx-d.L/2}" y="${-d.B/2}" width="${d.L}" height="${d.B}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx-d.L/2+.6} 0l${n} ${-k}v${2*k}z"/>`}
+h+='</g>'}
+h+=`<path class="bar" d="M0 35h10M0 34v2M10 34v2"/><text class="el" x="11" y="36">10 m</text><text class="el" x="122" y="36" text-anchor="end">◀ bow · 119 × 67 m</text>`;
+sv.innerHTML=h}}
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function place(s,i){const d=D[i],f=fitS(d,s);if(lvl(f)==='no'){flash(`${d.n} ${NF} in ${SL[s][0].toLowerCase()}.`);return}
@@ -260,7 +266,7 @@ $('#cards').addEventListener('click',e=>{if(dragged)return;const c=e.target.clos
 $('#cards').addEventListener('keydown',e=>{const c=e.target.closest('.card');if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();pick(+c.dataset.i)}});
 $('.tabs').addEventListener('click',e=>{const t=e.target.closest('[role=tab]');if(t)setView(t.dataset.v)});
 $('.plan').addEventListener('click',e=>{if(dragged)return;const ld=e.target.closest('.ld');if(ld){openShip(ld.dataset.s);return}const rm=e.target.closest('.rm');if(rm){hist.push(JSON.stringify(plan));plan[rm.dataset.s]=null;renderPlan();return}
-const z=e.target.closest('.zone');if(!z)return;if(sel>=0){place(z.dataset.s,sel);return}if(e.target.closest('.add,.chg'))openPick(z.dataset.s)});
+const z=e.target.closest('.zone,.hz');if(!z)return;if(sel>=0){place(z.dataset.s,sel);return}if(e.target.closest('.add,.chg,.hz'))openPick(z.dataset.s)});
 $('#bar').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b&&sel>=0)place(b.dataset.p,sel);if(e.target.closest('#bx')){sel=-1;render()}});
 $('#q').addEventListener('input',renderCards);
 $('.chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;for(const x of $$('.chips [data-f]'))x.setAttribute('aria-pressed',String(x===b));renderCards()});
@@ -268,13 +274,13 @@ $('#undo').addEventListener('click',()=>{if(hist.length){plan=JSON.parse(hist.po
 $('#clear').addEventListener('click',()=>{if(!SK.some(k=>plan[k]))return;hist.push(JSON.stringify(plan));plan=blank();fit={};renderPlan();flash('Plan cleared. Undo brings it back.')});
 $('#copy').addEventListener('click',async()=>{const t='Liberator plan\n'+SK.map(s=>{const d=plan[s]&&byName(plan[s]);const c=cfg(s);return `${SL[s][0]}: ${d?d.n+' ('+dims(d)+')'+(c&&c.ship?` [${c.f.v}${nmod(c)?', modified: '+Object.keys(c.f.m).map(i=>{const k=c.f.m[i];return pretty(c.ship.slots[i].id)+' → '+(k==null?'empty':IT[k].n)}).join('; '):''}]`:''):'—'}`}).join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sel>=0&&!pickSlot){sel=-1;render()}});
-const zoneAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('.zone'):null};
+const zoneAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('.zone,.hz'):null};
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
 window.addEventListener('pointermove',e=>{if(!drag)return;
 if(!ghost){if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)<6)return;ghost=document.createElement('div');ghost.className='ghost';ghost.innerHTML=(D[drag.i].td?`<img src="${D[drag.i].td}" alt="" style="height:64px;width:auto">`:thumb(D[drag.i]))+esc(D[drag.i].n);document.body.append(ghost);sel=drag.i;renderPlan();for(const c of $$('.card'))c.classList.toggle('on',+c.dataset.i===sel)}
-ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';const z=zoneAt(e.clientX,e.clientY);for(const el of $$('.zone'))el.classList.toggle('hov',el===z);
+ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';const z=zoneAt(e.clientX,e.clientY);for(const el of $$('.zone,.hz'))el.classList.toggle('hov',!!z&&el.dataset.s===z.dataset.s);
 const t=document.elementFromPoint(e.clientX,e.clientY);const tab=t&&t.closest('[role=tab]');if(tab&&tab.dataset.v!==view)setView(tab.dataset.v)});
-const end=e=>{if(!drag)return;if(ghost){const z=e.type==='pointerup'?zoneAt(e.clientX,e.clientY):null;ghost.remove();ghost=null;for(const el of $$('.zone'))el.classList.remove('hov');dragged=true;setTimeout(()=>{dragged=false},80);if(z)place(z.dataset.s,drag.i)}drag=null};
+const end=e=>{if(!drag)return;if(ghost){const z=e.type==='pointerup'?zoneAt(e.clientX,e.clientY):null;ghost.remove();ghost=null;for(const el of $$('.zone,.hz'))el.classList.remove('hov');dragged=true;setTimeout(()=>{dragged=false},80);if(z)place(z.dataset.s,drag.i)}drag=null};
 window.addEventListener('pointerup',end);window.addEventListener('pointercancel',end);
 let v0='external';try{v0=localStorage.getItem('libview')||v0}catch(e){}setView(v0==='internal'?'internal':'external');
 render();
