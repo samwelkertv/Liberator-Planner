@@ -161,7 +161,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 <header class="appbar">
 <h1>Liberator planner</h1>
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
-<div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button data-panel="loads" aria-expanded="false">Loadouts</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
+<div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button data-panel="loads" aria-expanded="false">Loadouts</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button id="theme" title="Switch light / dark mode"></button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
 </header>
 <main class="stage" aria-label="Deck plan">
 <div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
@@ -324,7 +324,7 @@ $('#rcopy').addEventListener('click',async()=>{const R=rrrData(),ob=k=>STOCK[k]!
 const PANELS=['list','placed','rrr','loads','info'];
 function togglePanel(n,force){const el=$('#p-'+n),open=force??el.hidden;if(open)for(const k of PANELS)if(k!==n&&(k!=='placed'&&n!=='placed'||innerWidth<900))$('#p-'+k).hidden=true;el.hidden=!open;for(const b of $$('[data-panel]'))b.setAttribute('aria-expanded',String(!$('#p-'+b.dataset.panel).hidden))}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b){togglePanel(b.dataset.panel);return}const c=e.target.closest('.pclose');if(c)togglePanel(c.closest('.panel').id.slice(2),false)});
-const hdr=()=>document.documentElement.style.setProperty('--hdr',$('.appbar').offsetHeight+'px');addEventListener('resize',hdr);hdr();
+const hdr=()=>document.documentElement.style.setProperty('--hdr',$('.appbar').offsetHeight+'px');addEventListener('resize',hdr);hdr();if(window.ResizeObserver)new ResizeObserver(hdr).observe($('.appbar'));
 let exBlob=null;const dlCap=window.claude&&window.claude.use?window.claude.use('downloads').catch(()=>null):Promise.resolve(null);
 async function exportPNG(){const keep=selId;selId=null;drawShips();
 try{const W=720,H=1280,PAD=40,TOP=100,cv=document.createElement('canvas');cv.width=W*2+PAD*3;const LH=30,SH=24,lines={};for(const k of['external','internal']){lines[k]=[];for(const q of P.filter(q=>q.v===k)){const d=byName(q.n),c=cfg(q.id),vs=c&&c.ship?c.f.v:null,o=issues(q).filter(x=>x[0]!=='ok').map(x=>x[1]);lines[k].push(['b',`${d.n}${vs&&vs!==d.n?' · '+vs:''} · ${pdims(q)}`]);if(c&&c.ship)for(const i of Object.keys(c.f.m)){const it=c.f.m[i];lines[k].push(['s',`${pretty(c.ship.slots[i].id)} → ${it==null?'empty':IT[it].n}`])}if(o.length)lines[k].push(['w',o.join('; ')])}if(!lines[k].length)lines[k].push(['s','No ships'])}const LHt=Math.max(...Object.values(lines).map(a=>a.reduce((t,[y])=>t+(y==='b'?LH:SH),0)));cv.height=H+TOP+PAD+LHt+30;const g=cv.getContext('2d'),cs=getComputedStyle(document.body);
@@ -376,6 +376,10 @@ if(first&&!qs.metadata.fromCache){first=false;
 if(!LOADS.length){if(P.length||Object.keys(MY).length||Object.keys(STOCK).length||EXTRA.length){const id=lid();lwrite(id,{name:'Default',...snapState(),updatedAt:Date.now(),isDefault:true}).then(ok=>{if(ok){curId=id;setCur();flash('Saved your current plan as the “Default” loadout.')}})}}
 else if(!P.length&&!LOADS.some(l=>l.id===curId)){const d=LOADS.find(l=>l.isDefault)||LOADS[0];applyState(d);hist=[];curId=d.id;setCur();flash(`Loaded your default loadout “${d.name}”.`)}}
 renderLoads()},()=>{DB=null;renderLoads()})})();
+const THEMES={auto:['◐ Auto','Theme: follows your device'],light:['☀ Light','Theme: light'],dark:['☾ Dark','Theme: dark']};
+function setTheme(t){if(!THEMES[t])t='auto';const r=document.documentElement;if(t==='auto')delete r.dataset.theme;else r.dataset.theme=t;const b=$('#theme');b.textContent=THEMES[t][0];b.setAttribute('aria-label',THEMES[t][1]+'. Click to change.');b.dataset.t=t;try{localStorage.setItem('libtheme',t)}catch(e){}}
+$('#theme').addEventListener('click',()=>{const o=['auto','light','dark'];setTheme(o[(o.indexOf($('#theme').dataset.t)+1)%3])});
+try{setTheme(localStorage.getItem('libtheme')||'auto')}catch(e){setTheme('auto')}
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function freeSpot(v,i){const d=D[i],t={id:-1,n:d.n,v,x:0,y:0,r:0};const xs=v==='external'?(d.e&&d.e.startsWith('front')?[21,30,15]:[66,99.3,21]):[];for(let x=(v==='internal'?BAY.x0:8)+(d.L||4)/2;x<=114;x+=1)xs.push(x);
