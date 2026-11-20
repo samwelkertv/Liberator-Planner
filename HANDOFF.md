@@ -256,3 +256,4 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The ⓘ panel explains each source, and the export header names the source used.
 - **Swapped figures:** `tools/dim_swaps.json` swaps length and width for sources that list them the wrong way round. Currently the Pitbull store page lists 3.9 × 5.9 m.
 - **Disclaimer:** small and discreet in the drawing area, and in the ⓘ panel.
+- **v21.1:** ship pictures now fill their size box exactly (the picture's visible edges = length × width from the chosen source). The earlier keep-the-picture-proportions rule was dropped at the user's request.
