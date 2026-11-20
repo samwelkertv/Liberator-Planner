@@ -10,5 +10,17 @@
  "Terrapin Medic": {
   "img": "img/top/terrapin-medic-scorg.webp",
   "src": "https://scorg.tools/ship-information/283/Anvil+Terrapin+Medic"
+ },
+ "F7C Hornet Mk II": {
+  "img": "img/top/f7c-mk2-scorg.webp",
+  "src": "https://scorg.tools/ship-information/270/Anvil+F7C+Hornet+Mk+II"
+ },
+ "F7C-R Hornet Tracker Mk II": {
+  "img": "img/top/f7c-ghost-mk2-scorg.webp",
+  "src": "https://scorg.tools/ship-information/285/Anvil+F7C-S+Hornet+Ghost+Mk+II"
+ },
+ "F7C-M Super Hornet Mk II": {
+  "img": "img/top/f7cm-super-mk2-scorg.webp",
+  "src": "https://scorg.tools/ship-information/293/Anvil+F7C-M+Super+Hornet+Mk+II"
  }
 }
