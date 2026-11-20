@@ -10,6 +10,7 @@
    LAYOUT: deck plan left (sticky), ship list right; stacks plan-first on phones with a bottom place bar */
 :root{color-scheme:light dark;--bg:light-dark(#eceeeb,#0f1316);--ink:light-dark(#13181b,#e6ebe8);--hull:light-dark(#c9d1d4,#222a2f);--deck:light-dark(#b3bec3,#2c363c);--line:light-dark(#8f9ca2,#46535b);--card:light-dark(#fff,#182026);--ok:light-dark(#1d7f45,#4fca85);--warn:light-dark(#b45500,#ff9b45);--unk:light-dark(#9c3f70,#e690bf);--acc:light-dark(#0a6a94,#5bc0ec);--bad:light-dark(#c0262d,#ff6b6b)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+html[data-lp-theme=light],html[data-lp-theme=light] body{color-scheme:light!important}html[data-lp-theme=dark],html[data-lp-theme=dark] body{color-scheme:dark!important}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
 
@@ -149,6 +150,11 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 .ph h2{font:700 22px/1.1 Rajdhani,sans-serif;margin:0}
 .panel #placed{grid-template-columns:minmax(0,1fr)}.pv{font:700 18px/1.2 Rajdhani,sans-serif;margin:6px 0 0}.pv small{opacity:.6}
 .panel .sub{font-size:15px}
+.seg{display:flex;gap:6px;margin:0 0 10px}.seg button{flex:1;min-height:40px}.seg [aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.vlabel{display:none}
+@media (min-width:900px) and (min-aspect-ratio:1/1){.appbar .tabs{display:none}.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.stage .view,.stage .view[hidden]{display:flex;flex-direction:column;min-height:0;height:100%}.stage .view .ship{flex:1;min-height:0}
+.vlabel{display:block;align-self:center;font:700 17px Rajdhani,sans-serif;border:0;background:none;min-height:30px;padding:0 10px;opacity:.55;color:var(--ink)}.view.active .vlabel{opacity:1;color:var(--acc)}.stage #selbar{flex-wrap:nowrap}}
 #zreset{position:absolute;top:10px;right:10px;z-index:4;min-height:38px;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}#zreset[hidden]{display:none}
 .stk,.xq{width:84px;font:inherit;font-size:15px;min-height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-align:right}.xn{width:100%;font:inherit;font-size:15px;min-height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}.okt{color:var(--ok);font-weight:700}.badt{color:var(--bad);font-weight:700}
 .curl{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:10px}.curl div{display:grid}.curl small,.lrow small{opacity:.7;font-size:13px;display:block}.curl i{font-style:normal;font-size:13px}
@@ -164,8 +170,8 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 <div class="acts"><button class="add" id="addbtn">+ Add ship</button><button data-panel="list" aria-expanded="false">Ships</button><button data-panel="placed" aria-expanded="false">Placed <span id="pcount"></span></button><button data-panel="rrr" aria-expanded="false">RRR</button><button data-panel="loads" aria-expanded="false">Loadouts</button><button id="undo" aria-label="Undo">↶ Undo</button><button id="copy">Copy</button><button id="export">Export image</button><button id="clear">Clear</button><button id="theme" title="Switch light / dark mode"></button><button data-panel="info" aria-expanded="false" aria-label="About and sources">ⓘ</button></div>
 </header>
 <main class="stage" aria-label="Deck plan">
-<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
-<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
+<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><button class="vlabel" data-v="external">External · top deck</button><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
+<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><button class="vlabel" data-v="internal">Internal · vehicle bay</button><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
 <div id="selbar" hidden><span id="seln"></span><button data-a="l" aria-label="Turn left 15 degrees">⟲ 15°</button><button data-a="r" aria-label="Turn right 15 degrees">⟳ 15°</button><button data-a="q">Turn 90°</button><button data-a="s">Loadout</button><button data-a="x">Remove</button><button data-a="d" aria-label="Deselect">✕</button></div>
 <span id="msg" role="status"></span><button id="zreset" hidden>Reset zoom</button>
 </main>
@@ -194,7 +200,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 <div id="bar" hidden><div class="bi"><div><b id="bn"></b><span id="bd"></span></div><div class="bb"><button data-v="external">Add to external</button><button data-v="internal">Add to internal</button><button id="bx" aria-label="Deselect">✕</button></div></div></div>
 <dialog id="ex" aria-labelledby="ext"><div class="dh"><h3 id="ext">Plan image</h3><button id="exx" aria-label="Close">✕</button></div><img id="exi" alt="Liberator plan: external view on the left, internal view on the right"><div class="tools"><button id="exd">Download PNG</button><span class="hint">Or right-click / long-press the image to save it.</span></div></dialog>
 <dialog id="sd" aria-labelledby="sdt"><div class="dh"><h3 id="sdt"></h3><button id="sx" aria-label="Close">✕</button></div><div id="sb"></div></dialog>
-<dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
+<dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><div class="seg" id="pv" role="group" aria-label="Add to"><button data-pv="external">External</button><button data-pv="internal">Internal</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
 <script>{
 const D=__DATA__;
 const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad only, worked but sketchy',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged'};
@@ -261,7 +267,7 @@ const worst=o=>o.some(x=>x[0]==='bad')?'bad':o.some(x=>x[0]==='warn')?'warn':o.s
 function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>(filt==='all'||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front')))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
 function renderCards(){const r=shown();$('#count').textContent=`${r.length} of ${D.length} ships and vehicles`;
 $('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><span class="grip" aria-hidden="true">⠿</span>${thumb(d)}<span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground':''} · ${dims(d)}</small></span><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
-function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').hidden=v!=='external';$('#v-internal').hidden=v!=='internal';const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}
+function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').hidden=v!=='external';$('#v-internal').hidden=v!=='internal';for(const x of $$('.view'))x.classList.toggle('active',x.id==='v-'+v);const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}
 function drawShips(){for(const sv of $$('svg.ship')){const v=sv.dataset.v,int=v==='internal';
 let h=`<g transform="rotate(90)"><image class="lib${int?' int':''}" href="${LIBIMG}" x="0" y="-33.5" width="119" height="67"/>`;
 if(int)h+=`<rect class="fpx" x="9" y="${-BAY.h}" width="${BAY.x0-9}" height="${2*BAY.h}" rx="1"/><rect class="bay" x="${BAY.x0}" y="${-BAY.h}" width="${BAY.x1-BAY.x0}" height="${2*BAY.h}" rx="1"/>`+CARGO.map(c=>`<rect class="cg" x="${c.x}" y="${-BAY.h-c.w}" width="${c.l}" height="${c.w}" rx=".4"/><line class="cgd" x1="${c.x+1}" y1="${-BAY.h}" x2="${c.x+c.l-1}" y2="${-BAY.h}"/>`).join('')+`<rect class="rp" x="${BAY.x0-1.6}" y="${-BAY.h}" width="1.6" height="${2*BAY.h}"/><rect class="rp" x="${BAY.x1}" y="${-BAY.h}" width="2.6" height="${2*BAY.h}"/>`;
@@ -377,16 +383,18 @@ if(!LOADS.length){if(P.length||Object.keys(MY).length||Object.keys(STOCK).length
 else if(!P.length&&!LOADS.some(l=>l.id===curId)){const d=LOADS.find(l=>l.isDefault)||LOADS[0];applyState(d);hist=[];curId=d.id;setCur();flash(`Loaded your default loadout “${d.name}”.`)}}
 renderLoads()},()=>{DB=null;renderLoads()})})();
 const THEMES={auto:['◐ Auto','Theme: follows your device'],light:['☀ Light','Theme: light'],dark:['☾ Dark','Theme: dark']};
-function setTheme(t){if(!THEMES[t])t='auto';const r=document.documentElement;if(t==='auto')delete r.dataset.theme;else r.dataset.theme=t;const b=$('#theme');b.textContent=THEMES[t][0];b.setAttribute('aria-label',THEMES[t][1]+'. Click to change.');b.dataset.t=t;try{localStorage.setItem('libtheme',t)}catch(e){}}
+function setTheme(t){if(!THEMES[t])t='auto';const r=document.documentElement;if(t==='auto')delete r.dataset.lpTheme;else r.dataset.lpTheme=t;const b=$('#theme');b.textContent=THEMES[t][0];b.setAttribute('aria-label',THEMES[t][1]+'. Click to change.');b.dataset.t=t;try{localStorage.setItem('libtheme',t)}catch(e){}}
 $('#theme').addEventListener('click',()=>{const o=['auto','light','dark'];setTheme(o[(o.indexOf($('#theme').dataset.t)+1)%3])});
 try{setTheme(localStorage.getItem('libtheme')||'auto')}catch(e){setTheme('auto')}
+$('#pv').addEventListener('click',e=>{const b=e.target.closest('[data-pv]');if(b&&pickView){pickView=b.dataset.pv;renderPick()}});
+for(const b of $$('.vlabel'))b.addEventListener('click',()=>setView(b.dataset.v));
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function freeSpot(v,i){const d=D[i],t={id:-1,n:d.n,v,x:0,y:0,r:0};const xs=v==='external'?(d.e&&d.e.startsWith('front')?[21,30,15]:[66,99.3,21]):[];for(let x=(v==='internal'?BAY.x0:8)+(d.L||4)/2;x<=114;x+=1)xs.push(x);
 for(const y of[0,-6,6,-12,12])for(const x of xs){t.x=x;t.y=y;if(!P.some(q=>q.v===v&&hit(t,q))&&(v!=='internal'||!corners(t).some(([a,b])=>a<BAY.x0||a>BAY.x1||Math.abs(b)>BAY.h)))return[x,y]}return[v==='internal'?60:30,0]}
 function add(v,i,at){const d=D[i],f=fitV(d,v);if(lvl(f)==='no'){flash(`${d.n} ${NF} ${v==='external'?'on the deck':'in the bay'}.`);return}
 hist.push(snap());const[x,y]=at||freeSpot(v,i);const p={id:uid++,n:d.n,v,x:+x.toFixed(1),y:+y.toFixed(1),r:0,f:MY[d.n]?{v:MY[d.n].v,m:{...MY[d.n].m}}:null};clampIn(p);P.push(p);selId=p.id;if(sel>=0){sel=-1;renderCards()}if(v!==view)setView(v);flash(`${d.n} added to ${VL[v].toLowerCase()}${lvl(f)==='warn'?` (${L[f].toLowerCase()})`:''}. Drag it to arrange.`);renderPlan()}
-function renderPick(){const v=pickView,q=$('#dq').value.trim().toLowerCase();
+function renderPick(){const v=pickView,q=$('#dq').value.trim().toLowerCase();$('#dt').textContent=`Add to ${VL[v].toLowerCase()}`;for(const b of $$('#pv button'))b.setAttribute('aria-pressed',String(b.dataset.pv===v));
 const r=D.map((d,i)=>[d,i,fitV(d,v)]).filter(([d,,f])=>f&&(!q||(d.n+' '+d.m).toLowerCase().includes(q))).sort((a,b)=>(lvl(a[2])==='ok'?0:1)-(lvl(b[2])==='ok'?0:1));
 $('#dl').innerHTML=r.length?r.map(([d,i,f])=>`<button class="opt" data-i="${i}">${thumb(d)}<span style="flex:1"><b>${esc(d.n)}</b><small>${esc(d.m)} · ${dims(d)}</small></span><span class="b ${cls(f)}">${L[f]}</span></button>`).join(''):'<p class="empty">Nothing that fits here matches.</p>'}
 function openPick(v){pickView=v;$('#dt').textContent=`Add to ${VL[v].toLowerCase()}`;$('#dq').value='';renderPick();const g=$('#dlg');try{g.showModal()}catch(e){g.setAttribute('open','')}$('#dq').focus()}
@@ -423,7 +431,7 @@ const TP=new Map();let pinch=null,pan=null;
 for(const sv of $$('svg.ship')){
 sv.addEventListener('touchstart',e=>{if(e.target.closest('.pc')||e.touches.length>1)e.preventDefault()},{passive:false});
 sv.addEventListener('wheel',e=>{e.preventDefault();zoomAt(sv,e.clientX,e.clientY,ZV.z*Math.exp(-e.deltaY*(e.ctrlKey?.01:.0015)))},{passive:false});
-sv.addEventListener('pointerdown',e=>{if(e.button>0)return;
+sv.addEventListener('pointerdown',e=>{if(e.button>0)return;if(view!==sv.dataset.v)setView(sv.dataset.v);
 if(e.pointerType==='touch'){TP.set(e.pointerId,{x:e.clientX,y:e.clientY});if(TP.size===2){if(mv){if(mv.moved&&hist.length)P=JSON.parse(hist.pop());mv=null}pan=null;const[a,b]=[...TP.values()];pinch={sv,d0:Math.hypot(a.x-b.x,a.y-b.y)||1,z0:ZV.z,anchor:rootAt(sv,(a.x+b.x)/2,(a.y+b.y)/2)};renderPlan();return}if(TP.size>2)return}
 const g=e.target.closest('.pc');const pt=svgPt(sv,e.clientX,e.clientY);
 if(g){const p=byId(+g.dataset.id);e.preventDefault();mv={p,sx:pt.x,sy:pt.y,x0:p.x,y0:p.y,moved:false,sv};selId=p.id;sv.setPointerCapture(e.pointerId);drawShips();return}

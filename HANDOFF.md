@@ -176,3 +176,10 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - Stock is saved in localStorage `libstock`/`libextra`, and in each loadout.
 - **Zoom and pan (zoom in only, 1–6×):** two-finger pinch on touch, trackpad pinch or mouse wheel on desktop. When zoomed in, drag the background to pan; a two-finger pinch also pans. A "Reset zoom" button appears while zoomed. The export always uses the full view.
 - **Pitbull:** confirmed on the texture cutout (setting 25), the first of the three tried.
+
+## v14 update (Nov 20, 2026)
+- **Side-by-side views:** on wide landscape screens (min-width 900px and min-aspect-ratio 1/1), External and Internal show side by side, each labelled. The tabs hide there; phones keep them.
+  - Interacting with a view (or clicking its label) makes it the active view, used for + Add ship and the Placed count.
+  - The Add dialog has an External/Internal switch.
+  - Zoom is shared by both views.
+- **Theme fix:** the toggle now sets `data-lp-theme` on `<html>`, with `color-scheme: … !important` on `html` and `body`. The claude.ai viewer sets its own theme (`data-theme` / color-scheme), which overrode the old attribute, so Light did nothing.
