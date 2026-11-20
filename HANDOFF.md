@@ -184,3 +184,8 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - Zoom is shared by both views.
 - **Theme fix:** the toggle now sets `data-lp-theme` on `<html>`, with `color-scheme: … !important` on `html` and `body`. The claude.ai viewer sets its own theme (`data-theme` / color-scheme), which overrode the old attribute, so Light did nothing.
 - **v14.1:** the views are now toggled with an `.off` class instead of the `hidden` attribute. The claude.ai viewer appears to force `[hidden]{display:none!important}`, which blocked the side-by-side layout. The drawing is also scaled down 5% for padding: base viewBox `-37.9 -6.4 75.8 134.8`, in the HTML, in `VB0` and in the export.
+
+## v15 update (Nov 20, 2026)
+- **Outlines button:** toggles the dashed outlines around ships that have images. A selected ship keeps its outline. The setting is saved in localStorage `libbox` and the exported image follows it (`display` was added to the inlined export styles).
+- **Ramp door on the external view:** the forward ramp door (34.3–48.8 m from the bow) is shaded blue under the ships, with a solid line where the ramp ends.
+- **Labels:** the internal ramp label is shortened to "⇅ Forward ramp" so it no longer clips. The export says "1 ship" instead of "1 ships".
