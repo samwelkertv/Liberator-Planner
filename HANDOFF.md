@@ -248,3 +248,11 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Ship lists merged:** one "+ Ships" panel. Each card has + Ext / + Int buttons (greyed out when the ship doesn't fit), plus the ★ owned toggle, filters and drag-and-drop. The separate Add panel is gone.
 - **Garage width is still unverified.** The fit sheet rates ships as wide as about 18 m with fixed wings (Hurricane, Gladius) as fitting inside, and wider folding-wing ships too. Game-data widths are flight boxes, so they can't pin down the bay width.
 - **v20.3: size rule changed by the user** to **overrides > RSI store page > game data > wiki**. "Game data" means api.star-citizen.wiki, extracted from the game files: often padded or shared boxes, full wingspans and extended lengths. The user found these wrong at the start. Overrides: Clipper and Arrow landed widths, and Hull B 46 × 17 m (closed; 71 m is extended). With the store first: M80 32 × 17.3, Ghost and Tracker 22.5 × 15, Marauder 20.5 × 18.5, ground vehicles at real sizes (Mule 4.2 × 3, Cyclone 6 × 4). Row splits regenerated (e.g. Cutlass Black vs Blue/Red/Steel, Mustang Omega, 350r, C8R, MPUV Personnel); old plans migrate.
+
+## v21 update (Nov 20, 2026)
+- **Sizes dropdown on the drawing toolbar:** RSI store page (default), Game data or Wiki, saved in localStorage `libsrc`.
+  - `build.py` embeds every source per variant as `S:{store,game,wiki}` in `loadouts.json` ships; the page picks with `vsz()`. If the chosen source has no size, it falls back to the next one (store → game → wiki).
+  - `tools/dim_overrides.json` (Clipper and Arrow landed widths, Hull B closed length) always applies, whichever source is picked.
+  - The ⓘ panel explains each source, and the export header names the source used.
+- **Swapped figures:** `tools/dim_swaps.json` swaps length and width for sources that list them the wrong way round. Currently the Pitbull store page lists 3.9 × 5.9 m.
+- **Disclaimer:** small and discreet in the drawing area, and in the ⓘ panel.

@@ -51,6 +51,22 @@ def main(path):
     forced = json.load(open("tools/split_groups.json", encoding="utf-8")) if os.path.exists("tools/split_groups.json") else {}
     aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
     load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
+    # Keep every source's size per variant so the page can switch between them (Source dropdown).
+    _src = {"store": json.load(open("store_dims.json", encoding="utf-8")) if os.path.exists("store_dims.json") else {},
+            "wiki": json.load(open("wiki_dims.json", encoding="utf-8")) if os.path.exists("wiki_dims.json") else {}}
+    swaps = json.load(open("tools/dim_swaps.json", encoding="utf-8")) if os.path.exists("tools/dim_swaps.json") else {}
+    for n, s in load["ships"].items():
+        S = {}
+        if s.get("L"):
+            S["game"] = [s["L"], s["B"], s.get("H")]
+        for k in ("store", "wiki"):
+            w = _src[k].get(n)
+            if w and w.get("L"):
+                S[k] = [w["L"], w["B"], w.get("H")]
+        for k, sw in swaps.get(n, {}).items():  # sources that list length and width the wrong way round
+            if sw and k in S:
+                S[k] = [S[k][1], S[k][0], S[k][2]]
+        s["S"] = S
     # Size priority (user's rule): overrides > RSI store page > game data > wiki.
     # loadouts.json holds game data; the store page replaces it wherever it has specs.
     if os.path.exists("store_dims.json"):
