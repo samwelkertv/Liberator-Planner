@@ -70,6 +70,8 @@ def main(path):
             d["ta"], d["cf"] = round(h / w, 4), a.get("cf", 1)
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
+        if aliases.get(d["n"]):
+            d["iv"] = aliases[d["n"]][0]  # the variant the top-down image shows
         page.append(d)
     libimg = ("data:image/webp;base64," + base64.b64encode(open("img/liberator-top.webp", "rb").read()).decode()) if os.path.exists("img/liberator-top.webp") else ""
     tpl = open("tpl.html", encoding="utf-8").read()

@@ -200,3 +200,10 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - `fetch_loadouts.py` now stores `mass` and `price` per variant.
   - The card starts hidden on narrow screens.
 - **Ramp door overlay:** now shown on the internal view as well as the external one.
+
+## v17 update (Nov 20, 2026)
+- **Wiki sizes for all 168 variants:** `fetch_wiki_dims.py` now has a second pass that reads the rendered infobox ("Length … m / Width … m / Height … m") when the page source has no dimensions. It also tries simpler page names (dropping prefixes like "MISC " or "HM6 ", or " Limited").
+- **Drawing:** each ship's footprint is exactly its wiki length × width (× crop fraction for folded wings), and the top-down picture is stretched to fill that box (`preserveAspectRatio="none"`). The "natural width from image" rule tried in between was dropped; the user prefers the wiki boxes.
+- **Cross-view drag:** dragging a placed ship onto the other view moves it there, if the sheet says it fits that view; the target view is highlighted while you drag. The selection bar also has "⇄ Other view" for phones.
+- **Labels:** pad, ramp and cargo labels now draw underneath ships. The drawing is built in three layers: base, then labels, then ships.
+- **Totals:** `loadouts.json` was re-fetched with `mass` and `price`.

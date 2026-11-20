@@ -69,6 +69,36 @@ def main():
             out[n] = {"L": L, "B": B, "H": H, "src": "https://starcitizen.tools/" + urllib.parse.quote(title.replace(" ", "_"))}
         else:
             skipped.append((n, "no dims"))
+    # Second pass: read the rendered infobox (Length / Width / Height) for pages whose source has no
+    # dimensions, plus likely page names for variants without their own page.
+    import html as _html
+    def rendered(title):
+        q = {"action": "parse", "page": title, "prop": "text", "redirects": 1, "format": "json"}
+        try:
+            j = get("https://starcitizen.tools/api.php?" + urllib.parse.urlencode(q))["parse"]
+        except Exception:  # noqa: BLE001
+            return None
+        t = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", j["text"]["*"])))
+        L = re.search(r"Length ([0-9.,]+) m", t)
+        B = re.search(r"(?:Width|Beam) ([0-9.,]+) m", t)
+        H = re.search(r"Height ([0-9.,]+) m", t)
+        if not (L and B):
+            return None
+        f = lambda m: float(m.group(1).replace(",", "")) if m else None
+        return {"L": f(L), "B": f(B), "H": f(H), "src": "https://starcitizen.tools/" + urllib.parse.quote(j["title"].replace(" ", "_")) + " (rendered infobox)"}
+    still = []
+    for n, why in skipped:
+        cands = [n, re.sub(r"^(MISC|HM6|Vanduul|Argo) ", "", n), n.replace(" Limited", "")]
+        hit = None
+        for c in dict.fromkeys(cands):
+            hit = rendered(c)
+            if hit:
+                break
+        if hit:
+            out[n] = hit
+        else:
+            still.append(n)
+    skipped = still
     json.dump(out, open(os.path.join(ROOT, "wiki_dims.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(len(out), "variants with wiki dims; skipped:", skipped)
 
