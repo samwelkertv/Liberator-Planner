@@ -226,7 +226,8 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const byName=n=>D.find(d=>d.n===n);
 let OWN=new Set();try{OWN=new Set(JSON.parse(localStorage.getItem('libown')||'[]'))}catch(e){}
 const saveOwn=()=>{try{localStorage.setItem('libown',JSON.stringify([...OWN]))}catch(e){}};
-function fixName(q){if(!q||byName(q.n))return q;const c=D.filter(d=>d.g===q.n);if(!c.length)return q;const v=q.f&&q.f.v,m=c.find(d=>(d.v||[]).includes(v))||c[0];return{...q,n:m.n}}
+OWN=new Set([...OWN].map(n=>byName(n)?n:(fixName({n})||{n}).n));saveOwn();
+function fixName(q){if(!q||byName(q.n))return q;let c=D.filter(d=>d.g===q.n);if(!c.length)c=D.filter(d=>(d.v||[]).includes(q.n)||(d.g&&q.n.startsWith((d.v||[])[0]||'~')));if(!c.length)return q;const v=q.f&&q.f.v,m=c.find(d=>(d.v||[]).includes(v))||c[0];return{...q,n:m.n}}
 const NF='doesn’t fit';
 const LD=__LOAD__,IT=LD.items;
 const fmt=n=>n==null||isNaN(n)?'—':Math.round(n).toLocaleString('en-US');

@@ -20,5 +20,11 @@
   "landed": true,
   "spread": 50.0,
   "src": "landed width measured from the wiki's 'Clipper in space - Front' (body plus engine pods about 293 px of the 915 px, 50 m wingspan); folded wings stand vertical beside the hull"
+ },
+ "F7C-S Hornet Ghost Mk II": {
+  "L": 22.5,
+  "B": 22.0,
+  "H": 6.5,
+  "src": "game data, RSI ship matrix and scorg.tools all give 22.5-23 x 22 m, and scorg's top view matches the F7C Mk II outline; the wiki's 15 m width is an outlier"
  }
 }
