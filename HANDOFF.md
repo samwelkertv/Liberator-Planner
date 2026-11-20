@@ -151,3 +151,15 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Placed panel:** lists both views at once, grouped under External and Internal headings. Clicking a ship from the other view switches tabs and selects it. The header count is now the total across both views. The RRR list already covered every placed ship in both views.
 - **Pitbull top-down:** the wiki's "3D model - Above" image sits on a dark grid that the cutout can't separate from the dark hull. It now uses a plain rectangular crop (new `"box"` option in `tools/topdown_fix.json`, with fractions of the raw image). A `"tol"` override for the background tolerance was added too.
 - **Pitbull size:** stays about 6 × 6 m; the wiki (5.93 × 6.13), the game data and the RSI ship matrix all agree.
+
+## v12 update (Nov 20, 2026)
+- **Cargo and ramps on the internal view:**
+  - Three cargo bays, drawn with their game-data grid sizes (192, 128 and 80 SCU).
+  - They sit on the starboard side of the garage at 52–80 m from the bow. The wiki says starboard; the mid-ship position is an estimate from the concept cutaway.
+  - Dashed edges mark the doors into the garage.
+  - The ramps are highlighted: forward ramp/door at 34 m, rear ramp at 116 m. Per the wiki, vehicles load from the rear ramp and unload over the forward ramp and pad. Constants: `CARGO` in `tpl.html`.
+- **Export:** each view's image now lists its ships underneath: name, variant, size, every custom part change, and any warnings in red.
+- **Loadouts:**
+  - The button is renamed "Loadout" (on the placed cards and the selection bar); the dialog title is "loadout & stats".
+  - New "Save as my <ship> setup" saves the variant and part changes per ship name in localStorage `libmy`. Every new ship of that name starts with it. "Use my setup" and "Forget my setup" also appear.
+- **Folded-wing ships:** the Clipper and Arrow show their landed width plus the full wingspan in their size text.
