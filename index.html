@@ -306,12 +306,15 @@ const j=Math.floor((al+S.l/2)/S.l*S.m.h),i=Math.floor((S.b/2-ac)/S.b*S.m.w);retu
 function collide(p,q,k='ck'){const A=shp(p,k),B=shp(q,k);if(!sat(cornLB(p,A.l,A.b),cornLB(q,B.l,B.b)))return false;
 const a=p.r*Math.PI/180,u=[Math.cos(a),Math.sin(a)],w=[-u[1],u[0]],gw=A.m?A.m.w:24,gh=A.m?A.m.h:24;
 for(let j=0;j<gh;j++)for(let i=0;i<gw;i++){if(A.m&&!A.m.a[j*gw+i])continue;const al=(j+.5)/gh*A.l-A.l/2,ac=A.b/2-(i+.5)/gw*A.b,x=p.x+al*u[0]+ac*w[0],y=p.y+al*u[1]+ac*w[1];if(inShape(B,q,x,y))return true}return false}
+function outside(p,k){const A=shp(p,k),a=p.r*Math.PI/180,u=[Math.cos(a),Math.sin(a)],w=[-u[1],u[0]],gw=A.m?A.m.w:24,gh=A.m?A.m.h:24;
+const R=p.v==='external'?{x0:7.8*SX,x1:116*SX,h:CH}:{x0:BAY.x0,x1:BAY.x1,h:BAY.h};
+for(let j=0;j<gh;j++)for(let i=0;i<gw;i++){if(A.m&&!A.m.a[j*gw+i])continue;const al=(j+.5)/gh*A.l-A.l/2,ac=A.b/2-(i+.5)/gw*A.b,x=p.x+al*u[0]+ac*w[0],y=p.y+al*u[1]+ac*w[1];if(Math.abs(y)>R.h||x<R.x0||x>R.x1)return true}return false}
 function hit(p,q){const A=corners(p),B=corners(q);for(const C of[A,B])for(let i=0;i<2;i++){const ax=[C[i+1][0]-C[i][0],C[i+1][1]-C[i][1]];const pr=K=>K.map(c=>c[0]*ax[0]+c[1]*ax[1]);const a=pr(A),b=pr(B);if(Math.max(...a)<=Math.min(...b)+1e-6||Math.max(...b)<=Math.min(...a)+1e-6)return false}return true}
 function issues(p){const d=byName(p.n),f=fitV(d,p.v),o=[];
 if(!f)o.push(['bad',`${p.v==='external'?'Deck':'Garage'}: ${NF}`]);else if(lvl(f)!=='ok')o.push([cls(f),L[f]]);
 if(p.v==='external'&&d.e&&d.e.startsWith('front')&&p.x>FRONT_END)o.push(['warn','F ship: fits only on the front pad']);
 if(p.v==='external'&&(p.x<0||p.x>LIBL||Math.abs(p.y)>LIBW/2))o.push(['warn','Off the ship']);
-if(p.v==='internal'&&corners(p).some(([x,y])=>x<BAY.x0||x>BAY.x1||Math.abs(y)>BAY.h))o.push(['warn','Outside the vehicle bay (approximate outline)']);
+{const wn=p.v==='external'?'deck edge':'bay wall';if(outside(p,'ck'))o.push(['bad',`Overlaps the ${wn}`]);else if(OPT.warn&&outside(p,'cw'))o.push(['warn',`Close to the ${wn} (within 15 px)`])}
 for(const q of P)if(q!==p&&q.v===p.v){if(collide(p,q))o.push(['bad',`Overlaps ${q.n}`]);else if(OPT.warn&&collide(p,q,'cw'))o.push(['warn',`Close to ${q.n} (within 15 px)`])}return o}
 const worst=o=>o.some(x=>x[0]==='bad')?'bad':o.some(x=>x[0]==='warn')?'warn':o.some(x=>x[0]==='unk')?'unk':'ok';
 function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>((filt==='all'&&!d.fut)||(filt==='fut'&&d.fut)||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front'))||(filt==='own'&&OWN.has(d.n)))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
