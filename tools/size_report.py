@@ -26,17 +26,17 @@ def main():
     for n in sorted({n for v in aliases.values() for n in v}):
         g = game.get(n, {}) if game.get(n, {}).get("L") else {}
         s, w, o = store.get(n), wiki.get(n), over.get(n)
-        used = o or g or s or w
-        frm = "override" if o else "game data" if g else "store page" if s else "wiki"
+        used = o or s or g or w
+        frm = "override" if o else "store page" if s else "game data" if g else "wiki"
         conflict = bool(g and s and not close((g["L"], g["B"]), (s["L"], s["B"])))
         rows.append((n, f(used), frm, f(g), f(s), f(w), conflict))
         if conflict:
             conflicts.append(rows[-1])
     out = ["# Ship size audit", "",
-           "Length × width in metres. The planner uses **game data > RSI store page > wiki**. Ships whose wings fold when landed use a measured landed width (see `tools/dim_overrides.json`).",
+           "Length × width in metres. The planner uses **overrides > RSI store page > game data > wiki**. Overrides (`tools/dim_overrides.json`) are measured landed widths for folding-wing ships and sizes the user chose. Game data is api.star-citizen.wiki, extracted from the game files (often padded boxes, full wingspans or extended lengths).",
            "", f"## Store page vs game data conflicts ({len(conflicts)})", "",
-           "| Variant | Game data (used) | RSI store page | Wiki |", "|---|---|---|---|"]
-    out += [f"| {r[0]} | {r[3]} | {r[4]} | {r[5]} |" for r in conflicts]
+           "| Variant | RSI store page (used) | Game data | Wiki |", "|---|---|---|---|"]
+    out += [f"| {r[0]} | {r[4]} | {r[3]} | {r[5]} |" for r in conflicts]
     out += ["", f"## All variants ({len(rows)})", "", "| Variant | Planner | From | Game data | RSI store page | Wiki | Conflict |", "|---|---|---|---|---|---|---|"]
     out += [f"| {r[0]} | {r[1]} | {r[2]} | {r[3]} | {r[4]} | {r[5]} | {'⚠' if r[6] else ''} |" for r in rows]
     os.makedirs(os.path.join(ROOT, "docs"), exist_ok=True)

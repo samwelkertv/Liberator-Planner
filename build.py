@@ -51,13 +51,18 @@ def main(path):
     forced = json.load(open("tools/split_groups.json", encoding="utf-8")) if os.path.exists("tools/split_groups.json") else {}
     aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
     load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
-    # Size priority (user's rule): game data > RSI store page > wiki. loadouts.json already holds game data.
-    for f, tag in (("store_dims.json", "store"), ("wiki_dims.json", "wiki")):
-        if os.path.exists(f):
-            for n, w in json.load(open(f, encoding="utf-8")).items():
-                s = load["ships"].get(n)
-                if s and not s.get("L"):
-                    s.update(L=w["L"], B=w["B"], ds=tag, **({"H": w["H"]} if w.get("H") else {}))
+    # Size priority (user's rule): overrides > RSI store page > game data > wiki.
+    # loadouts.json holds game data; the store page replaces it wherever it has specs.
+    if os.path.exists("store_dims.json"):
+        for n, w in json.load(open("store_dims.json", encoding="utf-8")).items():
+            s = load["ships"].get(n)
+            if s:
+                s.update(L=w["L"], B=w["B"], ds="store", **({"H": w["H"]} if w.get("H") else {}))
+    if os.path.exists("wiki_dims.json"):
+        for n, w in json.load(open("wiki_dims.json", encoding="utf-8")).items():
+            s = load["ships"].get(n)
+            if s and not s.get("L"):
+                s.update(L=w["L"], B=w["B"], ds="wiki", **({"H": w["H"]} if w.get("H") else {}))
     if os.path.exists("tools/dim_overrides.json"):  # official figures that beat the wiki, e.g. from dimension graphics
         for n, w in json.load(open("tools/dim_overrides.json", encoding="utf-8")).items():
             s = load["ships"].get(n)
