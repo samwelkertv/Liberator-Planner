@@ -234,4 +234,4 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **v19.1:** landed widths are now measured from wiki images and stored as overrides (`landed` / `spread` in `tools/dim_overrides.json`):
   - **Arrow:** 16 × 11.1 m, from "Arrow in Selfland - Above" (wings tilt up but stay out; 12 m spread in flight). The old fold-line crop was removed.
   - **Clipper:** 26.5 × 16 m. Body and engine pods measure about 293 of 915 px in "Clipper in space - Front" (50 m span); the wings fold vertical beside the hull.
-  - Override boxes are drawn exactly. The user releases to `main` at the end of each working day unless they say otherwise.
+  - Override boxes are drawn exactly. Release rule: once everything the user has asked for is done and tested, push the testing branch to `main` (fast-forward) without waiting to be asked, unless the user says otherwise.
