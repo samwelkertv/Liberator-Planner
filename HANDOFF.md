@@ -163,3 +163,4 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The button is renamed "Loadout" (on the placed cards and the selection bar); the dialog title is "loadout & stats".
   - New "Save as my <ship> setup" saves the variant and part changes per ship name in localStorage `libmy`. Every new ship of that name starts with it. "Use my setup" and "Forget my setup" also appear.
 - **Folded-wing ships:** the Clipper and Arrow show their landed width plus the full wingspan in their size text.
+- **Pitbull cutout (v12.1):** new `"texture"` option in `tools/topdown_fix.json` cuts the ship out by surface texture, colour and brightness, ignoring the background grid lines. The Pitbull uses `{"texture": 25}` in place of the rectangle crop.

@@ -24,12 +24,7 @@
   "skip": true
  },
  "Pitbull": {
-  "box": [
-   0.06,
-   0.02,
-   0.94,
-   0.97
-  ]
+  "texture": 25
  },
  "Meteor": {
   "skip": true

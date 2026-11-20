@@ -71,6 +71,28 @@ def cutout(im, tol_override=None):
     return Image.fromarray(out, "RGBA")
 
 
+def cutout_texture(im, th=25):
+    """For a ship on a grid background as dark as its hull: keep textured,
+    saturated or bright pixels, ignore the grid lines, close and fill."""
+    a = np.asarray(im.convert("RGB")).astype(float)
+    L = a.mean(2)
+    def lines(prof):
+        return np.where(prof - ndimage.uniform_filter1d(prof, 9) > 1.5)[0]
+    g = np.hypot(ndimage.sobel(L, 0), ndimage.sobel(L, 1))
+    for r in lines(np.median(L, 1)):
+        g[max(0, r - 1):r + 2, :] = 0
+    for c in lines(np.median(L, 0)):
+        g[:, max(0, c - 1):c + 2] = 0
+    m = (g > th) | ((a.max(2) - a.min(2)) > 40) | (L > 95)
+    m = ndimage.binary_opening(ndimage.binary_fill_holes(ndimage.binary_closing(m, iterations=5)), iterations=3)
+    lab, n = ndimage.label(m)
+    sz = ndimage.sum(m, lab, range(1, n + 1))
+    m = ndimage.binary_fill_holes(np.isin(lab, [i + 1 for i, v in enumerate(sz) if v >= sz.max() * .05]))
+    ys, xs = np.where(m)
+    rgba = np.dstack([a, ndimage.gaussian_filter(m.astype(float), .8) * 255]).astype(np.uint8)
+    return Image.fromarray(rgba[ys.min():ys.max() + 1, xs.min():xs.max() + 1], "RGBA")
+
+
 def main(montage=None):
     cand = json.load(open(os.path.join(ROOT, "tools", "topdown_candidates.json"), encoding="utf-8"))
     fix = json.load(open(os.path.join(ROOT, "tools", "topdown_fix.json"), encoding="utf-8"))
@@ -95,7 +117,9 @@ def main(montage=None):
         cp = os.path.join(CACHE, slug(t) + os.path.splitext(u[t].split("?")[0])[1])
         if not os.path.exists(cp):
             open(cp, "wb").write(get(u[t]))
-        if "box" in fix.get(k, {}):  # background not separable: plain rectangular crop
+        if "texture" in fix.get(k, {}):
+            im = cutout_texture(Image.open(cp), fix[k]["texture"])
+        elif "box" in fix.get(k, {}):  # background not separable: plain rectangular crop
             raw = Image.open(cp).convert("RGBA")
             x0, y0, x1, y1 = fix[k]["box"]
             im = raw.crop((round(x0 * raw.width), round(y0 * raw.height), round(x1 * raw.width), round(y1 * raw.height)))
