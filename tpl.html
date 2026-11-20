@@ -146,7 +146,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 .panel.right{right:0}.panel.left{left:0;width:min(340px,100vw)}.panel.wide{width:min(780px,100vw)}.panel[hidden]{display:none}
 .ph{position:sticky;top:0;background:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;z-index:1}
 .ph h2{font:700 22px/1.1 Rajdhani,sans-serif;margin:0}
-.panel #placed{grid-template-columns:minmax(0,1fr)}
+.panel #placed{grid-template-columns:minmax(0,1fr)}.pv{font:700 18px/1.2 Rajdhani,sans-serif;margin:6px 0 0}.pv small{opacity:.6}
 .panel .sub{font-size:15px}
 @media(max-width:600px){.appbar h1{display:none}.appbar{gap:6px;padding:6px 8px}.appbar .tabs{flex:1 1 100%}.acts{margin-left:0}.acts button{padding:0 9px;min-height:38px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -261,13 +261,13 @@ h+='</g>';
 h+=int?`<text class="el lt" x="-10.5" y="20">Front pad: outside</text><text class="el lt" x="-10.5" y="${BAY.x0-1.2}">Door ▼ vehicle bay, approximate (deck 02)</text>`:`<text class="el lt" x="-11" y="13.5">Front pad</text><text class="el lt" x="-11" y="53">Upper pad 1</text><text class="el lt" x="-11" y="86.5">Upper pad 2</text>`;
 h+=`<path class="bar" d="M-34 123h10M-34 122v2M-24 122v2"/><text class="el" x="-23" y="124">10 m</text><text class="el" x="34" y="124" text-anchor="end">▲ bow · 119 × 67 m</text>`;
 sv.innerHTML=h}}
-function renderPlan(){const vp=P.filter(p=>p.v===view);
-$('#placed').innerHTML=vp.length?vp.map(p=>{const d=byName(p.n),o=issues(p),c=cfg(p.id),S=c&&c.ship?stats(c):null;return `<div class="pl ${worst(o)}${p.id===selId?' on':''}" data-id="${p.id}"><button class="chg" data-id="${p.id}" aria-pressed="${p.id===selId}"><b>${esc(d.n)}</b><i>${pdims(p)}${S?` · ${fmt(S.dps)} DPS · ${fmt(S.sh)} shield`:''}${nmod(c)?' · <span class="mod">modified</span>':''}</i>${o.map(([k,t])=>`<i class="is ${k}">${esc(t)}</i>`).join('')}</button><button class="ld" data-id="${p.id}">Stats</button><button class="rm" data-id="${p.id}" aria-label="Remove ${esc(d.n)}">✕</button></div>`}).join(''):`<p class="empty">No ships ${view==='external'?'on the deck':'in the bay'} yet. Use + Add ship or drag one in from the list.</p>`;
+function renderPlan(){const row=p=>{const d=byName(p.n),o=issues(p),c=cfg(p.id),S=c&&c.ship?stats(c):null;return `<div class="pl ${worst(o)}${p.id===selId?' on':''}" data-id="${p.id}"><button class="chg" data-id="${p.id}" aria-pressed="${p.id===selId}"><b>${esc(d.n)}</b><i>${pdims(p)}${S?` · ${fmt(S.dps)} DPS · ${fmt(S.sh)} shield`:''}${nmod(c)?' · <span class="mod">modified</span>':''}</i>${o.map(([k,t])=>`<i class="is ${k}">${esc(t)}</i>`).join('')}</button><button class="ld" data-id="${p.id}">Stats</button><button class="rm" data-id="${p.id}" aria-label="Remove ${esc(d.n)}">✕</button></div>`};
+$('#placed').innerHTML=['external','internal'].map(v=>{const vp=P.filter(p=>p.v===v);return `<h3 class="pv">${VL[v]} <small>${vp.length}</small></h3>`+(vp.length?vp.map(row).join(''):`<p class="empty">No ships ${v==='external'?'on the deck':'in the bay'} yet.</p>`)}).join('');
 const sp=selId&&byId(selId);$('#selbar').hidden=!sp;if(sp)$('#seln').textContent=`${sp.n} · ${Math.round(((sp.r%360)+360)%360)}°`;
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0)dt.classList.add(lvl(fitV(D[sel],t.dataset.v)))}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-v]')){const l=lvl(fitV(d,b.dataset.v));b.disabled=l==='no';b.className=l}}
-drawShips();$('#pcount').textContent=P.filter(p=>p.v===view).length||'';$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
+drawShips();$('#pcount').textContent=P.length||'';$('#undo').disabled=!hist.length;save();renderRRR();if(shipId)renderShip()}
 function renderShip(){const c=cfg(shipId);if(!c){closeShip();return}
 $('#sdt').textContent=`${c.d.n} · ${VL[c.p.v]}`;
 if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
@@ -344,7 +344,7 @@ $('#cards').addEventListener('keydown',e=>{const c=e.target.closest('.card');if(
 $('.tabs').addEventListener('click',e=>{const t=e.target.closest('[role=tab]');if(t)setView(t.dataset.v)});
 const del=id=>{hist.push(snap());P=P.filter(p=>p.id!==id);if(selId===id)selId=null;renderPlan()};
 const turn=a=>{const p=byId(selId);if(!p)return;hist.push(snap());p.r=((p.r+a)%360+360)%360;clampIn(p);renderPlan()};
-$('#placed').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=+b.dataset.id;if(b.classList.contains('rm'))del(id);else if(b.classList.contains('ld'))openShip(id);else{selId=selId===id?null:id;renderPlan()}});
+$('#placed').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=+b.dataset.id;if(b.classList.contains('rm'))del(id);else if(b.classList.contains('ld'))openShip(id);else{const q=byId(id);if(q&&q.v!==view){selId=id;setView(q.v);return}selId=selId===id?null:id;renderPlan()}});
 $('#selbar').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const a=b.dataset.a;if(a==='l')turn(-15);else if(a==='r')turn(15);else if(a==='q')turn(90);else if(a==='s')openShip(selId);else if(a==='x')del(selId);else if(a==='d'){selId=null;renderPlan()}});
 $('#bar').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(b&&sel>=0){add(b.dataset.v,sel)}if(e.target.closest('#bx')){sel=-1;render()}});
 $('#q').addEventListener('input',renderCards);

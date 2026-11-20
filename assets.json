@@ -443,7 +443,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/pitbull.webp",
   "page": "https://starcitizen.tools/Pitbull",
-  "topsrc": "https://starcitizen.tools/File%3APitbull_3D_model_-_Above.png"
+  "topsrc": "https://starcitizen.tools/File%3APitbull_3D_model_-_Above.png",
+  "cf": 1,
+  "top": "img/top/pitbull.webp"
  },
  "Vulture": {
   "variants": [

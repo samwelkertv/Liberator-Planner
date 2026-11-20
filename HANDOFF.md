@@ -146,3 +146,8 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **No scrolling while dragging:** the body is fixed in place with no overscroll, the drawing area ignores touch scrolling, and pointermove calls `preventDefault` while dragging. Dragging a ship never scrolls the page.
 - **Internal view:** ships can't go on the front pad; they're clamped to the door at 34 m from the bow, the start of the vehicle bay. The front pad is shaded red as "outside".
 - **Export image:** a PNG with the external view on the left and the internal view on the right. Each SVG is cloned with its styles inlined, then drawn to a canvas. A dialog shows the image with a Download link, and right-click or long-press also saves it.
+
+## v11 update (Nov 20, 2026)
+- **Placed panel:** lists both views at once, grouped under External and Internal headings. Clicking a ship from the other view switches tabs and selects it. The header count is now the total across both views. The RRR list already covered every placed ship in both views.
+- **Pitbull top-down:** the wiki's "3D model - Above" image sits on a dark grid that the cutout can't separate from the dark hull. It now uses a plain rectangular crop (new `"box"` option in `tools/topdown_fix.json`, with fractions of the raw image). A `"tol"` override for the background tolerance was added too.
+- **Pitbull size:** stays about 6 × 6 m; the wiki (5.93 × 6.13), the game data and the RSI ship matrix all agree.

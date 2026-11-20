@@ -40,7 +40,7 @@ def urls(titles):
     return res
 
 
-def cutout(im):
+def cutout(im, tol_override=None):
     a = np.asarray(im.convert("RGBA")).astype(np.int16)
     rgb, alpha = a[..., :3], a[..., 3]
     if (alpha < 250).mean() > 0.05:  # already transparent
@@ -49,7 +49,7 @@ def cutout(im):
         border = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
         bg = np.median(border, axis=0)
         spread = np.percentile(np.abs(border - bg).sum(1), 90)
-        tol = max(45, min(110, spread * 1.6 + 20))
+        tol = tol_override or max(45, min(110, spread * 1.6 + 20))
         near = np.abs(rgb - bg).sum(2) < tol
         lab, _ = ndimage.label(near)
         edge = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
@@ -95,7 +95,12 @@ def main(montage=None):
         cp = os.path.join(CACHE, slug(t) + os.path.splitext(u[t].split("?")[0])[1])
         if not os.path.exists(cp):
             open(cp, "wb").write(get(u[t]))
-        im = cutout(Image.open(cp))
+        if "box" in fix.get(k, {}):  # background not separable: plain rectangular crop
+            raw = Image.open(cp).convert("RGBA")
+            x0, y0, x1, y1 = fix[k]["box"]
+            im = raw.crop((round(x0 * raw.width), round(y0 * raw.height), round(x1 * raw.width), round(y1 * raw.height)))
+        else:
+            im = cutout(Image.open(cp), fix.get(k, {}).get("tol"))
         if im is None:
             failed.append((k, "cutout"))
             continue

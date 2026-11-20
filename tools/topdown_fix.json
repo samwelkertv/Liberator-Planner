@@ -24,7 +24,12 @@
   "skip": true
  },
  "Pitbull": {
-  "skip": true
+  "box": [
+   0.06,
+   0.02,
+   0.94,
+   0.97
+  ]
  },
  "Meteor": {
   "skip": true
