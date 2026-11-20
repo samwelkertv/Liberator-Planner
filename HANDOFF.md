@@ -189,3 +189,14 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Outlines button:** toggles the dashed outlines around ships that have images. A selected ship keeps its outline. The setting is saved in localStorage `libbox` and the exported image follows it (`display` was added to the inlined export styles).
 - **Ramp door on the external view:** the forward ramp door (34.3–48.8 m from the bow) is shaded blue under the ships, with a solid line where the ramp ends.
 - **Labels:** the internal ramp label is shortened to "⇅ Forward ramp" so it no longer clips. The export says "1 ship" instead of "1 ships".
+
+## v16 update (Nov 20, 2026)
+- **10 m gap side by side:** in the side-by-side layout, JS (`layoutViews`) sizes each drawing to its content. It then sets the gap so the closest hull pixels of the two Liberators sit exactly 10 m apart (the scale-bar length), measured equal at 2000/1280/1000 px widths. It reruns on resize.
+- **Stage toolbar:** Totals, Outlines, theme, ⓘ, Clear and Reset zoom moved from the header to a toolbar at the top-right of the drawing area.
+- **Totals card (Σ Totals, saved in localStorage `libtot`):**
+  - It shows ship count, mass (`mass_total`, default loadout), and ship cost: the lowest in-game UEX buy price via api.star-citizen.wiki. 136 of 168 variants have a price; missing ones are listed.
+  - It also has an editable cargo-cost line (saved in `libcost` and in loadouts), the total, hydrogen and quantum fuel sums (game-data units), ships' own cargo SCU, crew range and gun DPS.
+  - The export header shows the same totals.
+  - `fetch_loadouts.py` now stores `mass` and `price` per variant.
+  - The card starts hidden on narrow screens.
+- **Ramp door overlay:** now shown on the internal view as well as the external one.

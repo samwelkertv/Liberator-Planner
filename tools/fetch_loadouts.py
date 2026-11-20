@@ -126,6 +126,8 @@ def main():
         ships[name] = {
             "L": (v.get("sizes") or {}).get("length"), "B": (v.get("sizes") or {}).get("beam"),
             "H": (v.get("sizes") or {}).get("height"),
+            "mass": v.get("mass_total") or v.get("mass"),
+            "price": min([x["price_buy"] for x in ((v.get("uex_prices") or {}).get("purchase") or []) if x.get("price_buy")] or [None], key=lambda z: z or 1e18),
             "role": v.get("role"), "crew": [(v.get("crew") or {}).get("min"), (v.get("crew") or {}).get("max")],
             "scm": (v.get("speed") or {}).get("scm"), "vmax": (v.get("speed") or {}).get("max"),
             "hull": v.get("health"), "cargo": v.get("cargo_capacity"),
