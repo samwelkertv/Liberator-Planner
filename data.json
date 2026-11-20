@@ -677,5 +677,93 @@
   "k": "ground",
   "e": "fit",
   "i": "fit"
+ },
+ {
+  "n": "F7C Hornet Wildfire Mk I",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "F7C-R Hornet Tracker Mk I",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "F7C-S Hornet Ghost Mk I",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "Golem Alliance",
+  "m": "Drake",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "HM6 Ballista Dunestalker",
+  "m": "Anvil",
+  "k": "ground",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "HM6 Ballista Snowblind",
+  "m": "Anvil",
+  "k": "ground",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "MISC Prospector Alliance",
+  "m": "Musashi",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "MOLE",
+  "m": "Argo",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "MOTH",
+  "m": "Argo",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "RAFT",
+  "m": "Argo",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
+ },
+ {
+  "n": "Valkyrie",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "future",
+  "i": null,
+  "fut": true
  }
 ]

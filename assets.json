@@ -12,9 +12,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/avenger-all.webp",
   "page": "https://starcitizen.tools/Avenger_Titan",
-  "topsrc": "https://starcitizen.tools/File%3AAvenger_Titan_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/avenger-all.webp"
+  "top": "img/top/avenger-all.webp",
+  "topsrc": "https://starcitizen.tools/File%3AAvenger_Titan_in_space_-_Above.jpg"
  },
  "Eclipse": {
   "variants": [
@@ -26,9 +26,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/eclipse.webp",
   "page": "https://starcitizen.tools/Eclipse",
-  "topsrc": "https://starcitizen.tools/File%3AEclipse_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/eclipse.webp"
+  "top": "img/top/eclipse.webp",
+  "topsrc": "https://starcitizen.tools/File%3AEclipse_in_space_-_Above.jpg"
  },
  "Gladius": {
   "variants": [
@@ -42,9 +42,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/gladius.webp",
   "page": "https://starcitizen.tools/Gladius",
-  "topsrc": "https://starcitizen.tools/File%3AGladius_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/gladius.webp"
+  "top": "img/top/gladius.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGladius_in_space_-_Above.jpg"
  },
  "Redeemer": {
   "variants": [
@@ -56,9 +56,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/redeemer.webp",
   "page": "https://starcitizen.tools/Redeemer",
-  "topsrc": "https://starcitizen.tools/File%3ARedeemer_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/redeemer.webp"
+  "top": "img/top/redeemer.webp",
+  "topsrc": "https://starcitizen.tools/File%3ARedeemer_in_space_-_Above.jpg"
  },
  "Sabre / Variants": {
   "variants": [
@@ -74,9 +74,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/sabre-variants.webp",
   "page": "https://starcitizen.tools/Sabre",
-  "topsrc": "https://starcitizen.tools/File%3ASabre_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/sabre-variants.webp"
+  "top": "img/top/sabre-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3ASabre_in_space_-_Above.jpg"
  },
  "Vanguard / Variants": {
   "variants": [
@@ -91,9 +91,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/vanguard-variants.webp",
   "page": "https://starcitizen.tools/Vanguard_Warden",
-  "topsrc": "https://starcitizen.tools/File%3AVanguard_Warden_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/vanguard-variants.webp"
+  "top": "img/top/vanguard-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AVanguard_Warden_in_space_-_Above.jpg"
  },
  "Arrow": {
   "variants": [
@@ -105,9 +105,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/arrow.webp",
   "page": "https://starcitizen.tools/Arrow",
-  "topsrc": "https://starcitizen.tools/File%3AArrow_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/arrow.webp"
+  "top": "img/top/arrow.webp",
+  "topsrc": "https://starcitizen.tools/File%3AArrow_in_space_-_Above.jpg"
  },
  "C8 PIsces": {
   "variants": [
@@ -121,9 +121,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/c8-pisces.webp",
   "page": "https://starcitizen.tools/C8_Pisces",
-  "topsrc": "https://starcitizen.tools/File%3AC8_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/c8-pisces.webp"
+  "top": "img/top/c8-pisces.webp",
+  "topsrc": "https://starcitizen.tools/File%3AC8_in_space_-_Above.jpg"
  },
  "F7A/C-Variants": {
   "variants": [
@@ -141,9 +141,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/f7a-c-variants.webp",
   "page": "https://starcitizen.tools/F7C_Hornet_Mk_II",
-  "topsrc": "https://starcitizen.tools/File%3AF7C_Hornet_Mk_II_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/f7a-c-variants.webp"
+  "top": "img/top/f7a-c-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AF7C_Hornet_Mk_II_in_space_-_Above.jpg"
  },
  "F8A / F8C": {
   "variants": [
@@ -156,9 +156,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/f8a-f8c.webp",
   "page": "https://starcitizen.tools/F8C_Lightning",
-  "topsrc": "https://starcitizen.tools/File%3AF8C_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/f8a-f8c.webp"
+  "top": "img/top/f8a-f8c.webp",
+  "topsrc": "https://starcitizen.tools/File%3AF8C_in_space_-_Above.jpg"
  },
  "Gladiator": {
   "variants": [
@@ -170,9 +170,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/gladiator.webp",
   "page": "https://starcitizen.tools/Gladiator",
-  "topsrc": "https://starcitizen.tools/File%3AGladiator_in_Space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/gladiator.webp"
+  "top": "img/top/gladiator.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGladiator_in_Space_-_Above.jpg"
  },
  "Hawk": {
   "variants": [
@@ -184,9 +184,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/hawk.webp",
   "page": "https://starcitizen.tools/Hawk",
-  "topsrc": "https://starcitizen.tools/File%3AHawk_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/hawk.webp"
+  "top": "img/top/hawk.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHawk_in_space_-_Above.jpg"
  },
  "Hurricane": {
   "variants": [
@@ -198,9 +198,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/hurricane.webp",
   "page": "https://starcitizen.tools/Hurricane",
-  "topsrc": "https://starcitizen.tools/File%3AHurricane_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/hurricane.webp"
+  "top": "img/top/hurricane.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHurricane_in_space_-_Above.jpg"
  },
  "Terrapin/Medic": {
   "variants": [
@@ -213,9 +213,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/terrapin-medic.webp",
   "page": "https://starcitizen.tools/Terrapin",
-  "topsrc": "https://starcitizen.tools/File%3ATerrapin_in_space_-_Above_2.jpg",
   "cf": 1,
-  "top": "img/top/terrapin-medic.webp"
+  "top": "img/top/terrapin-medic.webp",
+  "topsrc": "https://starcitizen.tools/File%3ATerrapin_in_space_-_Above_2.jpg"
  },
  "MPUV / Variants": {
   "variants": [
@@ -229,9 +229,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/mpuv-variants.webp",
   "page": "https://starcitizen.tools/MPUV_Personnel",
-  "topsrc": "https://starcitizen.tools/File%3AMPUV_1P_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/mpuv-variants.webp"
+  "top": "img/top/mpuv-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMPUV_1P_in_space_-_Above.jpg"
  },
  "SRV": {
   "variants": [
@@ -243,9 +243,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/srv.webp",
   "page": "https://starcitizen.tools/SRV",
-  "topsrc": "https://starcitizen.tools/File%3ASRV_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/srv.webp"
+  "top": "img/top/srv.webp",
+  "topsrc": "https://starcitizen.tools/File%3ASRV_in_space_-_Above.jpg"
  },
  "Mustang / Variants": {
   "variants": [
@@ -261,9 +261,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/mustang-variants.webp",
   "page": "https://starcitizen.tools/Mustang_Alpha",
-  "topsrc": "https://starcitizen.tools/File%3AMustang_Alpha_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/mustang-variants.webp"
+  "top": "img/top/mustang-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMustang_Alpha_in_space_-_Above.jpg"
  },
  "Nomad": {
   "variants": [
@@ -275,9 +275,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/nomad.webp",
   "page": "https://starcitizen.tools/Nomad",
-  "topsrc": "https://starcitizen.tools/File%3ANomad_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/nomad.webp"
+  "top": "img/top/nomad.webp",
+  "topsrc": "https://starcitizen.tools/File%3ANomad_in_space_-_Above.jpg"
  },
  "Ares": {
   "variants": [
@@ -290,9 +290,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/ares.webp",
   "page": "https://starcitizen.tools/Ares_Star_Fighter_Ion",
-  "topsrc": "https://starcitizen.tools/File%3AAres_Ion_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/ares.webp"
+  "top": "img/top/ares.webp",
+  "topsrc": "https://starcitizen.tools/File%3AAres_Ion_in_space_-_Above.jpg"
  },
  "Intrepid": {
   "variants": [
@@ -304,9 +304,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/intrepid.webp",
   "page": "https://starcitizen.tools/Intrepid",
-  "topsrc": "https://starcitizen.tools/File%3AIntrepid_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/intrepid.webp"
+  "top": "img/top/intrepid.webp",
+  "topsrc": "https://starcitizen.tools/File%3AIntrepid_in_space_-_Above.jpg"
  },
  "Bucaneer": {
   "variants": [
@@ -318,9 +318,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/bucaneer.webp",
   "page": "https://starcitizen.tools/Buccaneer",
-  "topsrc": "https://starcitizen.tools/File%3ABuccaneer_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/bucaneer.webp"
+  "top": "img/top/bucaneer.webp",
+  "topsrc": "https://starcitizen.tools/File%3ABuccaneer_in_space_-_Above.jpg"
  },
  "Clipper": {
   "variants": [
@@ -332,9 +332,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/clipper.webp",
   "page": "https://starcitizen.tools/Clipper",
-  "topsrc": "https://starcitizen.tools/File%3AClipper_in_space_-_Above.png",
   "cf": 0.33899999999999997,
-  "top": "img/top/clipper.webp"
+  "top": "img/top/clipper.webp",
+  "topsrc": "https://starcitizen.tools/File%3AClipper_in_space_-_Above.png"
  },
  "Command Module (IC)": {
   "variants": [
@@ -360,9 +360,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/cutlass-variants.webp",
   "page": "https://starcitizen.tools/Cutlass_Black",
-  "topsrc": "https://starcitizen.tools/File%3ACutlass_Black_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/cutlass-variants.webp"
+  "top": "img/top/cutlass-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACutlass_Black_in_space_-_Above.jpg"
  },
  "Cutter / Variants": {
   "variants": [
@@ -376,9 +376,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/cutter-variants.webp",
   "page": "https://starcitizen.tools/Cutter",
-  "topsrc": "https://starcitizen.tools/File%3ACutter_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/cutter-variants.webp"
+  "top": "img/top/cutter-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACutter_in_space_-_Above.jpg"
  },
  "Golem": {
   "variants": [
@@ -390,9 +390,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/golem.webp",
   "page": "https://starcitizen.tools/Golem",
-  "topsrc": "https://starcitizen.tools/File%3AGolem_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/golem.webp"
+  "top": "img/top/golem.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGolem_in_space_-_Above.jpg"
  },
  "Golem OX": {
   "variants": [
@@ -404,9 +404,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/golem-ox.webp",
   "page": "https://starcitizen.tools/Golem_OX",
-  "topsrc": "https://starcitizen.tools/File%3AGolem_OX_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/golem-ox.webp"
+  "top": "img/top/golem-ox.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGolem_OX_in_space_-_Above.jpg"
  },
  "Herald": {
   "variants": [
@@ -418,9 +418,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/herald.webp",
   "page": "https://starcitizen.tools/Herald",
-  "topsrc": "https://starcitizen.tools/File%3AHerald_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/herald.webp"
+  "top": "img/top/herald.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHerald_in_space_-_Above.jpg"
  },
  "Marauder": {
   "variants": [
@@ -433,8 +433,8 @@
   "img": "img/marauder.webp",
   "page": "https://starcitizen.tools/Marauder",
   "cf": 1,
-  "topsrc": "official Marauder top view, supplied by the user",
-  "top": "img/top/marauder.webp"
+  "top": "img/top/marauder.webp",
+  "topsrc": "official Marauder top view, supplied by the user"
  },
  "Pitbull": {
   "variants": [
@@ -446,9 +446,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/pitbull.webp",
   "page": "https://starcitizen.tools/Pitbull",
-  "topsrc": "https://starcitizen.tools/File%3APitbull_3D_model_-_Above.png",
   "cf": 1,
-  "top": "img/top/pitbull.webp"
+  "top": "img/top/pitbull.webp",
+  "topsrc": "https://starcitizen.tools/File%3APitbull_3D_model_-_Above.png"
  },
  "Vulture": {
   "variants": [
@@ -460,9 +460,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/vulture.webp",
   "page": "https://starcitizen.tools/Vulture",
-  "topsrc": "https://starcitizen.tools/File%3AVulture_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/vulture.webp"
+  "top": "img/top/vulture.webp",
+  "topsrc": "https://starcitizen.tools/File%3AVulture_in_space_-_Above.jpg"
  },
  "Prowler": {
   "variants": [
@@ -474,9 +474,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/prowler.webp",
   "page": "https://starcitizen.tools/Prowler",
-  "topsrc": "https://starcitizen.tools/File%3AProwler_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/prowler.webp"
+  "top": "img/top/prowler.webp",
+  "topsrc": "https://starcitizen.tools/File%3AProwler_in_space_-_Above.jpg"
  },
  "Prowler Utility": {
   "variants": [
@@ -488,9 +488,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/prowler-utility.webp",
   "page": "https://starcitizen.tools/Prowler_Utility",
-  "topsrc": "https://starcitizen.tools/File%3AProwler_Utility_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/prowler-utility.webp"
+  "top": "img/top/prowler-utility.webp",
+  "topsrc": "https://starcitizen.tools/File%3AProwler_Utility_in_space_-_Above.jpg"
  },
  "Talon": {
   "variants": [
@@ -503,9 +503,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/talon.webp",
   "page": "https://starcitizen.tools/Talon",
-  "topsrc": "https://starcitizen.tools/File%3ATalon_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/talon.webp"
+  "top": "img/top/talon.webp",
+  "topsrc": "https://starcitizen.tools/File%3ATalon_in_space_-_Above.jpg"
  },
  "Hyun": {
   "variants": [
@@ -539,9 +539,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/shiv.webp",
   "page": "https://starcitizen.tools/Shiv",
-  "topsrc": "https://starcitizen.tools/File%3AShiv_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/shiv.webp"
+  "top": "img/top/shiv.webp",
+  "topsrc": "https://starcitizen.tools/File%3AShiv_in_space_-_Above.jpg"
  },
  "Merlin": {
   "variants": [
@@ -553,9 +553,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/merlin.webp",
   "page": "https://starcitizen.tools/P-52_Merlin",
-  "topsrc": "https://starcitizen.tools/File%3AP-52_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/merlin.webp"
+  "top": "img/top/merlin.webp",
+  "topsrc": "https://starcitizen.tools/File%3AP-52_in_space_-_Above.jpg"
  },
  "Archimedes": {
   "variants": [
@@ -567,9 +567,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/archimedes.webp",
   "page": "https://starcitizen.tools/P-72_Archimedes",
-  "topsrc": "https://starcitizen.tools/File%3AP72_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/archimedes.webp"
+  "top": "img/top/archimedes.webp",
+  "topsrc": "https://starcitizen.tools/File%3AP72_in_space_-_Above.jpg"
  },
  "L-21 / L-22": {
   "variants": [
@@ -582,9 +582,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/l-21-l-22.webp",
   "page": "https://starcitizen.tools/L-21_Wolf",
-  "topsrc": "https://starcitizen.tools/File%3AL-21_Wolf_3D_model_-_Above.png",
   "cf": 1,
-  "top": "img/top/l-21-l-22.webp"
+  "top": "img/top/l-21-l-22.webp",
+  "topsrc": "https://starcitizen.tools/File%3AL-21_Wolf_3D_model_-_Above.png"
  },
  "S-65 Stingray": {
   "variants": [
@@ -609,9 +609,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/fury-variants.webp",
   "page": "https://starcitizen.tools/Fury",
-  "topsrc": "https://starcitizen.tools/File%3AFury_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/fury-variants.webp"
+  "top": "img/top/fury-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AFury_in_space_-_Above.jpg"
  },
  "Guardian / QI": {
   "variants": [
@@ -624,9 +624,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/guardian-qi.webp",
   "page": "https://starcitizen.tools/Guardian",
-  "topsrc": "https://starcitizen.tools/File%3AGuardian_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/guardian-qi.webp"
+  "top": "img/top/guardian-qi.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGuardian_in_space_-_Above.jpg"
  },
  "Guardian MX": {
   "variants": [
@@ -638,9 +638,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/guardian-mx.webp",
   "page": "https://starcitizen.tools/Guardian_MX",
-  "topsrc": "https://starcitizen.tools/File%3AGuardian_MX_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/guardian-mx.webp"
+  "top": "img/top/guardian-mx.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGuardian_MX_in_space_-_Above.jpg"
  },
  "Razor / variants": {
   "variants": [
@@ -654,9 +654,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/razor-variants.webp",
   "page": "https://starcitizen.tools/Razor",
-  "topsrc": "https://starcitizen.tools/File%3AMirai_Razor_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/razor-variants.webp"
+  "top": "img/top/razor-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMirai_Razor_in_space_-_Above.jpg"
  },
  "Fortune": {
   "variants": [
@@ -668,9 +668,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/fortune.webp",
   "page": "https://starcitizen.tools/Fortune",
-  "topsrc": "https://starcitizen.tools/File%3AFortune_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/fortune.webp"
+  "top": "img/top/fortune.webp",
+  "topsrc": "https://starcitizen.tools/File%3AFortune_in_space_-_Above.jpg"
  },
  "Freelancer / MIS / DUR": {
   "variants": [
@@ -684,9 +684,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/freelancer-mis-dur.webp",
   "page": "https://starcitizen.tools/Freelancer",
-  "topsrc": "https://starcitizen.tools/File%3AFreelancer_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/freelancer-mis-dur.webp"
+  "top": "img/top/freelancer-mis-dur.webp",
+  "topsrc": "https://starcitizen.tools/File%3AFreelancer_in_space_-_Above.jpg"
  },
  "Hull-A": {
   "variants": [
@@ -698,9 +698,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/hull-a.webp",
   "page": "https://starcitizen.tools/Hull_A",
-  "topsrc": "https://starcitizen.tools/File%3AHull-A_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/hull-a.webp"
+  "top": "img/top/hull-a.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHull-A_in_space_-_Above.jpg"
  },
  "Hull-B": {
   "variants": [
@@ -712,9 +712,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/hull-b.webp",
   "page": "https://starcitizen.tools/Hull_B",
-  "topsrc": "https://starcitizen.tools/File%3AHull_B_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/hull-b.webp"
+  "top": "img/top/hull-b.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHull_B_in_space_-_Above.jpg"
  },
  "Prospector": {
   "variants": [
@@ -726,9 +726,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/prospector.webp",
   "page": "https://starcitizen.tools/Prospector",
-  "topsrc": "https://starcitizen.tools/File%3AProspector_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/prospector.webp"
+  "top": "img/top/prospector.webp",
+  "topsrc": "https://starcitizen.tools/File%3AProspector_in_space_-_Above.jpg"
  },
  "Reliant / Variants": {
   "variants": [
@@ -742,8 +742,7 @@
   "H": 4.5,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/reliant-variants.webp",
-  "page": "https://starcitizen.tools/Reliant_Kore",
-  "topsrc": "https://starcitizen.tools/File%3AReliant_Kore_in_SelfLand_-_Above.jpg"
+  "page": "https://starcitizen.tools/Reliant_Kore"
  },
  "Starlite": {
   "variants": [
@@ -755,9 +754,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/starlite.webp",
   "page": "https://starcitizen.tools/Starlite",
-  "topsrc": "https://starcitizen.tools/File%3AStarlite_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/starlite.webp"
+  "top": "img/top/starlite.webp",
+  "topsrc": "https://starcitizen.tools/File%3AStarlite_in_space_-_Above.jpg"
  },
  "100i / Variants": {
   "variants": [
@@ -771,9 +770,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/100i-variants.webp",
   "page": "https://starcitizen.tools/100i",
-  "topsrc": "https://starcitizen.tools/File%3A100i_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/100i-variants.webp"
+  "top": "img/top/100i-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3A100i_in_space_-_Above.jpg"
  },
  "300i / Variants": {
   "variants": [
@@ -788,9 +787,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/300i-variants.webp",
   "page": "https://starcitizen.tools/300i",
-  "topsrc": "https://starcitizen.tools/File%3A300i_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/300i-variants.webp"
+  "top": "img/top/300i-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3A300i_in_space_-_Above.jpg"
  },
  "85X": {
   "variants": [
@@ -802,9 +801,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/85x.webp",
   "page": "https://starcitizen.tools/85X",
-  "topsrc": "https://starcitizen.tools/File%3A85x_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/85x.webp"
+  "top": "img/top/85x.webp",
+  "topsrc": "https://starcitizen.tools/File%3A85x_in_space_-_Above.jpg"
  },
  "M50": {
   "variants": [
@@ -816,9 +815,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/m50.webp",
   "page": "https://starcitizen.tools/M50",
-  "topsrc": "https://starcitizen.tools/File%3AM50_in_Space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/m50.webp"
+  "top": "img/top/m50.webp",
+  "topsrc": "https://starcitizen.tools/File%3AM50_in_Space_-_Above.jpg"
  },
  "M80": {
   "variants": [
@@ -830,9 +829,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/m80.webp",
   "page": "https://starcitizen.tools/M80",
-  "topsrc": "https://starcitizen.tools/File%3AM80_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/m80.webp"
+  "top": "img/top/m80.webp",
+  "topsrc": "https://starcitizen.tools/File%3AM80_in_space_-_Above.jpg"
  },
  "Aurora MkI": {
   "variants": [
@@ -849,9 +848,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/aurora-mki.webp",
   "page": "https://starcitizen.tools/Aurora_Mk_I_ES",
-  "topsrc": "https://starcitizen.tools/File%3AAurora_ES_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/aurora-mki.webp"
+  "top": "img/top/aurora-mki.webp",
+  "topsrc": "https://starcitizen.tools/File%3AAurora_ES_in_space_-_Above.jpg"
  },
  "Aurora MkII": {
   "variants": [
@@ -863,9 +862,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/aurora-mkii.webp",
   "page": "https://starcitizen.tools/Aurora_Mk_II",
-  "topsrc": "https://starcitizen.tools/File%3AAurora_Mk_II_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/aurora-mkii.webp"
+  "top": "img/top/aurora-mkii.webp",
+  "topsrc": "https://starcitizen.tools/File%3AAurora_Mk_II_in_space_-_Above.jpg"
  },
  "Meteor": {
   "variants": [
@@ -888,9 +887,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/mantis.webp",
   "page": "https://starcitizen.tools/Mantis",
-  "topsrc": "https://starcitizen.tools/File%3AMantis_in_Space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/mantis.webp"
+  "top": "img/top/mantis.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMantis_in_Space_-_Above.jpg"
  },
  "Salvation": {
   "variants": [
@@ -902,9 +901,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/salvation.webp",
   "page": "https://starcitizen.tools/Salvation",
-  "topsrc": "https://starcitizen.tools/File%3ASalvation_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/salvation.webp"
+  "top": "img/top/salvation.webp",
+  "topsrc": "https://starcitizen.tools/File%3ASalvation_in_space_-_Above.jpg"
  },
  "Scorpius": {
   "variants": [
@@ -917,9 +916,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/scorpius.webp",
   "page": "https://starcitizen.tools/Scorpius",
-  "topsrc": "https://starcitizen.tools/File%3AScorpius_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/scorpius.webp"
+  "top": "img/top/scorpius.webp",
+  "topsrc": "https://starcitizen.tools/File%3AScorpius_in_space_-_Above.jpg"
  },
  "Skylark": {
   "variants": [
@@ -943,9 +942,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/zeus-variants.webp",
   "page": "https://starcitizen.tools/Zeus_Mk_II_ES",
-  "topsrc": "https://starcitizen.tools/File%3AZeus_MkII_ES_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/zeus-variants.webp"
+  "top": "img/top/zeus-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AZeus_MkII_ES_in_space_-_Above.jpg"
  },
  "Blade": {
   "variants": [
@@ -968,9 +967,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/defender.webp",
   "page": "https://starcitizen.tools/Defender",
-  "topsrc": "https://starcitizen.tools/File%3ADefender_in_Space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/defender.webp"
+  "top": "img/top/defender.webp",
+  "topsrc": "https://starcitizen.tools/File%3ADefender_in_Space_-_Above.jpg"
  },
  "Glaive": {
   "variants": [
@@ -981,8 +980,7 @@
   "H": 9,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/glaive.webp",
-  "page": "https://starcitizen.tools/Glaive",
-  "topsrc": "https://starcitizen.tools/File%3AGlaive-top-detail-isc-2020-06-18.jpg"
+  "page": "https://starcitizen.tools/Glaive"
  },
  "Khartu-al": {
   "variants": [
@@ -993,8 +991,7 @@
   "H": 8.75,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/khartu-al.webp",
-  "page": "https://starcitizen.tools/Khartu-al",
-  "topsrc": "https://starcitizen.tools/File%3AKhartu-al_in_SelfLand_-_Above.jpg"
+  "page": "https://starcitizen.tools/Khartu-al"
  },
  "San'tok.yāi": {
   "variants": [
@@ -1006,9 +1003,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/san-tok-y-i.webp",
   "page": "https://starcitizen.tools/San%27tok.y%C4%81i",
-  "topsrc": "https://starcitizen.tools/File%3ASan%27Tok.Yai_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/san-tok-y-i.webp"
+  "top": "img/top/san-tok-y-i.webp",
+  "topsrc": "https://starcitizen.tools/File%3ASan%27Tok.Yai_in_space_-_Above.jpg"
  },
  "Scythe": {
   "variants": [
@@ -1019,8 +1016,7 @@
   "H": 9,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/scythe.webp",
-  "page": "https://starcitizen.tools/Scythe",
-  "topsrc": "https://starcitizen.tools/File%3AScythe-top-isc-2020-06-18.jpg"
+  "page": "https://starcitizen.tools/Scythe"
  },
  "Ballista": {
   "variants": [
@@ -1032,9 +1028,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/ballista.webp",
   "page": "https://starcitizen.tools/Ballista",
-  "topsrc": "https://starcitizen.tools/File%3ABallista_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/ballista.webp"
+  "top": "img/top/ballista.webp",
+  "topsrc": "https://starcitizen.tools/File%3ABallista_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
  },
  "Centurion": {
   "variants": [
@@ -1046,9 +1042,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/centurion.webp",
   "page": "https://starcitizen.tools/Centurion",
-  "topsrc": "https://starcitizen.tools/File%3ACenturion_-_Above.png",
   "cf": 1,
-  "top": "img/top/centurion.webp"
+  "top": "img/top/centurion.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACenturion_-_Above.png"
  },
  "Spartan": {
   "variants": [
@@ -1060,9 +1056,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/spartan.webp",
   "page": "https://starcitizen.tools/Spartan",
-  "topsrc": "https://starcitizen.tools/File%3ASpartan_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/spartan.webp"
+  "top": "img/top/spartan.webp",
+  "topsrc": "https://starcitizen.tools/File%3ASpartan_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
  },
  "Nox": {
   "variants": [
@@ -1075,9 +1071,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/nox.webp",
   "page": "https://starcitizen.tools/Nox",
-  "topsrc": "https://starcitizen.tools/File%3ANox_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/nox.webp"
+  "top": "img/top/nox.webp",
+  "topsrc": "https://starcitizen.tools/File%3ANox_in_space_-_Above.jpg"
  },
  "ATLS / GEO / ITKI": {
   "variants": [
@@ -1092,9 +1088,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/atls-geo-itki.webp",
   "page": "https://starcitizen.tools/ATLS",
-  "topsrc": "https://starcitizen.tools/File%3AATLS_in-game_hangar_cutout_-_Above.png",
   "cf": 1,
-  "top": "img/top/atls-geo-itki.webp"
+  "top": "img/top/atls-geo-itki.webp",
+  "topsrc": "https://starcitizen.tools/File%3AATLS_in-game_hangar_cutout_-_Above.png"
  },
  "CSV-SM": {
   "variants": [
@@ -1106,9 +1102,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/csv-sm.webp",
   "page": "https://starcitizen.tools/CSV-SM",
-  "topsrc": "https://starcitizen.tools/File%3ACSV-SM_in_hangar_-_In-game_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/csv-sm.webp"
+  "top": "img/top/csv-sm.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACSV-SM_in_hangar_-_In-game_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
  },
  "Hoverquad": {
   "variants": [
@@ -1120,9 +1116,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/hoverquad.webp",
   "page": "https://starcitizen.tools/HoverQuad",
-  "topsrc": "https://starcitizen.tools/File%3AHoverQuad_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/hoverquad.webp"
+  "top": "img/top/hoverquad.webp",
+  "topsrc": "https://starcitizen.tools/File%3AHoverQuad_in_space_-_Above.jpg"
  },
  "Dragonfly": {
   "variants": [
@@ -1135,9 +1131,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/dragonfly.webp",
   "page": "https://starcitizen.tools/Dragonfly",
-  "topsrc": "https://starcitizen.tools/File%3ADragonfly_in_space_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/dragonfly.webp"
+  "top": "img/top/dragonfly.webp",
+  "topsrc": "https://starcitizen.tools/File%3ADragonfly_in_space_-_Above.jpg"
  },
  "Mule": {
   "variants": [
@@ -1149,9 +1145,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/mule.webp",
   "page": "https://starcitizen.tools/Mule",
-  "topsrc": "https://starcitizen.tools/File%3AMule_in_garage_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/mule.webp"
+  "top": "img/top/mule.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMule_in_garage_-_Above.jpg"
  },
  "MDC (PDC)": {
   "variants": [
@@ -1174,9 +1170,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/mtc.webp",
   "page": "https://starcitizen.tools/MTC",
-  "topsrc": "https://starcitizen.tools/File%3AMTC_in_hangar_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/mtc.webp"
+  "top": "img/top/mtc.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMTC_in_hangar_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "PTV (Golf cart)": {
   "variants": [
@@ -1187,8 +1183,7 @@
   "H": 2.2,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/ptv-golf-cart.webp",
-  "page": "https://starcitizen.tools/PTV",
-  "topsrc": "https://starcitizen.tools/File%3APTV_in_selfland_-_Above.jpg"
+  "page": "https://starcitizen.tools/PTV"
  },
  "ROC": {
   "variants": [
@@ -1200,9 +1195,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/roc.webp",
   "page": "https://starcitizen.tools/ROC",
-  "topsrc": "https://starcitizen.tools/File%3AROC_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/roc.webp"
+  "top": "img/top/roc.webp",
+  "topsrc": "https://starcitizen.tools/File%3AROC_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "ROC-DS": {
   "variants": [
@@ -1214,9 +1209,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/roc-ds.webp",
   "page": "https://starcitizen.tools/ROC-DS",
-  "topsrc": "https://starcitizen.tools/File%3AROC-DS_in-game_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/roc-ds.webp"
+  "top": "img/top/roc-ds.webp",
+  "topsrc": "https://starcitizen.tools/File%3AROC-DS_in-game_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
  },
  "STV (buggy)": {
   "variants": [
@@ -1251,9 +1246,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/pulse-lx.webp",
   "page": "https://starcitizen.tools/Pulse",
-  "topsrc": "https://starcitizen.tools/File%3APulse_in_hangar_-_In-game_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg",
   "cf": 1,
-  "top": "img/top/pulse-lx.webp"
+  "top": "img/top/pulse-lx.webp",
+  "topsrc": "https://starcitizen.tools/File%3APulse_in_hangar_-_In-game_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
  },
  "G12 / A": {
   "variants": [],
@@ -1276,9 +1271,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/x1-variants.webp",
   "page": "https://starcitizen.tools/X1",
-  "topsrc": "https://starcitizen.tools/File%3AX1_in_space_-_Above_2.jpg",
   "cf": 1,
-  "top": "img/top/x1-variants.webp"
+  "top": "img/top/x1-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3AX1_in_space_-_Above_2.jpg"
  },
  "Lynx": {
   "variants": [
@@ -1290,9 +1285,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/lynx.webp",
   "page": "https://starcitizen.tools/Lynx",
-  "topsrc": "https://starcitizen.tools/File%3ALynx_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/lynx.webp"
+  "top": "img/top/lynx.webp",
+  "topsrc": "https://starcitizen.tools/File%3ALynx_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "Ursa": {
   "variants": [
@@ -1306,9 +1301,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/ursa.webp",
   "page": "https://starcitizen.tools/Ursa",
-  "topsrc": "https://starcitizen.tools/File%3AUrsa_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/ursa.webp"
+  "top": "img/top/ursa.webp",
+  "topsrc": "https://starcitizen.tools/File%3AUrsa_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "Cyclone / Variants": {
   "variants": [
@@ -1324,9 +1319,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/cyclone-variants.webp",
   "page": "https://starcitizen.tools/Cyclone",
-  "topsrc": "https://starcitizen.tools/File%3ACyclone_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/cyclone-variants.webp"
+  "top": "img/top/cyclone-variants.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACyclone_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "Cyclone MT": {
   "variants": [
@@ -1338,9 +1333,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/cyclone-mt.webp",
   "page": "https://starcitizen.tools/Cyclone_MT",
-  "topsrc": "https://starcitizen.tools/File%3ACyclone_MT_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/cyclone-mt.webp"
+  "top": "img/top/cyclone-mt.webp",
+  "topsrc": "https://starcitizen.tools/File%3ACyclone_MT_on_Lyria_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
  },
  "Nova": {
   "variants": [
@@ -1363,9 +1358,9 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/storm.webp",
   "page": "https://starcitizen.tools/Storm",
-  "topsrc": "https://starcitizen.tools/File%3AStorm_3D_concept_-_Above.png",
   "cf": 1,
-  "top": "img/top/storm.webp"
+  "top": "img/top/storm.webp",
+  "topsrc": "https://starcitizen.tools/File%3AStorm_3D_concept_-_Above.png"
  },
  "Storm AA": {
   "variants": [
@@ -1377,8 +1372,159 @@
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/storm-aa.webp",
   "page": "https://starcitizen.tools/Storm_AA",
-  "topsrc": "https://starcitizen.tools/File%3AStorm_AA_on_Calliope_-_Above_-_Cutout_SCT_Stripe_BG.jpg",
   "cf": 1,
-  "top": "img/top/storm-aa.webp"
+  "top": "img/top/storm-aa.webp",
+  "topsrc": "https://starcitizen.tools/File%3AStorm_AA_on_Calliope_-_Above_-_Cutout_SCT_Stripe_BG.jpg"
+ },
+ "F7C Hornet Wildfire Mk I": {
+  "variants": [
+   "F7C Hornet Wildfire Mk I"
+  ],
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/f7c-hornet-wildfire-mk-i.webp",
+  "page": "https://starcitizen.tools/F7C_Hornet_Wildfire_Mk_I",
+  "cf": 1,
+  "top": "img/top/f7c-hornet-wildfire-mk-i.webp",
+  "topsrc": "https://starcitizen.tools/File%3AF7C_Hornet_Wildfire_in_space_-_Above.jpg"
+ },
+ "F7C-R Hornet Tracker Mk I": {
+  "variants": [
+   "F7C-R Hornet Tracker Mk I"
+  ],
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/f7c-r-hornet-tracker-mk-i.webp",
+  "page": "https://starcitizen.tools/F7C-R_Hornet_Tracker_Mk_I",
+  "cf": 1,
+  "top": "img/top/f7c-r-hornet-tracker-mk-i.webp",
+  "topsrc": "https://starcitizen.tools/File%3AF7C-R_in_space_-_Above.jpg"
+ },
+ "F7C-S Hornet Ghost Mk I": {
+  "variants": [
+   "F7C-S Hornet Ghost Mk I"
+  ],
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/f7c-s-hornet-ghost-mk-i.webp",
+  "page": "https://starcitizen.tools/F7C-S_Hornet_Ghost_Mk_I",
+  "cf": 1,
+  "top": "img/top/f7c-s-hornet-ghost-mk-i.webp",
+  "topsrc": "https://starcitizen.tools/File%3AF7C-S_Hornet_Ghost_in_space_-_Above.jpg"
+ },
+ "Golem Alliance": {
+  "variants": [
+   "Golem Alliance"
+  ],
+  "L": 15.5,
+  "B": 7,
+  "H": 5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/golem-alliance.webp",
+  "page": "https://starcitizen.tools/Golem",
+  "cf": 1,
+  "top": "img/top/golem-alliance.webp",
+  "topsrc": "https://starcitizen.tools/File%3AGolem_in_space_-_Above.jpg"
+ },
+ "HM6 Ballista Dunestalker": {
+  "variants": [
+   "HM6 Ballista Dunestalker"
+  ],
+  "L": 17,
+  "B": 7,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hm6-ballista-dunestalker.webp",
+  "page": "https://starcitizen.tools/Ballista",
+  "cf": 1,
+  "top": "img/top/hm6-ballista-dunestalker.webp",
+  "topsrc": "https://starcitizen.tools/File%3ABallista_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
+ },
+ "HM6 Ballista Snowblind": {
+  "variants": [
+   "HM6 Ballista Snowblind"
+  ],
+  "L": 17,
+  "B": 7,
+  "H": 5.5,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/hm6-ballista-snowblind.webp",
+  "page": "https://starcitizen.tools/Ballista",
+  "cf": 1,
+  "top": "img/top/hm6-ballista-snowblind.webp",
+  "topsrc": "https://starcitizen.tools/File%3ABallista_in_hangar_cutout_-_Stripe_BG_SCT_logo_-_Above.jpg"
+ },
+ "MISC Prospector Alliance": {
+  "variants": [
+   "MISC Prospector Alliance"
+  ],
+  "L": 26.5,
+  "B": 16.5,
+  "H": 8,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/misc-prospector-alliance.webp",
+  "page": "https://starcitizen.tools/Prospector",
+  "cf": 1,
+  "top": "img/top/misc-prospector-alliance.webp",
+  "topsrc": "https://starcitizen.tools/File%3AProspector_in_space_-_Above.jpg"
+ },
+ "MOLE": {
+  "variants": [
+   "MOLE"
+  ],
+  "L": 45,
+  "B": 26,
+  "H": 15,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/mole.webp",
+  "page": "https://starcitizen.tools/MOLE",
+  "cf": 1,
+  "top": "img/top/mole.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMole_in_Space_-_Above.jpg"
+ },
+ "MOTH": {
+  "variants": [
+   "MOTH"
+  ],
+  "L": 45.0,
+  "B": 25.0,
+  "H": 15.0,
+  "dsrc": "RSI store page",
+  "img": "img/moth.webp",
+  "page": "https://starcitizen.tools/MOTH",
+  "cf": 1,
+  "top": "img/top/moth.webp",
+  "topsrc": "https://starcitizen.tools/File%3AMOTH_in_space_-_Above.jpg"
+ },
+ "RAFT": {
+  "variants": [
+   "RAFT"
+  ],
+  "L": 39.5,
+  "B": 23,
+  "H": 12,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/raft.webp",
+  "page": "https://starcitizen.tools/RAFT"
+ },
+ "Valkyrie": {
+  "variants": [
+   "Valkyrie"
+  ],
+  "L": 48,
+  "B": 38,
+  "H": 12,
+  "dsrc": "game data via api.star-citizen.wiki",
+  "img": "img/valkyrie.webp",
+  "page": "https://starcitizen.tools/Valkyrie",
+  "cf": 1,
+  "top": "img/top/valkyrie.webp",
+  "topsrc": "https://starcitizen.tools/File%3AValkyrie_in_space_-_Above.jpg"
  }
 }

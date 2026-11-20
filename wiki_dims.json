@@ -413,6 +413,18 @@
   "H": 28.5,
   "src": "https://starcitizen.tools/Reliant_Kore"
  },
+ "MOLE": {
+  "L": 45.0,
+  "B": 25.0,
+  "H": 15.0,
+  "src": "https://starcitizen.tools/MOLE"
+ },
+ "MOTH": {
+  "L": 45.0,
+  "B": 25.75,
+  "H": 15.0,
+  "src": "https://starcitizen.tools/MOTH"
+ },
  "MPUV Cargo": {
   "L": 9.5,
   "B": 8.5,
@@ -538,6 +550,12 @@
   "B": 0.9,
   "H": 1.0,
   "src": "https://starcitizen.tools/Pulse"
+ },
+ "RAFT": {
+  "L": 39.5,
+  "B": 23.0,
+  "H": 12.0,
+  "src": "https://starcitizen.tools/RAFT"
  },
  "ROC": {
   "L": 6.0,
@@ -833,6 +851,24 @@
   "H": 5.0,
   "src": "https://starcitizen.tools/Eclipse (rendered infobox)"
  },
+ "F7C Hornet Wildfire Mk I": {
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "src": "https://starcitizen.tools/F7C_Hornet_Wildfire_Mk_I (rendered infobox)"
+ },
+ "F7C-R Hornet Tracker Mk I": {
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "src": "https://starcitizen.tools/F7C-R_Hornet_Tracker_Mk_I (rendered infobox)"
+ },
+ "F7C-S Hornet Ghost Mk I": {
+  "L": 28.25,
+  "B": 25.5,
+  "H": 7.5,
+  "src": "https://starcitizen.tools/F7C-S_Hornet_Ghost_Mk_I (rendered infobox)"
+ },
  "Gladius Pirate": {
   "L": 21.0,
   "B": 17.5,
@@ -856,6 +892,18 @@
   "B": 7.0,
   "H": 5.0,
   "src": "https://starcitizen.tools/Ballista (rendered infobox)"
+ },
+ "HM6 Ballista Dunestalker": {
+  "L": 17.0,
+  "B": 7.0,
+  "H": 5.5,
+  "src": "https://starcitizen.tools/Ballista_Dunestalker (rendered infobox)"
+ },
+ "HM6 Ballista Snowblind": {
+  "L": 17.0,
+  "B": 7.0,
+  "H": 5.5,
+  "src": "https://starcitizen.tools/Ballista_Snowblind (rendered infobox)"
  },
  "HM6 Centurion": {
   "L": 17.0,
@@ -988,6 +1036,12 @@
   "B": 15.0,
   "H": 8.0,
   "src": "https://starcitizen.tools/Talon_Shrike (rendered infobox)"
+ },
+ "Valkyrie": {
+  "L": 48.0,
+  "B": 38.0,
+  "H": 12.0,
+  "src": "https://starcitizen.tools/Valkyrie (rendered infobox)"
  },
  "Vanduul Scythe": {
   "L": 39.0,

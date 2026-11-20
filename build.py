@@ -44,6 +44,9 @@ def main(path):
         if e or i:
             out.append({"n": " ".join(str(b).split()), "m": " ".join(str(maker).split()),
                         "k": kind, "e": e, "i": i})
+    if os.path.exists("tools/future.json"):  # ships not in the sheet that may fit the top pads in a future update
+        for n, e in json.load(open("tools/future.json", encoding="utf-8")).items():
+            out.append({"n": n, "m": e["m"], "k": e["k"], "e": "future", "i": None, "fut": True})
     json.dump(out, open("data.json", "w"), ensure_ascii=False, indent=1)
     assets = json.load(open("assets.json", encoding="utf-8")) if os.path.exists("assets.json") else {}
     page, split = [], []

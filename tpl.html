@@ -103,7 +103,7 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 .pl .ld{border:0;border-radius:0;padding:0 10px;font-weight:600;font-size:14px;border-left:1px solid var(--line)}
 .pl .chg i.st{opacity:.9}
 .mod{color:var(--acc);font-weight:600}
-#sd{width:min(680px,calc(100vw - 24px))}
+#sd{width:min(980px,calc(100vw - 24px))}#sb{overflow-x:hidden;padding-right:8px}#sb .stats{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 #sb{overflow:auto;max-height:70vh}
 .vr{display:flex;gap:8px;align-items:center;margin:0 0 10px;font-weight:600}
 select{font:inherit;font-size:15px;min-height:40px;max-width:100%;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -195,7 +195,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 </main>
 <aside class="panel right" id="p-list" aria-label="Ships and vehicles" hidden><div class="ph"><h2>Ships</h2><button class="pclose" aria-label="Close panel">✕</button></div>
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
-<div class="chips" role="group" aria-label="Filter"><button data-f="all" aria-pressed="true">All</button><button data-f="ship" aria-pressed="false">Ships</button><button data-f="ground" aria-pressed="false">Ground</button><button data-f="in" aria-pressed="false">Fits inside</button><button data-f="front" aria-pressed="false">Front pad only</button><button data-f="own" aria-pressed="false">★ Owned</button></div>
+<div class="chips" role="group" aria-label="Filter"><button data-f="all" aria-pressed="true">All</button><button data-f="ship" aria-pressed="false">Ships</button><button data-f="ground" aria-pressed="false">Ground</button><button data-f="in" aria-pressed="false">Fits inside</button><button data-f="front" aria-pressed="false">Front pad only</button><button data-f="own" aria-pressed="false">★ Owned</button><button data-f="fut" aria-pressed="false" title="Ships not in the fit sheet that are under 16 m tall and fit the top-deck width. Untested; may be supported in a future update.">Future support</button></div>
 <div class="key"><span class="b ok">✓ good fit</span><span class="b warn">! needs tricks / sketchy</span><span class="b unk">? not tested</span><span class="b no">✕ doesn't fit</span></div>
 <p class="cnt"><span id="count"></span> that fit somewhere on the Liberator</p>
 <div id="cards"></div>
@@ -221,11 +221,11 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 
 <script>{
 const D=__DATA__;
-const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad only, worked but sketchy',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged'};
+const L={fit:'Good fit',front:'Front pad only',front_tricks:'Front pad only, worked but sketchy',fit_tricks:'Needs tricks / barely fits',untested:'Not tested',fit_bugged:'Fits but bugged',future:'Future possible support (untested)'};
 const SL={front:['Front pad','front','external'],up1:['Upper pad 1','top','external'],up2:['Upper pad 2','top','external'],g1:['Garage 1','hangar','internal'],g2:['Garage 2','hangar','internal']};
 const SK=Object.keys(SL);
 const lvl=s=>!s?'no':(s==='fit'||s==='front')?'ok':'warn';
-const cls=s=>s==='untested'?'unk':lvl(s);
+const cls=s=>s==='untested'||s==='future'?'unk':lvl(s);
 const st=(d,z)=>z==='hangar'?d.i:z==='top'?(d.e&&!d.e.startsWith('front')?d.e:null):d.e;
 const fitS=(d,s)=>st(d,SL[s][1]);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -272,7 +272,7 @@ const byId=id=>P.find(p=>p.id===id);
 function cfg(id){const p=byId(id);if(!p)return null;const d=byName(p.n),vs=variants(d);if(!vs.length)return{p,d,vs,ship:null};if(!p.f||!vs.includes(p.f.v))p.f={v:vs[0],m:{}};return{p,d,vs,f:p.f,ship:LD.ships[p.f.v]}}
 const fitV=(d,v)=>d[VS[v]];
 const sym=s=>({ok:'✓',unk:'?',warn:'!',no:'✕'})[cls(s)];
-const badge=(s,name)=>`<span class="b ${cls(s)}" title="${esc(name+': '+(s?L[s]:NF))}">${s&&s.startsWith('front')?'Front pad':name} ${sym(s)}</span>`;
+const badge=(s,name)=>s==='future'?`<span class="b unk" title="${esc(L.future)}">Future ?</span>`:`<span class="b ${cls(s)}" title="${esc(name+': '+(s?L[s]:NF))}">${s&&s.startsWith('front')?'Front pad':name} ${sym(s)}</span>`;
 const desc=d=>`${dims(d)} · Deck: ${d.e?L[d.e]:NF} · Garage: ${d.i?L[d.i]:NF}`;
 const pv=p=>{const d=byName(p.n),vs=variants(d);return p.f&&vs.includes(p.f.v)?p.f.v:vs[0]};
 const SRCS={store:'RSI store page',game:'Game data',wiki:'Wiki'},SRCORD={store:['store','game','wiki'],game:['game','store','wiki'],wiki:['wiki','store','game']};
@@ -291,7 +291,7 @@ if(p.v==='external'&&(p.x<0||p.x>LIBL||Math.abs(p.y)>LIBW/2))o.push(['warn','Off
 if(p.v==='internal'&&corners(p).some(([x,y])=>x<BAY.x0||x>BAY.x1||Math.abs(y)>BAY.h))o.push(['warn','Outside the vehicle bay (approximate outline)']);
 for(const q of P)if(q!==p&&q.v===p.v&&hit(p,q))o.push(['bad',`Overlaps ${q.n}`]);return o}
 const worst=o=>o.some(x=>x[0]==='bad')?'bad':o.some(x=>x[0]==='warn')?'warn':o.some(x=>x[0]==='unk')?'unk':'ok';
-function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>(filt==='all'||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front'))||(filt==='own'&&OWN.has(d.n)))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
+function shown(){const q=$('#q').value.trim().toLowerCase();return D.map((d,i)=>[d,i]).filter(([d])=>((filt==='all'&&!d.fut)||(filt==='fut'&&d.fut)||(filt==='ship'&&d.k==='ship')||(filt==='ground'&&d.k==='ground')||(filt==='in'&&!!d.i)||(filt==='front'&&!!d.e&&d.e.startsWith('front'))||(filt==='own'&&OWN.has(d.n)))&&(!q||(d.n+' '+d.m).toLowerCase().includes(q)))}
 function renderCards(){const r=shown();$('#count').textContent=`${r.length} of ${D.length} ships and vehicles`;
 $('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><div class="ct"><span class="grip" aria-hidden="true">⠿</span>${thumb(d)}<span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground':''}</small><small>${dims(d)}</small></span><button class="own${OWN.has(d.n)?' on':''}" data-own="${i}" aria-pressed="${OWN.has(d.n)}" title="${OWN.has(d.n)?'Owned: click to untag':'Tag as owned'}" aria-label="Owned: ${esc(d.n)}">${OWN.has(d.n)?'★':'☆'}</button></div><div class="cb"><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span><span class="adds"><button class="addv" data-add="external" data-i="${i}"${d.e?'':' disabled'} title="${d.e?'Add to the external deck':'Doesn’t fit outside'}">+ Ext</button><button class="addv" data-add="internal" data-i="${i}"${d.i?'':' disabled'} title="${d.i?'Add to the internal bay':'Doesn’t fit inside'}">+ Int</button></span></div></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
 function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').classList.toggle('off',v!=='external');$('#v-internal').classList.toggle('off',v!=='internal');for(const x of $$('.view'))x.classList.toggle('active',x.id==='v-'+v);const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}

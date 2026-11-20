@@ -6,7 +6,7 @@ UA = {"User-Agent": "liberator-planner/1.0"}
 def get(u):
     return json.loads(urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=60).read())
 A = json.load(open(os.path.join(ROOT, "assets.json"), encoding="utf-8"))
-pages = {k: urllib.parse.unquote(v["page"].rsplit("/", 1)[1]).replace("_", " ") for k, v in A.items()}
+pages = {k: urllib.parse.unquote(v["page"].rsplit("/", 1)[1]).replace("_", " ") for k, v in A.items() if v.get("page")}
 imgs = {}
 titles = sorted(set(pages.values()))
 for i in range(0, len(titles), 20):

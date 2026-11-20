@@ -32,5 +32,24 @@
  },
  "Spartan": {
   "wiki": "Spartan"
+ },
+ "Golem Alliance": {
+  "wiki": "Golem"
+ },
+ "HM6 Ballista Dunestalker": {
+  "wiki": "Ballista"
+ },
+ "HM6 Ballista Snowblind": {
+  "wiki": "Ballista"
+ },
+ "MISC Prospector Alliance": {
+  "wiki": "Prospector"
+ },
+ "MOTH": {
+  "wiki": "MOTH",
+  "L": 45.0,
+  "B": 25.0,
+  "H": 15.0,
+  "src": "RSI store page"
  }
 }

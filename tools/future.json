@@ -1,0 +1,134 @@
+{
+ "F7C Hornet Wildfire Mk I": {
+  "m": "Anvil",
+  "k": "ship",
+  "v": [
+   "F7C Hornet Wildfire Mk I"
+  ],
+  "size": [
+   22.5,
+   21.5,
+   6.5
+  ]
+ },
+ "F7C-R Hornet Tracker Mk I": {
+  "m": "Anvil",
+  "k": "ship",
+  "v": [
+   "F7C-R Hornet Tracker Mk I"
+  ],
+  "size": [
+   22.5,
+   21.5,
+   6.5
+  ]
+ },
+ "F7C-S Hornet Ghost Mk I": {
+  "m": "Anvil",
+  "k": "ship",
+  "v": [
+   "F7C-S Hornet Ghost Mk I"
+  ],
+  "size": [
+   22.5,
+   21.5,
+   6.5
+  ]
+ },
+ "Golem Alliance": {
+  "m": "Drake",
+  "k": "ship",
+  "v": [
+   "Golem Alliance"
+  ],
+  "size": [
+   15.5,
+   7,
+   5
+  ]
+ },
+ "HM6 Ballista Dunestalker": {
+  "m": "Anvil",
+  "k": "ground",
+  "v": [
+   "HM6 Ballista Dunestalker"
+  ],
+  "size": [
+   17.0,
+   7.0,
+   5.5
+  ]
+ },
+ "HM6 Ballista Snowblind": {
+  "m": "Anvil",
+  "k": "ground",
+  "v": [
+   "HM6 Ballista Snowblind"
+  ],
+  "size": [
+   17.0,
+   7.0,
+   5.5
+  ]
+ },
+ "MISC Prospector Alliance": {
+  "m": "Musashi",
+  "k": "ship",
+  "v": [
+   "MISC Prospector Alliance"
+  ],
+  "size": [
+   26.5,
+   16.5,
+   8
+  ]
+ },
+ "MOLE": {
+  "m": "Argo",
+  "k": "ship",
+  "v": [
+   "MOLE"
+  ],
+  "size": [
+   45.0,
+   25.0,
+   15.0
+  ]
+ },
+ "MOTH": {
+  "m": "Argo",
+  "k": "ship",
+  "v": [
+   "MOTH"
+  ],
+  "size": [
+   45.0,
+   25.0,
+   15.0
+  ]
+ },
+ "RAFT": {
+  "m": "Argo",
+  "k": "ship",
+  "v": [
+   "RAFT"
+  ],
+  "size": [
+   39.5,
+   23.0,
+   12.0
+  ]
+ },
+ "Valkyrie": {
+  "m": "Anvil",
+  "k": "ship",
+  "v": [
+   "Valkyrie"
+  ],
+  "size": [
+   46.5,
+   15.0,
+   10.5
+  ]
+ }
+}

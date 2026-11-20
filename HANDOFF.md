@@ -257,3 +257,11 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Swapped figures:** `tools/dim_swaps.json` swaps length and width for sources that list them the wrong way round. Currently the Pitbull store page lists 3.9 × 5.9 m.
 - **Disclaimer:** small and discreet in the drawing area, and in the ⓘ panel.
 - **v21.1:** ship pictures now fill their size box exactly (the picture's visible edges = length × width from the chosen source). The earlier keep-the-picture-proportions rule was dropped at the user's request.
+
+## v22 update (Nov 20, 2026)
+- **Future possible support:** `tools/find_future.py` picks ships that aren't in the sheet, are under 16 m tall and fit within the top-deck channel width (23.74 m), using the store page then game data. It also adds anything in `tools/future_force.json` (MOTH, MOLE).
+  - Output goes to `tools/future.json`, and the names are added to `tools/aliases.json`.
+  - `build.py` appends them as `e:"future"`. They show only under the "Future support" filter, can be placed outside with an "untested" warning, and can't go inside.
+  - Run order after changing it: find_future → build → fetch_assets → find_topdown → topdown → fetch_loadouts → fetch_wiki_dims → fetch_store_dims → build.
+- **Terrapin Medic:** red top view from scorg.tools (`tools/variant_images.json`); store size 19.5 × 16.7 m.
+- **Loadout window:** wider (980 px).
