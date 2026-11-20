@@ -1,0 +1,681 @@
+[
+ {
+  "n": "Avenger (ALL)",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Eclipse",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Gladius",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Redeemer",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Sabre / Variants",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Vanguard / Variants",
+  "m": "Aegis",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Arrow",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "C8 PIsces",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "F7A/C-Variants",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "F8A / F8C",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Gladiator",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Hawk",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Hurricane",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Terrapin/Medic",
+  "m": "Anvil",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "MPUV / Variants",
+  "m": "Argo",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "SRV",
+  "m": "Argo",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Mustang / Variants",
+  "m": "CNOU",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Nomad",
+  "m": "CNOU",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Ares",
+  "m": "Crusader",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Intrepid",
+  "m": "Crusader",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Bucaneer",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Clipper",
+  "m": "Drake",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Command Module (IC)",
+  "m": "Drake",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Cutlass / Variants",
+  "m": "Drake",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "Cutter / Variants",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "Golem",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Golem OX",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Herald",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Marauder",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "untested"
+ },
+ {
+  "n": "Pitbull",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Vulture",
+  "m": "Drake",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Prowler",
+  "m": "Esperia",
+  "k": "ship",
+  "e": "front_tricks",
+  "i": null
+ },
+ {
+  "n": "Prowler Utility",
+  "m": "Esperia",
+  "k": "ship",
+  "e": "front_tricks",
+  "i": null
+ },
+ {
+  "n": "Talon",
+  "m": "Esperia",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "Hyun",
+  "m": "GATAC",
+  "k": "ship",
+  "e": "untested",
+  "i": null
+ },
+ {
+  "n": "Basher",
+  "m": "Grey's",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Shiv",
+  "m": "Grey's",
+  "k": "ship",
+  "e": "front_tricks",
+  "i": null
+ },
+ {
+  "n": "Merlin",
+  "m": "Kruger",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Archimedes",
+  "m": "Kruger",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "L-21 / L-22",
+  "m": "Kruger",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "S-65 Stingray",
+  "m": "Kruger",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Fury / Variants",
+  "m": "Mirai",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Guardian / QI",
+  "m": "Mirai",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Guardian MX",
+  "m": "Mirai",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Razor / variants",
+  "m": "Mirai",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Fortune",
+  "m": "MISC",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Freelancer / MIS / DUR",
+  "m": "MISC",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Hull-A",
+  "m": "MISC",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Hull-B",
+  "m": "MISC",
+  "k": "ship",
+  "e": "front_tricks",
+  "i": null
+ },
+ {
+  "n": "Prospector",
+  "m": "MISC",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Reliant / Variants",
+  "m": "MISC",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Starlite",
+  "m": "MISC",
+  "k": "ship",
+  "e": "front",
+  "i": null
+ },
+ {
+  "n": "100i / Variants",
+  "m": "Origin",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "300i / Variants",
+  "m": "Origin",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "85X",
+  "m": "Origin",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "M50",
+  "m": "Origin",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "M80",
+  "m": "Origin",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "Aurora MkI",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Aurora MkII",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Meteor",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Mantis",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Salvation",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Scorpius",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Skylark",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Zeus / Variants",
+  "m": "RSI",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Blade",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": "fit_tricks"
+ },
+ {
+  "n": "Defender",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Glaive",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Khartu-al",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "San'tok.yāi",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Scythe",
+  "m": "ALIEN",
+  "k": "ship",
+  "e": "fit",
+  "i": null
+ },
+ {
+  "n": "Ballista",
+  "m": "Anvil",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Centurion",
+  "m": "Anvil",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Spartan",
+  "m": "Anvil",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Nox",
+  "m": "Aopoa",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "ATLS / GEO / ITKI",
+  "m": "Argo",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "CSV-SM",
+  "m": "Argo",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Hoverquad",
+  "m": "C.O",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Dragonfly",
+  "m": "Drake",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Mule",
+  "m": "Drake",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "MDC (PDC)",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "MTC",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "PTV (Golf cart)",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "ROC",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "ROC-DS",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "STV (buggy)",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "UTV (big buggy)",
+  "m": "Greycat",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Pulse / LX",
+  "m": "Mirai",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "G12 / A",
+  "m": "Origin",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "X1 / Variants",
+  "m": "Origin",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Lynx",
+  "m": "RSI",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Ursa",
+  "m": "RSI",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Cyclone / Variants",
+  "m": "Tumbril",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Cyclone MT",
+  "m": "Tumbril",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Nova",
+  "m": "Tumbril",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Storm",
+  "m": "Tumbril",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ },
+ {
+  "n": "Storm AA",
+  "m": "Tumbril",
+  "k": "ground",
+  "e": "fit",
+  "i": "fit"
+ }
+]
