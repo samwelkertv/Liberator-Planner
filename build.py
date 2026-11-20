@@ -47,6 +47,7 @@ def main(path):
     json.dump(out, open("data.json", "w"), ensure_ascii=False, indent=1)
     assets = json.load(open("assets.json", encoding="utf-8")) if os.path.exists("assets.json") else {}
     page, split = [], []
+    vimg = json.load(open("tools/variant_images.json", encoding="utf-8")) if os.path.exists("tools/variant_images.json") else {}
     forced = json.load(open("tools/split_groups.json", encoding="utf-8")) if os.path.exists("tools/split_groups.json") else {}
     aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
     load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
@@ -97,6 +98,12 @@ def main(path):
                 e = dict(d, n=label, g=d["n"], v=names)
                 sh = load["ships"][names[0]]
                 e["L"], e["B"], e["H"] = sh["L"], sh["B"], sh["H"]
+                vi = vimg.get(names[0])
+                if vi and os.path.exists(vi["img"]):  # this variant has its own top view
+                    from PIL import Image
+                    w, h = Image.open(vi["img"]).size
+                    e.update(ta=round(h / w, 4), cf=1, iv=names[0],
+                             td="data:image/webp;base64," + base64.b64encode(open(vi["img"], "rb").read()).decode())
                 page.append(e)
             split.append((d["n"], [(" / ".join(nm), k) for k, nm in groups.items()]))
             continue

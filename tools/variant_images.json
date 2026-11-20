@@ -1,0 +1,10 @@
+{
+ "ATLS": {
+  "img": "img/top/atls-scorg.webp",
+  "src": "https://scorg.tools/ship-information/277/ARGO+ATLS"
+ },
+ "ATLS GEO": {
+  "img": "img/top/atls-geo-scorg.webp",
+  "src": "https://scorg.tools/ship-information/296/ARGO+ATLS+GEO"
+ }
+}
