@@ -76,3 +76,17 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - 78 of 97 entries have one. The others show a plain footprint because the wiki has no usable top-down or the cutout failed: Command Module, Marauder, Pitbull, Hyun, Basher, S-65 Stingray, Reliant, Meteor, Skylark, Blade, Glaive, Khartu-al, Scythe, MDC, PTV, STV, UTV, G12, Nova.
 - **Thumbnails:** done in v3, and lowest priority.
 - **Rebuild order:** `tools/fetch_assets.py`, then `tools/find_topdown.py`, then `tools/topdown.py`, then `build.py`.
+
+## v5 update: stats, loadouts, RRR (Nov 20, 2026)
+- **Data:** `tools/fetch_loadouts.py` writes `loadouts.json` from api.star-citizen.wiki game data (4.10.3). It holds the stock loadout of every variant listed in `tools/aliases.json` (168 vehicles) and a catalog of 725 parts: guns, missiles, shields, power plants, coolers, quantum drives and countermeasures.
+- **Stats dialog:** opens from the **Stats** button on a placed ship.
+  - Shows role, crew, size, speed, hull, shields, gun DPS and alpha, missiles, power and cooling, quantum drive, fuel and cargo.
+  - Grouped rows have a variant picker.
+  - Each editable slot offers parts of the same type and size; stats update live; **Reset to stock** undoes changes.
+  - Changes are saved per pad or garage in localStorage (`libfit`) and included in **Copy plan**.
+- **RRR restock list:** a new section below the plan.
+  - Totals for ballistic ammo by weapon, missiles by type, countermeasure charges, hydrogen and quantum fuel, and hull HP per ship, all with loadout changes applied.
+  - **Copy restock list** button.
+  - Per the wiki, RRR in 4.10.3 works in the internal garage through the landing services app, and pad RRR is planned for 5.0. The wiki doesn't document which cargo-bay supply items each refill uses.
+- **Liberator top-down:** none exists on the wiki or RSI pages, external or internal. The closest are the isometric interior cutaways (`Anvil-liberator-interior-concept-01/02.png`), which aren't used.
+- **Rebuild order:** `fetch_assets.py`, `find_topdown.py`, `topdown.py`, `fetch_loadouts.py`, then `build.py`.

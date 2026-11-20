@@ -47,6 +47,8 @@ def main(path):
     json.dump(out, open("data.json", "w"), ensure_ascii=False, indent=1)
     assets = json.load(open("assets.json", encoding="utf-8")) if os.path.exists("assets.json") else {}
     page = []
+    aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
+    load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
     for d in out:
         a, d = assets.get(d["n"], {}), dict(d)
         for k in ("L", "B", "H"):
@@ -56,10 +58,12 @@ def main(path):
             d["t"] = "data:image/webp;base64," + base64.b64encode(open(a["img"], "rb").read()).decode()
         if a.get("top") and os.path.exists(a["top"]):
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
+        d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         page.append(d)
     tpl = open("tpl.html", encoding="utf-8").read()
     open("index.html", "w", encoding="utf-8").write(
-        tpl.replace("__DATA__", json.dumps(page, ensure_ascii=False, separators=(",", ":"))))
+        tpl.replace("__DATA__", json.dumps(page, ensure_ascii=False, separators=(",", ":")))
+        .replace("__LOAD__", json.dumps(load, ensure_ascii=False, separators=(",", ":"))))
     print(len(out), "entries")
 
 if __name__ == "__main__":

@@ -43,7 +43,7 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .th{width:64px;height:40px;border-radius:6px;object-fit:cover;flex:none;background:var(--deck)}
 .pl .th{width:72px;height:auto;border-radius:0;align-self:stretch}
 .ovr{color:var(--bad);font-weight:600}
-@media(max-width:600px){.pl .th{display:none}}
+.pl .th{display:none}
 .zone h3{font:700 20px/1.1 Rajdhani,sans-serif;margin:0}
 .zs{display:block;font-size:13px;opacity:.75;margin:2px 0 8px}
 .zone.ok{border-color:var(--ok)}.zone.warn{border-color:var(--warn)}.zone.no{opacity:.4}
@@ -92,6 +92,26 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 #dl{overflow:auto;max-height:58vh;display:grid;gap:4px;margin-top:10px}
 .opt{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;min-height:52px;padding:6px 10px}
 .opt span{display:grid;line-height:1.25}.opt small{font-size:13px;opacity:.7}
+.pl .ld{border:0;border-radius:0;padding:0 10px;font-weight:600;font-size:14px;border-left:1px solid var(--line)}
+.pl .chg i.st{opacity:.9}
+.mod{color:var(--acc);font-weight:600}
+#sd{width:min(680px,calc(100vw - 24px))}
+#sb{overflow:auto;max-height:70vh}
+.vr{display:flex;gap:8px;align-items:center;margin:0 0 10px;font-weight:600}
+select{font:inherit;font-size:15px;min-height:40px;max-width:100%;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0 0 6px}
+.stats div{background:color-mix(in srgb,var(--deck) 45%,transparent);border-radius:8px;padding:6px 10px}
+.stats dt{font-size:12px;opacity:.7}.stats dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+#sb h4,.rrr h3{font:700 18px/1.2 Rajdhani,sans-serif;margin:14px 0 6px}
+.lo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 40%,transparent)}
+.lo small{opacity:.65}.lo.chg span:first-child{color:var(--acc);font-weight:600}
+.rrr{max-width:1240px;margin:0 auto;padding-top:0}
+.rrr h2{font:700 clamp(24px,3vw,32px)/1.1 Rajdhani,sans-serif;margin:0 0 4px}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.rg>div{background:var(--card);border-radius:12px;padding:4px 14px 12px}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid color-mix(in srgb,var(--line) 40%,transparent);vertical-align:top}
+th{font-size:12px;opacity:.7;font-weight:600}td.n,th.n{text-align:right}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <header class="band top">
@@ -124,7 +144,13 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 <div id="cards"></div>
 </section>
 </main>
+<section class="band rrr" aria-labelledby="rrrh"><h2 id="rrrh">RRR restock list</h2>
+<p class="sub">What the ships in your plan carry at full load, with your loadout changes applied. Use it to stock ammo, missiles and countermeasures, and to see the fuel and hull totals the Liberator will refill and repair.</p>
+<p class="note">In 4.10.3, RRR works in the internal garage through the mobiGlas landing services app, drawing on supplies in the adjacent cargo bay. RRR on the pads is planned for 5.0 (starcitizen.tools, citing patch notes and a Spectrum dev comment). The wiki doesn't say which cargo-bay supplies each refill uses. Fuel figures are game-data capacities.</p>
+<div class="tools"><button id="rcopy">Copy restock list</button></div>
+<div id="rrr"></div></section>
 <div id="bar" hidden><div class="bi"><div><b id="bn"></b><span id="bd"></span></div><div class="bb"><button data-p="front">Front</button><button data-p="up1">Upper 1</button><button data-p="up2">Upper 2</button><button data-p="g1">Garage 1</button><button data-p="g2">Garage 2</button><button id="bx" aria-label="Deselect">✕</button></div></div></div>
+<dialog id="sd" aria-labelledby="sdt"><div class="dh"><h3 id="sdt"></h3><button id="sx" aria-label="Close">✕</button></div><div id="sb"></div></dialog>
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
 <script>{
 const D=__DATA__;
@@ -139,6 +165,22 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 const byName=n=>D.find(d=>d.n===n);
 const NF='doesn’t fit';
+const LD=__LOAD__,IT=LD.items;
+let fit={};try{fit=JSON.parse(localStorage.getItem('libfit')||'{}')||{}}catch(e){}
+const fmt=n=>n==null||isNaN(n)?'—':Math.round(n).toLocaleString('en-US');
+const variants=d=>(d.v||[]).filter(n=>LD.ships[n]);
+function cfg(s){const d=plan[s]&&byName(plan[s]);if(!d)return null;const vs=variants(d);if(!vs.length)return{d,vs,ship:null};let f=fit[s];if(!f||f.n!==d.n||!vs.includes(f.v))f=fit[s]={n:d.n,v:vs[0],m:{}};return{d,vs,f,ship:LD.ships[f.v]}}
+const cur=(c,i)=>{const m=c.f.m[i];return m!==undefined?m:c.ship.slots[i].d};
+const nmod=c=>c&&c.ship?Object.keys(c.f.m).length:0;
+const pretty=id=>{const a=id.split('/');const t=(a.length>1&&/class|weapon|gun/i.test(a[a.length-1])?a[0]:a[0]).replace(/^hardpoint_?/i,'').replace(/[_$]+/g,' ').trim();return t.charAt(0).toUpperCase()+t.slice(1)};
+const TN={WeaponGun:'Guns',Missile:'Missiles',Shield:'Shields',PowerPlant:'Power plants',Cooler:'Coolers',QuantumDrive:'Quantum drive',WeaponDefensive:'Countermeasures'};
+function stats(c){const S={dps:0,a:0,ms:0,md:0,sh:0,pw:0,cl:0,qd:null,ammo:[],mis:[],cm:[]};
+c.ship.slots.forEach((sl,i)=>{const k=cur(c,i),it=k!=null?IT[k]:null;if(!it)return;
+if(sl.t==='WeaponGun'){S.dps+=it.dps||0;S.a+=it.a||0;if(it.am)S.ammo.push([it.n,it.am])}
+else if(sl.t==='Missile'){S.ms+=sl.n;S.md+=(it.dmg||0)*sl.n;S.mis.push([it.n,sl.n])}
+else if(sl.t==='Shield')S.sh+=it.hp||0;else if(sl.t==='PowerPlant')S.pw+=it.pw||0;else if(sl.t==='Cooler')S.cl+=it.cl||0;
+else if(sl.t==='QuantumDrive')S.qd=it;else if(sl.t==='WeaponDefensive'&&it.am)S.cm.push([it.n,it.am])});return S}
+const statTxt=x=>x.t==='WeaponGun'?` · ${fmt(x.dps)} dps${x.am?'':' · energy'}`:x.t==='Shield'?` · ${fmt(x.hp)} hp`:x.t==='PowerPlant'?` · ${x.pw} power`:x.t==='Cooler'?` · ${x.cl} cooling`:x.t==='QuantumDrive'?` · ${fmt(x.sp/1e6)} Mm/s`:x.t==='Missile'?` · ${fmt(x.dmg)} dmg`:'';
 const ENV={};for(const z of ['front','top','hangar']){const g=D.filter(d=>d.L&&lvl(st(d,z))==='ok');ENV[z]={L:Math.max(...g.map(d=>d.L)),B:Math.max(...g.map(d=>d.B))}}
 const VW=Math.max(...Object.values(ENV).map(e=>e.B))+6,VH=Math.max(...Object.values(ENV).map(e=>e.L))+9;
 const m=x=>+x.toFixed(1),dims=d=>d.L?`${m(d.L)} × ${m(d.B)}${d.H?' × '+m(d.H):''} m`:'size unknown';
@@ -148,7 +190,7 @@ function deck(s,d){const e=ENV[SL[s][1]],cx=VW/2,cy=(VH+3)/2;let h=`<rect class=
 if(d&&d.L){const f=fitS(d,s),c=over(d,s)?' over':'';h+=d.td?`<rect class="sh ${cls(f)}${c} img" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx=".6"/><image href="${d.td}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" preserveAspectRatio="xMidYMid meet"/>`:`<rect class="sh ${cls(f)}${c}" x="${cx-d.B/2}" y="${cy-d.L/2}" width="${d.B}" height="${d.L}" rx="${Math.min(d.B,d.L)*.15}"/><path class="nose" d="M${cx} ${cy-d.L/2+.6}l${Math.min(1.6,d.B/3)} ${Math.min(2.4,d.L/3)}h${-2*Math.min(1.6,d.B/3)}z"/>`}
 h+=`<path class="bar" d="M1 ${VH-1.2}h10M1 ${VH-2}v1.6M11 ${VH-2}v1.6"/><text class="el" x="12" y="${VH-.6}">10 m</text>`;return h}
 const blank=()=>Object.fromEntries(SK.map(k=>[k,null]));
-let plan=blank(),hist=[],sel=-1,filt='all',drag=null,ghost=null,dragged=false,tm,pickSlot=null,view='external';
+let shipSlot=null,plan=blank(),hist=[],sel=-1,filt='all',drag=null,ghost=null,dragged=false,tm,pickSlot=null,view='external';
 try{const s=JSON.parse(localStorage.getItem('libplan2')||'null');if(s&&SK.every(k=>k in s))plan=s}catch(e){}
 const save=()=>{try{localStorage.setItem('libplan2',JSON.stringify(plan))}catch(e){}};
 const sym=s=>({ok:'✓',unk:'?',warn:'!',no:'✕'})[cls(s)];
@@ -162,11 +204,44 @@ function renderPlan(){
 for(const s of SK){const el=$(`.zone[data-s=${s}]`);el.classList.remove('ok','warn','no');if(sel>=0)el.classList.add(lvl(fitS(D[sel],s)));
 const n=plan[s],d=n&&byName(n),f=d?fitS(d,s):null;
 const o=d&&over(d,s),e=ENV[SL[s][1]];el.querySelector('.fp').setAttribute('viewBox',`0 0 ${VW} ${VH}`);el.querySelector('.fp').innerHTML=deck(s,d);
-el.querySelector('.slot').innerHTML=d?`<div class="pl ${cls(f)}${o?' over':''}">${thumb(d)}<button class="chg" data-s="${s}" aria-label="Change ${esc(n)}"><b>${esc(n)}</b><i>${dims(d)}</i>${lvl(f)==='warn'?`<i>${L[f]}</i>`:''}${o?`<i class="ovr">Bigger than any confirmed good fit here (${m(e.L)} × ${m(e.B)} m)</i>`:''}</button><button class="rm" data-s="${s}" aria-label="Remove ${esc(n)}">✕</button></div>`:`<button class="add" data-s="${s}">+ Add ship</button>`}
+el.querySelector('.slot').innerHTML=d?`<div class="pl ${cls(f)}${o?' over':''}">${thumb(d)}<button class="chg" data-s="${s}" aria-label="Change ${esc(n)}"><b>${esc(n)}</b><i>${dims(d)}</i>${lvl(f)==='warn'?`<i>${L[f]}</i>`:''}${o?`<i class="ovr">Bigger than any confirmed good fit here (${m(e.L)} × ${m(e.B)} m)</i>`:''}${(()=>{const c=cfg(s);if(!c||!c.ship)return'';const S=stats(c);return `<i class="st">${fmt(S.dps)} DPS · ${fmt(S.sh)} shield${nmod(c)?' · <span class="mod">modified</span>':''}</i>`})()}</button><button class="ld" data-s="${s}" aria-label="Stats and loadout for ${esc(n)}">Stats</button><button class="rm" data-s="${s}" aria-label="Remove ${esc(n)}">✕</button></div>`:`<button class="add" data-s="${s}">+ Add ship</button>`}
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0){const ls=SK.filter(s=>SL[s][2]===t.dataset.v).map(s=>lvl(fitS(D[sel],s)));dt.classList.add(ls.includes('ok')?'ok':ls.includes('warn')?'warn':'no')}}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
 if(sel>=0){const d=D[sel];$('#bn').textContent=d.n;$('#bd').textContent=desc(d);for(const b of $$('#bar [data-p]')){const l=lvl(fitS(d,b.dataset.p));b.disabled=l==='no';b.className=l}}
-$('#undo').disabled=!hist.length;save()}
+$('#undo').disabled=!hist.length;save();try{localStorage.setItem('libfit',JSON.stringify(fit))}catch(e){};renderRRR();if(shipSlot)renderShip()}
+function renderShip(){const s=shipSlot,c=cfg(s);if(!c){closeShip();return}
+$('#sdt').textContent=`${c.d.n} · ${SL[s][0]}`;
+if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
+const S=stats(c),sh=c.ship,row=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;
+let h=c.vs.length>1?`<label class="vr">Variant <select id="vsel">${c.vs.map(v=>`<option${v===c.f.v?' selected':''}>${esc(v)}</option>`).join('')}</select></label>`:`<p class="vr">${esc(c.f.v)}</p>`;
+h+=`<dl class="stats">${row('Role',esc(sh.role||'—'))}${row('Crew',sh.crew[0]===sh.crew[1]?fmt(sh.crew[0]):sh.crew.join('–'))}${row('Size L × B × H',dims(c.d))}${row('Speed SCM / max',`${fmt(sh.scm)} / ${fmt(sh.vmax)} m/s`)}${row('Hull HP',fmt(sh.hull))}${row('Shield HP',fmt(S.sh))}${row('Gun DPS / alpha',`${fmt(S.dps)} / ${fmt(S.a)}`)}${row('Missiles',S.ms?`${S.ms} · ${fmt(S.md)} dmg`:'none')}${row('Power / cooling',`${fmt(S.pw)} / ${fmt(S.cl)}`)}${row('Quantum drive',S.qd?`${esc(S.qd.n)} · ${fmt(S.qd.sp/1e6)} Mm/s`:'none')}${row('Fuel: hydrogen / quantum',`${sh.fuel??'—'} / ${sh.qfuel??'—'}`)}${row('Cargo',sh.cargo?sh.cargo+' SCU':'—')}</dl>`;
+const g={};sh.slots.forEach((sl,i)=>(g[sl.t]=g[sl.t]||[]).push(i));
+for(const t of Object.keys(TN)){if(!g[t])continue;h+=`<h4>${TN[t]}</h4>`;
+for(const i of g[t]){const sl=sh.slots[i],k=cur(c,i),it=k!=null?IT[k]:null,lbl=`${esc(pretty(sl.id))} <small>S${sl.s}${sl.n>1?' × '+sl.n:''}</small>`;
+if(t==='WeaponDefensive'||sl.ed===false){h+=`<div class="lo"><span>${lbl}</span><span>${it?esc(it.n):'—'}${it&&it.am?` · ${it.am} charges`:''}</span></div>`;continue}
+const op=IT.map((x,j)=>[x,j]).filter(([x])=>x.t===t&&x.s===sl.s).sort((a,b)=>a[0].n.localeCompare(b[0].n));if(k!=null&&!op.some(([,j])=>j===k))op.unshift([IT[k],k]);
+h+=`<label class="lo${c.f.m[i]!==undefined?' chg':''}"><span>${lbl}</span><select data-k="${i}"><option value=""${k==null?' selected':''}>Empty</option>${op.map(([x,j])=>`<option value="${j}"${j===k?' selected':''}>${esc(x.n)}${j===sl.d?' (stock)':''}${statTxt(x)}</option>`).join('')}</select></label>`}}
+h+=`<div class="tools"><button id="sreset"${nmod(c)?'':' disabled'}>Reset to stock</button></div><p class="note">Stats and parts are game data (4.10.3) via api.star-citizen.wiki. The options are parts of the same type and size. Grouped rows let you pick the variant you own.</p>`;
+$('#sb').innerHTML=h}
+function openShip(s){shipSlot=s;renderShip();const g=$('#sd');try{g.showModal()}catch(e){g.setAttribute('open','')}}
+function closeShip(){const g=$('#sd');try{g.close()}catch(e){g.removeAttribute('open')}shipSlot=null}
+$('#sx').addEventListener('click',closeShip);$('#sd').addEventListener('click',e=>{if(e.target===e.currentTarget)closeShip()});$('#sd').addEventListener('close',()=>{shipSlot=null});
+$('#sb').addEventListener('change',e=>{const s=shipSlot,c=cfg(s);if(!c||!c.ship)return;const t=e.target;
+if(t.id==='vsel'){fit[s]={n:c.d.n,v:t.value,m:{}}}else if(t.dataset.k!=null){const i=+t.dataset.k,v=t.value===''?null:+t.value;if(v===c.ship.slots[i].d)delete c.f.m[i];else c.f.m[i]=v}renderPlan()});
+$('#sb').addEventListener('click',e=>{if(e.target.id==='sreset'){const c=cfg(shipSlot);if(c&&c.ship){c.f.m={};renderPlan()}}});
+function rrrData(){const A={},M={},C={},H=[],none=[];let fu=0,qf=0;
+for(const s of SK){const c=cfg(s);if(!c)continue;if(!c.ship){none.push(c.d.n);continue}const S=stats(c);
+for(const[k,v]of S.ammo){const a=A[k]=A[k]||{g:0,r:0,w:new Set()};a.g++;a.r+=v;a.w.add(c.d.n)}
+for(const[k,v]of S.mis)M[k]=(M[k]||0)+v;for(const[k,v]of S.cm)C[k]=(C[k]||0)+v;
+fu+=c.ship.fuel||0;qf+=c.ship.qfuel||0;H.push([`${c.d.n} (${SL[s][0]})`,c.ship.hull])}return{A,M,C,H,fu,qf,none}}
+function renderRRR(){const R=rrrData();if(!R.H.length&&!R.none.length){$('#rrr').innerHTML='<p class="empty">Place ships to build the restock list.</p>';return}
+const tb=(hd,rows)=>rows.length?`<table><thead><tr>${hd.map((x,i)=>`<th${i&&i>=hd.length-1-(hd.length>3?1:0)&&typeof x==='string'&&x.startsWith('#')?' class="n"':''}>${x.replace(/^#/,'')}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>`:'<p class="empty">None.</p>';
+const A=Object.entries(R.A).sort((a,b)=>b[1].r-a[1].r).map(([k,a])=>`<tr><td>${esc(k)}<br><small>${esc([...a.w].join(', '))}</small></td><td class="n">${a.g}</td><td class="n">${fmt(a.r)}</td></tr>`);
+const M=Object.entries(R.M).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${v}</td></tr>`);
+const C=Object.entries(R.C).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
+const H=R.H.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="n">${fmt(v)}</td></tr>`);
+$('#rrr').innerHTML=`<div class="rg"><div><h3>Ballistic ammo</h3>${tb(['Weapon','#Guns','#Rounds'],A)}<p class="note">Energy weapons regenerate and need no ammo.</p></div><div><h3>Missiles</h3>${tb(['Missile','#Count'],M)}<h3>Countermeasures</h3>${tb(['Launcher','#Charges'],C)}</div><div><h3>Fuel</h3>${tb(['Tank','#Capacity'],[`<tr><td>Hydrogen, all ships</td><td class="n">${+R.fu.toFixed(2)}</td></tr>`,`<tr><td>Quantum, all ships</td><td class="n">${+R.qf.toFixed(2)}</td></tr>`])}<h3>Repair</h3>${tb(['Ship','#Hull HP'],H)}${R.none.length?`<p class="note">No loadout data: ${esc(R.none.join(', '))}.</p>`:''}</div></div>`}
+$('#rcopy').addEventListener('click',async()=>{const R=rrrData();const L=['Liberator RRR restock list','Ballistic ammo:',...Object.entries(R.A).map(([k,a])=>`  ${k}: ${a.r} rounds (${a.g} guns)`),'Missiles:',...Object.entries(R.M).map(([k,v])=>`  ${k}: ${v}`),'Countermeasures:',...Object.entries(R.C).map(([k,v])=>`  ${k}: ${v}`),`Fuel: hydrogen ${+R.fu.toFixed(2)}, quantum ${+R.qf.toFixed(2)}`,'Hull HP:',...R.H.map(([k,v])=>`  ${k}: ${v}`)];try{await navigator.clipboard.writeText(L.join('\n'));flash('Restock list copied.')}catch(e){flash('Copy was blocked here.')}});
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
 function place(s,i){const d=D[i],f=fitS(d,s);if(lvl(f)==='no'){flash(`${d.n} ${NF} in ${SL[s][0].toLowerCase()}.`);return}
@@ -184,14 +259,14 @@ const pick=i=>{sel=sel===i?-1:i;render()};
 $('#cards').addEventListener('click',e=>{if(dragged)return;const c=e.target.closest('.card');if(c)pick(+c.dataset.i)});
 $('#cards').addEventListener('keydown',e=>{const c=e.target.closest('.card');if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();pick(+c.dataset.i)}});
 $('.tabs').addEventListener('click',e=>{const t=e.target.closest('[role=tab]');if(t)setView(t.dataset.v)});
-$('.plan').addEventListener('click',e=>{if(dragged)return;const rm=e.target.closest('.rm');if(rm){hist.push(JSON.stringify(plan));plan[rm.dataset.s]=null;renderPlan();return}
+$('.plan').addEventListener('click',e=>{if(dragged)return;const ld=e.target.closest('.ld');if(ld){openShip(ld.dataset.s);return}const rm=e.target.closest('.rm');if(rm){hist.push(JSON.stringify(plan));plan[rm.dataset.s]=null;renderPlan();return}
 const z=e.target.closest('.zone');if(!z)return;if(sel>=0){place(z.dataset.s,sel);return}if(e.target.closest('.add,.chg'))openPick(z.dataset.s)});
 $('#bar').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b&&sel>=0)place(b.dataset.p,sel);if(e.target.closest('#bx')){sel=-1;render()}});
 $('#q').addEventListener('input',renderCards);
 $('.chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;for(const x of $$('.chips [data-f]'))x.setAttribute('aria-pressed',String(x===b));renderCards()});
 $('#undo').addEventListener('click',()=>{if(hist.length){plan=JSON.parse(hist.pop());renderPlan();flash('Undone.')}});
-$('#clear').addEventListener('click',()=>{if(!SK.some(k=>plan[k]))return;hist.push(JSON.stringify(plan));plan=blank();renderPlan();flash('Plan cleared. Undo brings it back.')});
-$('#copy').addEventListener('click',async()=>{const t='Liberator plan\n'+SK.map(s=>{const d=plan[s]&&byName(plan[s]);return `${SL[s][0]}: ${d?d.n+' ('+dims(d)+')':'—'}`}).join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
+$('#clear').addEventListener('click',()=>{if(!SK.some(k=>plan[k]))return;hist.push(JSON.stringify(plan));plan=blank();fit={};renderPlan();flash('Plan cleared. Undo brings it back.')});
+$('#copy').addEventListener('click',async()=>{const t='Liberator plan\n'+SK.map(s=>{const d=plan[s]&&byName(plan[s]);const c=cfg(s);return `${SL[s][0]}: ${d?d.n+' ('+dims(d)+')'+(c&&c.ship?` [${c.f.v}${nmod(c)?', modified: '+Object.keys(c.f.m).map(i=>{const k=c.f.m[i];return pretty(c.ship.slots[i].id)+' → '+(k==null?'empty':IT[k].n)}).join('; '):''}]`:''):'—'}`}).join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sel>=0&&!pickSlot){sel=-1;render()}});
 const zoneAt=(x,y)=>{const el=document.elementFromPoint(x,y);return el?el.closest('.zone'):null};
 $('#cards').addEventListener('pointerdown',e=>{const c=e.target.closest('.card');if(!c||e.button>0)return;if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;drag={x:e.clientX,y:e.clientY,i:+c.dataset.i}});
