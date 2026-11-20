@@ -293,3 +293,6 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - **Clear:** opens a centred confirmation pop-up whose Clear button unlocks after a 3-second countdown.
   - **RRR stock:** now crates per item, as size × quantity entries (1/2/4/8/16/24/32 SCU), saved in `STOCK[key] = [{s, q}]`. The panel shows the SCU total against the 400 SCU cargo bays. Refills aren't calculated, because no source gives units per SCU. Old numeric stock values are dropped.
   - **Theme switch and Sizes selector:** both now live in the ⓘ panel.
+- **v25:**
+  - **Undo/redo:** Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z or Ctrl+Y, plus a Redo button. `hist` is a `Hist` array whose `push` clears the `REDO` stack.
+  - **Copy/paste sections:** Copy outside/inside on the current plan (Loadouts panel → "Sections of the current plan") and on every saved loadout row. The clipboard is saved in localStorage `libclip` as `{v, ships, from}`. Paste replaces that view in the current plan, and Undo reverts it.
