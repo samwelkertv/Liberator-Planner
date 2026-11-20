@@ -265,3 +265,17 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - Run order after changing it: find_future → build → fetch_assets → find_topdown → topdown → fetch_loadouts → fetch_wiki_dims → fetch_store_dims → build.
 - **Terrapin Medic:** red top view from scorg.tools (`tools/variant_images.json`); store size 19.5 × 16.7 m.
 - **Loadout window:** wider (980 px).
+
+## v23 update (Nov 20, 2026)
+- **Overlays menu (checkboxes):** Pads, Doors & ramps, Cargo bays, Vehicle bay outline, and "Tint colliding ships red" (an SVG feColorMatrix filter `#tr-<view>` on colliding ships' images).
+- **Outlines menu (radios):**
+  - Outline shape: collision shape or size box.
+  - Show on: all ships, colliding ships only, or none.
+  - Collision test: ship outline + 10 px buffer, or size boxes.
+  - Settings are saved in localStorage `libopt` (old `libov`/`libbox` settings migrate).
+- **Pixel collision:** `build.py` `collision_shape()` takes each top-down image's alpha mask, grows it by 10 px (at the image's own ~360 px resolution, about 2.8% of ship length) on every side, and produces:
+  - a 96-cell bit grid (`ck.g`) for collision tests;
+  - padding fractions (`ck.pw`/`ck.ph`);
+  - an outline ring PNG (`ck.ring`), drawn through an SVG mask and coloured by status.
+- **Runtime collision test:** `collide()` first does a quick rotated-box check on the padded boxes, then samples ship A's grid cells against ship B's mask. Ships without a top-down use their size box grown by the same proportion.
+- Exports follow all of these settings.

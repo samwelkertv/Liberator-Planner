@@ -28,6 +28,35 @@ def status(cell):
         return base + "_bugged"
     return base
 
+
+def collision_shape(path, pad=10, grid=96):
+    """Pixel collision shape for a nose-up top-down image: alpha mask grown by `pad` px
+    (at the image's own resolution) on every side. Returns the padding as fractions of the
+    image size, a coarse bit grid for collision tests and an outline ring (data URI) to draw."""
+    import io
+    import numpy as np
+    from PIL import Image
+    from scipy import ndimage
+    im = Image.open(path).convert("RGBA")
+    W, H = im.size
+    a = np.asarray(im)[..., 3] > 40
+    m = np.zeros((H + 2 * pad, W + 2 * pad), bool)
+    m[pad:pad + H, pad:pad + W] = a
+    yy, xx = np.mgrid[-pad:pad + 1, -pad:pad + 1]
+    m = ndimage.binary_dilation(m, structure=(xx * xx + yy * yy) <= pad * pad)
+    ring = m & ~ndimage.binary_erosion(m, iterations=3)
+    rgba = np.zeros(m.shape + (4,), np.uint8)
+    rgba[..., :3] = 255
+    rgba[..., 3] = ring * 255
+    buf = io.BytesIO()
+    Image.fromarray(rgba, "RGBA").save(buf, "PNG", optimize=True)
+    s = grid / max(m.shape)
+    gw, gh = max(1, round(m.shape[1] * s)), max(1, round(m.shape[0] * s))
+    small = np.asarray(Image.fromarray(m.astype(np.uint8) * 255).resize((gw, gh), Image.BOX)) > 0
+    bits = np.packbits(small.flatten())
+    return {"pw": round(pad / W, 5), "ph": round(pad / H, 5), "g": [gw, gh, base64.b64encode(bits.tobytes()).decode()],
+            "ring": "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()}
+
 def main(path):
     ws = openpyxl.load_workbook(path)["COMBINED SHEET"]
     out, maker, kind = [], None, "ship"
@@ -102,6 +131,7 @@ def main(path):
             w, h = Image.open(a["top"]).size
             d["ta"], d["cf"] = round(h / w, 4), a.get("cf", 1)
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
+            d["ck"] = collision_shape(a["top"])
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         if aliases.get(d["n"]):
             d["iv"] = aliases[d["n"]][0]  # the variant the top-down image shows
@@ -130,6 +160,7 @@ def main(path):
                     w, h = Image.open(vi["img"]).size
                     e.update(ta=round(h / w, 4), cf=1, iv=names[0],
                              td="data:image/webp;base64," + base64.b64encode(open(vi["img"], "rb").read()).decode())
+                    e["ck"] = collision_shape(vi["img"])
                 page.append(e)
             split.append((d["n"], [(" / ".join(nm), k) for k, nm in groups.items()]))
             continue
