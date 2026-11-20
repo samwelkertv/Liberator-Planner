@@ -185,7 +185,7 @@ a.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;bord
 </aside>
 </div>
 <div id="bar" hidden><div class="bi"><div><b id="bn"></b><span id="bd"></span></div><div class="bb"><button data-v="external">Add to external</button><button data-v="internal">Add to internal</button><button id="bx" aria-label="Deselect">✕</button></div></div></div>
-<dialog id="ex" aria-labelledby="ext"><div class="dh"><h3 id="ext">Plan image</h3><button id="exx" aria-label="Close">✕</button></div><img id="exi" alt="Liberator plan: external view on the left, internal view on the right"><div class="tools"><a id="exd" class="btn" download="liberator-plan.png">Download PNG</a><span class="hint">Or right-click / long-press the image to save it.</span></div></dialog>
+<dialog id="ex" aria-labelledby="ext"><div class="dh"><h3 id="ext">Plan image</h3><button id="exx" aria-label="Close">✕</button></div><img id="exi" alt="Liberator plan: external view on the left, internal view on the right"><div class="tools"><button id="exd">Download PNG</button><span class="hint">Or right-click / long-press the image to save it.</span></div></dialog>
 <dialog id="sd" aria-labelledby="sdt"><div class="dh"><h3 id="sdt"></h3><button id="sx" aria-label="Close">✕</button></div><div id="sb"></div></dialog>
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h3 id="dt"></h3><button id="dx" aria-label="Close">✕</button></div><input id="dq" type="search" placeholder="Search ships that fit here" aria-label="Search ships that fit here"><div id="dl"></div></dialog>
 <script>{
@@ -305,6 +305,7 @@ const PANELS=['list','placed','rrr','info'];
 function togglePanel(n,force){const el=$('#p-'+n),open=force??el.hidden;if(open)for(const k of PANELS)if(k!==n&&(k!=='placed'&&n!=='placed'||innerWidth<900))$('#p-'+k).hidden=true;el.hidden=!open;for(const b of $$('[data-panel]'))b.setAttribute('aria-expanded',String(!$('#p-'+b.dataset.panel).hidden))}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-panel]');if(b){togglePanel(b.dataset.panel);return}const c=e.target.closest('.pclose');if(c)togglePanel(c.closest('.panel').id.slice(2),false)});
 const hdr=()=>document.documentElement.style.setProperty('--hdr',$('.appbar').offsetHeight+'px');addEventListener('resize',hdr);hdr();
+let exBlob=null;const dlCap=window.claude&&window.claude.use?window.claude.use('downloads').catch(()=>null):Promise.resolve(null);
 async function exportPNG(){const keep=selId;selId=null;drawShips();
 try{const W=720,H=1280,PAD=40,TOP=100,cv=document.createElement('canvas');cv.width=W*2+PAD*3;cv.height=H+TOP+PAD;const g=cv.getContext('2d'),cs=getComputedStyle(document.body);
 g.fillStyle=cs.backgroundColor;g.fillRect(0,0,cv.width,cv.height);g.fillStyle=cs.color;g.font='700 44px Rajdhani, sans-serif';g.fillText('Liberator plan',PAD,56);
@@ -315,9 +316,12 @@ cl.setAttribute('xmlns','http://www.w3.org/2000/svg');cl.setAttribute('width',W)
 const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(cl)],{type:'image/svg+xml'})),im=new Image();
 await new Promise((r,j)=>{im.onload=r;im.onerror=j;im.src=url});const x=PAD+i*(W+PAD);
 g.fillStyle=cs.color;g.font='600 28px "IBM Plex Sans", sans-serif';g.fillText(`${VL[k]} · ${P.filter(p=>p.v===k).length} ships`,x,TOP-14);g.drawImage(im,x,TOP,W,H);URL.revokeObjectURL(url)}
-const data=cv.toDataURL('image/png');$('#exi').src=data;$('#exd').href=data;const dl=$('#ex');try{dl.showModal()}catch(e){dl.setAttribute('open','')}}
+const data=cv.toDataURL('image/png');$('#exi').src=data;exBlob=await new Promise(r=>cv.toBlob(r,'image/png'));const dl=$('#ex');try{dl.showModal()}catch(e){dl.setAttribute('open','')}}
 catch(e){flash('Could not build the image here.')}finally{selId=keep;drawShips()}}
 $('#export').addEventListener('click',exportPNG);
+$('#exd').addEventListener('click',async()=>{if(!exBlob)return;const dl=await dlCap;
+if(dl){try{await dl.save({filename:'liberator-plan.png',data:exBlob});flash('Image saved.')}catch(e){flash(e&&e.code==='declined'?'Save cancelled.':'Saving is not available here. Right-click or long-press the image instead.')}return}
+const a=document.createElement('a');a.href=URL.createObjectURL(exBlob);a.download='liberator-plan.png';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
 $('#exx').addEventListener('click',()=>{try{$('#ex').close()}catch(e){$('#ex').removeAttribute('open')}});
 const render=()=>{renderCards();renderPlan()};
 const flash=t=>{$('#msg').textContent=t;clearTimeout(tm);tm=setTimeout(()=>{$('#msg').textContent=''},4000)};
