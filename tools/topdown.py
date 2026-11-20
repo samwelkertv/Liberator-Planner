@@ -93,6 +93,21 @@ def cutout_texture(im, th=25):
     return Image.fromarray(rgba[ys.min():ys.max() + 1, xs.min():xs.max() + 1], "RGBA")
 
 
+def cutout_blue(im, th=30):
+    """For a ship on a blue grid background: background is clearly bluer than the grey/yellow hull."""
+    a = np.asarray(im.convert("RGB")).astype(int)
+    bgc = (a[..., 2] - a[..., 0] > th) & (a[..., 2] - a[..., 1] > th * 0.3)
+    lab, _ = ndimage.label(bgc)
+    edge = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
+    fg = ndimage.binary_opening(~np.isin(lab, edge[edge > 0]), iterations=1)
+    lab, n = ndimage.label(fg)
+    sz = ndimage.sum(fg, lab, range(1, n + 1))
+    fg = ndimage.binary_fill_holes(np.isin(lab, [i + 1 for i, v in enumerate(sz) if v >= sz.max() * .02]))
+    ys, xs = np.where(fg)
+    rgba = np.dstack([a, ndimage.gaussian_filter(fg.astype(float), .7) * 255]).astype(np.uint8)
+    return Image.fromarray(rgba[ys.min():ys.max() + 1, xs.min():xs.max() + 1], "RGBA")
+
+
 def main(montage=None):
     cand = json.load(open(os.path.join(ROOT, "tools", "topdown_candidates.json"), encoding="utf-8"))
     fix = json.load(open(os.path.join(ROOT, "tools", "topdown_fix.json"), encoding="utf-8"))
@@ -105,19 +120,24 @@ def main(montage=None):
         t = f.get("file") or (cand.get(k) or [None])[0]
         if t:
             pick[k] = t
-    u = urls(sorted(set(pick.values())))
+    u = urls(sorted(t for t in set(pick.values()) if not t.startswith("local:")))
     os.makedirs(CACHE, exist_ok=True)
     os.makedirs(os.path.join(ROOT, "img", "top"), exist_ok=True)
     tiles, failed = [], []
     for k, t in pick.items():
         assets[k].pop("top", None)
-        if t not in u:
-            failed.append((k, "no url"))
-            continue
-        cp = os.path.join(CACHE, slug(t) + os.path.splitext(u[t].split("?")[0])[1])
-        if not os.path.exists(cp):
-            open(cp, "wb").write(get(u[t]))
-        if "texture" in fix.get(k, {}):
+        if t.startswith("local:"):  # an image supplied by the user, kept in the repo
+            cp = os.path.join(ROOT, t[6:])
+        else:
+            if t not in u:
+                failed.append((k, "no url"))
+                continue
+            cp = os.path.join(CACHE, slug(t) + os.path.splitext(u[t].split("?")[0])[1])
+            if not os.path.exists(cp):
+                open(cp, "wb").write(get(u[t]))
+        if "bluebg" in fix.get(k, {}):
+            im = cutout_blue(Image.open(cp), fix[k]["bluebg"])
+        elif "texture" in fix.get(k, {}):
             im = cutout_texture(Image.open(cp), fix[k]["texture"])
         elif "box" in fix.get(k, {}):  # background not separable: plain rectangular crop
             raw = Image.open(cp).convert("RGBA")
@@ -143,7 +163,7 @@ def main(montage=None):
         rel = "img/top/" + slug(k) + ".webp"
         im.save(os.path.join(ROOT, rel), "WEBP", quality=72, method=6)
         assets[k]["cf"] = cf
-        assets[k]["top"], assets[k]["topsrc"] = rel, "https://starcitizen.tools/" + urllib.parse.quote(t.replace(" ", "_"))
+        assets[k]["top"], assets[k]["topsrc"] = rel, (fix[k].get("credit", "supplied by the user") if t.startswith("local:") else "https://starcitizen.tools/" + urllib.parse.quote(t.replace(" ", "_")))
         tiles.append((k, im))
     for k in assets:
         if k not in pick:

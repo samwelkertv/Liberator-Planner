@@ -46,7 +46,8 @@ def main(path):
                         "k": kind, "e": e, "i": i})
     json.dump(out, open("data.json", "w"), ensure_ascii=False, indent=1)
     assets = json.load(open("assets.json", encoding="utf-8")) if os.path.exists("assets.json") else {}
-    page = []
+    page, split = [], []
+    forced = json.load(open("tools/split_groups.json", encoding="utf-8")) if os.path.exists("tools/split_groups.json") else {}
     aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
     load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
     if os.path.exists("wiki_dims.json"):  # curated wiki sizes override padded game-data boxes
@@ -54,6 +55,11 @@ def main(path):
             s = load["ships"].get(n)
             if s:
                 s.update(L=w["L"], B=w["B"], ds="wiki", **({"H": w["H"]} if w.get("H") else {}))
+    if os.path.exists("tools/dim_overrides.json"):  # official figures that beat the wiki, e.g. from dimension graphics
+        for n, w in json.load(open("tools/dim_overrides.json", encoding="utf-8")).items():
+            s = load["ships"].get(n)
+            if s:
+                s.update(L=w["L"], B=w["B"], H=w.get("H", s.get("H")), ds="override")
     for d in out:
         a, d = assets.get(d["n"], {}), dict(d)
         for k in ("L", "B", "H"):
@@ -72,6 +78,28 @@ def main(path):
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         if aliases.get(d["n"]):
             d["iv"] = aliases[d["n"]][0]  # the variant the top-down image shows
+        clusters = []  # variants whose size differs by 1.5 m or more get their own list item
+        for n in d["v"]:
+            sh = load["ships"][n]
+            for c in clusters:
+                r = load["ships"][c[0]]
+                if abs((sh.get("L") or 0) - (r.get("L") or 0)) < 1.5 and abs((sh.get("B") or 0) - (r.get("B") or 0)) < 1.5:
+                    c.append(n)
+                    break
+            else:
+                clusters.append([n])
+        if d["n"] in forced:  # split on request even when the sources give the same size
+            clusters = [[n for n in grp if n in d["v"]] for grp in forced[d["n"]]]
+        groups = {tuple(c): c for c in clusters if c}
+        if len(groups) > 1:
+            for names in groups.values():
+                label = " / ".join(names) if len(names) <= 2 else f"{names[0]} (+{len(names) - 1} variants)"
+                e = dict(d, n=label, g=d["n"], v=names)
+                sh = load["ships"][names[0]]
+                e["L"], e["B"], e["H"] = sh["L"], sh["B"], sh["H"]
+                page.append(e)
+            split.append((d["n"], [(" / ".join(nm), k) for k, nm in groups.items()]))
+            continue
         page.append(d)
     libimg = ("data:image/webp;base64," + base64.b64encode(open("img/liberator-top.webp", "rb").read()).decode()) if os.path.exists("img/liberator-top.webp") else ""
     tpl = open("tpl.html", encoding="utf-8").read()
@@ -79,7 +107,9 @@ def main(path):
         tpl.replace("__DATA__", json.dumps(page, ensure_ascii=False, separators=(",", ":")))
         .replace("__LOAD__", json.dumps(load, ensure_ascii=False, separators=(",", ":")))
         .replace("__LIBIMG__", json.dumps(libimg)))
-    print(len(out), "entries")
+    print(len(out), "entries;", len(page), "list items")
+    for g, parts in split:
+        print("split", g, "->", parts)
 
 if __name__ == "__main__":
     main(sys.argv[1])

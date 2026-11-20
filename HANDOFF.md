@@ -220,3 +220,14 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Vehicle bay width:** set in the ⓘ panel and saved in localStorage `libbayw`. It defaults to the top-deck channel width (23.7 m) because no source gives the garage width; a friend of the user says the garage is narrower than the top. Ships are clamped and warned against it. The front-pad and ramp overlays keep the channel width (`CH`).
 - **Local loadouts:** outside claude.ai there is no `window.claude`, so loadouts use a localStorage-backed store with the same API (`localDB()`, key `libloads`). Loadouts can be exported to and imported from a JSON file (`liberator-loadouts.json`). New visitors start empty.
 - **Hosting:** see README for GitHub Pages. The repo is currently private, so Pages needs a paid plan or a public repo.
+
+## v19 update (Nov 20, 2026, testing branch)
+- **Marauder:** top-down supplied by the user (`tools/img_src/marauder-top.png`), cut out with the new `"bluebg"` method (blue-grid background) via `"file": "local:…"` in `tools/topdown_fix.json`. Size comes from the official dimension graphic, 21.0 × 20.4 × 7.0 m, in the new `tools/dim_overrides.json`. Override sizes beat the wiki, and the picture fills that exact box.
+- **Variant rows:** `build.py` splits a sheet row into separate list items when its variants differ by 1.5 m or more in length or width. `tools/split_groups.json` forces splits where sizes match; currently ATLS vs ATLS GEO.
+  - The build log lists every split.
+  - Old plans and loadouts keep working: `fixName()` maps old group names to the new item, using the saved variant.
+- **Add ships:** now a side panel (`#p-add`) that stays open, so you can add several ships.
+- **Floating controls:** open panels push the drawing-area toolbar and the Totals card aside (`--rpw` / `--lpw`).
+- **Loadouts auto-save:** the Save button is gone. Changes are written to the current loadout about 0.7 s after they happen. If no loadout exists yet, one is created ("Default", or "Loadout N").
+- **Overlays button:** toggles the pad, ramp, bay and cargo overlays and their labels (saved in localStorage `libov`). Exports follow it.
+- **Owned ships:** a ☆/★ button on each ship card tags it as owned (saved in localStorage `libown`, and included in loadout export/import). The ★ Owned filter shows only owned ships, and the Add panel lists owned ships first.

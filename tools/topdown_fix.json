@@ -49,5 +49,11 @@
    0.237,
    0.759
   ]
+ },
+ "Marauder": {
+  "file": "local:tools/img_src/marauder-top.png",
+  "bluebg": 30,
+  "rot": 270,
+  "credit": "official Marauder top view, supplied by the user"
  }
 }

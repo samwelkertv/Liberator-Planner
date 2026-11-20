@@ -431,7 +431,10 @@
   "H": 6,
   "dsrc": "game data via api.star-citizen.wiki",
   "img": "img/marauder.webp",
-  "page": "https://starcitizen.tools/Marauder"
+  "page": "https://starcitizen.tools/Marauder",
+  "cf": 1,
+  "top": "img/top/marauder.webp",
+  "topsrc": "official Marauder top view, supplied by the user"
  },
  "Pitbull": {
   "variants": [
