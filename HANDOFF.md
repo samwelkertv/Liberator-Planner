@@ -285,3 +285,5 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The build emits `ck` (3 px) and `cw` (10 px) collision shapes per ship.
   - Fixed a bug where the shape lookup read ships nose-for-tail; ships point toward −u and their local +x maps to −w.
   - The Sizes source selector moved into the ⓘ panel.
+
+**Release rule (current):** the user tests on the live site (liberatorplanner.xyz), so push each tested change to `main` (fast-forward) as soon as it is ready.
