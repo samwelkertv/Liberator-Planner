@@ -49,6 +49,11 @@ def main(path):
     page = []
     aliases = json.load(open("tools/aliases.json", encoding="utf-8"))
     load = json.load(open("loadouts.json", encoding="utf-8")) if os.path.exists("loadouts.json") else {"items": [], "ships": {}}
+    if os.path.exists("wiki_dims.json"):  # curated wiki sizes override padded game-data boxes
+        for n, w in json.load(open("wiki_dims.json", encoding="utf-8")).items():
+            s = load["ships"].get(n)
+            if s:
+                s.update(L=w["L"], B=w["B"], ds="wiki", **({"H": w["H"]} if w.get("H") else {}))
     for d in out:
         a, d = assets.get(d["n"], {}), dict(d)
         for k in ("L", "B", "H"):

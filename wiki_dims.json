@@ -1,0 +1,728 @@
+{
+ "100i": {
+  "L": 19.0,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/100i"
+ },
+ "125a": {
+  "L": 19.0,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/125a"
+ },
+ "135c": {
+  "L": 19.0,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/135c"
+ },
+ "300i": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/300i"
+ },
+ "315p": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/315p"
+ },
+ "325a": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/325a"
+ },
+ "ATLS": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://starcitizen.tools/ATLS"
+ },
+ "ATLS GEO": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://starcitizen.tools/ATLS_GEO"
+ },
+ "Ares Star Fighter Inferno": {
+  "L": 27.0,
+  "B": 30.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Ares_Star_Fighter_Inferno"
+ },
+ "Ares Star Fighter Ion": {
+  "L": 27.0,
+  "B": 30.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Ares_Star_Fighter_Ion"
+ },
+ "Argo ATLS GEO IKTI": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://starcitizen.tools/ATLS_GEO_IKTI"
+ },
+ "Argo ATLS IKTI": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://starcitizen.tools/ATLS_IKTI"
+ },
+ "Arrow": {
+  "L": 16.0,
+  "B": 12.0,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/Arrow"
+ },
+ "Aurora Mk I MR": {
+  "L": 18.0,
+  "B": 8.0,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/Aurora_Mk_I_MR"
+ },
+ "Aurora Mk I SE": {
+  "L": 18.5,
+  "B": 8.25,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/Aurora_Mk_I_SE"
+ },
+ "Aurora Mk II": {
+  "L": 24.5,
+  "B": 28.0,
+  "H": 7.5,
+  "src": "https://starcitizen.tools/Aurora_Mk_II"
+ },
+ "Basher": {
+  "L": 13.7,
+  "B": 11.3,
+  "H": 4.5,
+  "src": "https://starcitizen.tools/Basher"
+ },
+ "Buccaneer": {
+  "L": 15.0,
+  "B": 16.0,
+  "H": 4.5,
+  "src": "https://starcitizen.tools/Buccaneer"
+ },
+ "C8 Pisces": {
+  "L": 13.0,
+  "B": 10.0,
+  "H": 3.25,
+  "src": "https://starcitizen.tools/C8_Pisces"
+ },
+ "C8R Pisces Rescue": {
+  "L": 13.0,
+  "B": 10.0,
+  "H": 3.25,
+  "src": "https://starcitizen.tools/C8R_Pisces_Rescue"
+ },
+ "C8X Pisces Expedition": {
+  "L": 13.0,
+  "B": 10.0,
+  "H": 3.25,
+  "src": "https://starcitizen.tools/C8X_Pisces_Expedition"
+ },
+ "CSV-SM": {
+  "L": 5.44,
+  "B": 4.13,
+  "H": 2.81,
+  "src": "https://starcitizen.tools/CSV-SM"
+ },
+ "Clipper": {
+  "L": 26.5,
+  "B": 50.0,
+  "H": 13.0,
+  "src": "https://starcitizen.tools/Clipper"
+ },
+ "Command Module": {
+  "L": 20.0,
+  "B": 16.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Command_module"
+ },
+ "Cutlass Black": {
+  "L": 37.5,
+  "B": 26.5,
+  "H": 11.5,
+  "src": "https://starcitizen.tools/Cutlass_Black"
+ },
+ "Cutter": {
+  "L": 20.0,
+  "B": 13.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Cutter"
+ },
+ "Cutter Rambler": {
+  "L": 20.0,
+  "B": 13.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Cutter_Rambler"
+ },
+ "Cyclone": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone"
+ },
+ "Cyclone AA": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone_AA"
+ },
+ "Cyclone MT": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone_MT"
+ },
+ "Cyclone RC": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone_RC"
+ },
+ "Cyclone RN": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone_RN"
+ },
+ "Cyclone TR": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://starcitizen.tools/Cyclone_TR"
+ },
+ "Dragonfly": {
+  "L": 6.0,
+  "B": 2.5,
+  "H": 1.5,
+  "src": "https://starcitizen.tools/Dragonfly"
+ },
+ "F7A Hornet Mk I": {
+  "L": 22.5,
+  "B": 22.0,
+  "H": 7.0,
+  "src": "https://starcitizen.tools/F7A_Hornet_Mk_I"
+ },
+ "F7A Hornet Mk II": {
+  "L": 22.5,
+  "B": 21.75,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/F7A_Hornet_Mk_II"
+ },
+ "F7C Hornet Mk I": {
+  "L": 22.5,
+  "B": 21.5,
+  "H": 6.5,
+  "src": "https://starcitizen.tools/F7C_Hornet_Mk_I"
+ },
+ "F7C Hornet Mk II": {
+  "L": 22.5,
+  "B": 21.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/F7C_Hornet_Mk_II"
+ },
+ "F7C-M Super Hornet Mk II": {
+  "L": 24.0,
+  "B": 24.0,
+  "H": 5.5,
+  "src": "https://starcitizen.tools/F7C-M_Super_Hornet_Mk_II"
+ },
+ "F7C-R Hornet Tracker Mk II": {
+  "L": 22.5,
+  "B": 21.0,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/F7C-R_Hornet_Tracker_Mk_II"
+ },
+ "F7C-S Hornet Ghost Mk II": {
+  "L": 22.5,
+  "B": 15.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/F7C-S_Hornet_Ghost_Mk_II"
+ },
+ "F8A Lightning": {
+  "L": 26.0,
+  "B": 24.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/F8A_Lightning"
+ },
+ "F8C Lightning": {
+  "L": 26.0,
+  "B": 25.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/F8C_Lightning"
+ },
+ "Fury": {
+  "L": 8.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://starcitizen.tools/Fury"
+ },
+ "Fury LX": {
+  "L": 7.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://starcitizen.tools/Fury_LX"
+ },
+ "Fury MX": {
+  "L": 7.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://starcitizen.tools/Fury_MX"
+ },
+ "Gladiator": {
+  "L": 22.5,
+  "B": 22.5,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Gladiator"
+ },
+ "Gladius": {
+  "L": 20.0,
+  "B": 17.0,
+  "H": 5.5,
+  "src": "https://starcitizen.tools/Gladius"
+ },
+ "Golem": {
+  "L": 15.5,
+  "B": 7.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/Golem"
+ },
+ "Golem OX": {
+  "L": 15.5,
+  "B": 7.0,
+  "H": 4.5,
+  "src": "https://starcitizen.tools/Golem_OX"
+ },
+ "Guardian": {
+  "L": 25.0,
+  "B": 16.5,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Guardian"
+ },
+ "Guardian MX": {
+  "L": 25.0,
+  "B": 16.5,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Guardian_MX"
+ },
+ "Guardian QI": {
+  "L": 25.0,
+  "B": 16.5,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Guardian_QI"
+ },
+ "Hawk": {
+  "L": 17.0,
+  "B": 22.0,
+  "H": 6.5,
+  "src": "https://starcitizen.tools/Hawk"
+ },
+ "Herald": {
+  "L": 23.5,
+  "B": 12.5,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Herald"
+ },
+ "HoverQuad": {
+  "L": 4.5,
+  "B": 2.5,
+  "H": 1.1,
+  "src": "https://starcitizen.tools/HoverQuad"
+ },
+ "Hurricane": {
+  "L": 22.0,
+  "B": 18.2,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Hurricane"
+ },
+ "Intrepid": {
+  "L": 23.2,
+  "B": 20.3,
+  "H": 6.2,
+  "src": "https://starcitizen.tools/Intrepid"
+ },
+ "Khartu-al": {
+  "L": 15.0,
+  "B": 21.5,
+  "H": 30.5,
+  "src": "https://starcitizen.tools/Khartu-al"
+ },
+ "L-21 Wolf": {
+  "L": 21.5,
+  "B": 10.5,
+  "H": 4.2,
+  "src": "https://starcitizen.tools/L-21_Wolf"
+ },
+ "L-22 Alpha Wolf": {
+  "L": 21.5,
+  "B": 10.5,
+  "H": 4.2,
+  "src": "https://starcitizen.tools/L-22_Alpha_Wolf"
+ },
+ "M50 Interceptor": {
+  "L": 11.5,
+  "B": 11.0,
+  "H": 3.0,
+  "src": "https://starcitizen.tools/M50"
+ },
+ "M80": {
+  "L": 32.0,
+  "B": 17.3,
+  "H": 6.4,
+  "src": "https://starcitizen.tools/M80"
+ },
+ "MDC": {
+  "L": 8.75,
+  "B": 6.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/MDC"
+ },
+ "MISC Freelancer": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://starcitizen.tools/Freelancer"
+ },
+ "MISC Freelancer DUR": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://starcitizen.tools/Freelancer_DUR"
+ },
+ "MISC Freelancer MIS": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://starcitizen.tools/Freelancer_MIS"
+ },
+ "MISC Prospector": {
+  "L": 26.0,
+  "B": 16.0,
+  "H": 7.0,
+  "src": "https://starcitizen.tools/Prospector"
+ },
+ "MISC Reliant Kore": {
+  "L": 14.5,
+  "B": 10.8,
+  "H": 28.5,
+  "src": "https://starcitizen.tools/Reliant_Kore"
+ },
+ "MPUV Cargo": {
+  "L": 9.5,
+  "B": 8.5,
+  "H": 4.3,
+  "src": "https://starcitizen.tools/MPUV_Cargo"
+ },
+ "MPUV Personnel": {
+  "L": 9.25,
+  "B": 8.5,
+  "H": 4.3,
+  "src": "https://starcitizen.tools/MPUV_Personnel"
+ },
+ "MPUV Tractor": {
+  "L": 9.0,
+  "B": 8.5,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/MPUV_Tractor"
+ },
+ "MTC": {
+  "L": 8.75,
+  "B": 6.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/MTC"
+ },
+ "Mantis": {
+  "L": 30.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/Mantis"
+ },
+ "Meteor": {
+  "L": 30.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/Meteor"
+ },
+ "Mule": {
+  "L": 4.2,
+  "B": 3.0,
+  "H": 2.7,
+  "src": "https://starcitizen.tools/Mule"
+ },
+ "Mustang Alpha": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Mustang_Alpha"
+ },
+ "Mustang Beta": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Mustang_Beta"
+ },
+ "Mustang Delta": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Mustang_Delta"
+ },
+ "Mustang Gamma": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Mustang_Gamma"
+ },
+ "Mustang Omega": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/Mustang_Omega"
+ },
+ "Nomad": {
+  "L": 27.0,
+  "B": 19.0,
+  "H": 10.0,
+  "src": "https://starcitizen.tools/Nomad"
+ },
+ "Nova": {
+  "L": 16.0,
+  "B": 7.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/Nova"
+ },
+ "Nox Kue": {
+  "L": 5.5,
+  "B": 1.5,
+  "H": 1.5,
+  "src": "https://starcitizen.tools/Nox_Kue"
+ },
+ "P-52 Merlin": {
+  "L": 12.0,
+  "B": 7.7,
+  "H": 2.0,
+  "src": "https://starcitizen.tools/P-52_Merlin"
+ },
+ "P-72 Archimedes": {
+  "L": 12.0,
+  "B": 7.7,
+  "H": 2.0,
+  "src": "https://starcitizen.tools/P-72_Archimedes"
+ },
+ "Pitbull": {
+  "L": 5.93,
+  "B": 6.13,
+  "H": 2.6,
+  "src": "https://starcitizen.tools/Pitbull"
+ },
+ "Prowler": {
+  "L": 34.0,
+  "B": 32.0,
+  "H": 15.0,
+  "src": "https://starcitizen.tools/Prowler"
+ },
+ "Prowler Utility": {
+  "L": 34.0,
+  "B": 32.0,
+  "H": 15.0,
+  "src": "https://starcitizen.tools/Prowler_Utility"
+ },
+ "Pulse": {
+  "L": 3.15,
+  "B": 0.9,
+  "H": 1.0,
+  "src": "https://starcitizen.tools/Pulse"
+ },
+ "ROC": {
+  "L": 6.0,
+  "B": 3.9,
+  "H": 3.2,
+  "src": "https://starcitizen.tools/ROC"
+ },
+ "ROC-DS": {
+  "L": 6.6,
+  "B": 5.0,
+  "H": 3.3,
+  "src": "https://starcitizen.tools/ROC-DS"
+ },
+ "Razor": {
+  "L": 11.5,
+  "B": 8.2,
+  "H": 2.7,
+  "src": "https://starcitizen.tools/Razor"
+ },
+ "Redeemer": {
+  "L": 51.0,
+  "B": 25.0,
+  "H": 14.0,
+  "src": "https://starcitizen.tools/Redeemer"
+ },
+ "SRV": {
+  "L": 28.5,
+  "B": 19.5,
+  "H": 9.0,
+  "src": "https://starcitizen.tools/SRV"
+ },
+ "STV": {
+  "L": 4.2,
+  "B": 2.8,
+  "H": 2.0,
+  "src": "https://starcitizen.tools/STV"
+ },
+ "Sabre": {
+  "L": 24.0,
+  "B": 26.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/Sabre"
+ },
+ "Sabre Firebird": {
+  "L": 26.0,
+  "B": 30.0,
+  "H": 3.8,
+  "src": "https://starcitizen.tools/Sabre_Firebird"
+ },
+ "Sabre Peregrine": {
+  "L": 26.0,
+  "B": 24.0,
+  "H": 5.0,
+  "src": "https://starcitizen.tools/Sabre_Peregrine"
+ },
+ "Salvation": {
+  "L": 14.5,
+  "B": 8.5,
+  "H": 4.0,
+  "src": "https://starcitizen.tools/Salvation"
+ },
+ "San'tok.yāi": {
+  "L": 22.0,
+  "B": 23.0,
+  "H": 23.0,
+  "src": "https://starcitizen.tools/San%27tok.y%C4%81i"
+ },
+ "Scorpius": {
+  "L": 24.0,
+  "B": 32.0,
+  "H": 13.0,
+  "src": "https://starcitizen.tools/Scorpius"
+ },
+ "Shiv": {
+  "L": 37.5,
+  "B": 26.5,
+  "H": 11.5,
+  "src": "https://starcitizen.tools/Shiv"
+ },
+ "Skylark": {
+  "L": 7.0,
+  "B": 6.5,
+  "H": 3.0,
+  "src": "https://starcitizen.tools/Skylark"
+ },
+ "Storm": {
+  "L": 10.5,
+  "B": 7.5,
+  "H": 3.6,
+  "src": "https://starcitizen.tools/Storm"
+ },
+ "Storm AA": {
+  "L": 10.5,
+  "B": 7.5,
+  "H": 3.6,
+  "src": "https://starcitizen.tools/Storm_AA"
+ },
+ "Talon": {
+  "L": 26.0,
+  "B": 23.3,
+  "H": 8.6,
+  "src": "https://starcitizen.tools/Talon"
+ },
+ "Terrapin": {
+  "L": 19.5,
+  "B": 14.5,
+  "H": 6.0,
+  "src": "https://starcitizen.tools/Terrapin"
+ },
+ "Terrapin Medic": {
+  "L": 20.0,
+  "B": 16.5,
+  "H": 7.5,
+  "src": "https://starcitizen.tools/Terrapin_Medic"
+ },
+ "UTV": {
+  "L": 4.0,
+  "B": 2.6,
+  "H": 2.2,
+  "src": "https://starcitizen.tools/UTV"
+ },
+ "Ursa": {
+  "L": 7.75,
+  "B": 5.7,
+  "H": 3.5,
+  "src": "https://starcitizen.tools/Ursa"
+ },
+ "Ursa Fortuna": {
+  "L": 7.75,
+  "B": 5.7,
+  "H": 3.5,
+  "src": "https://starcitizen.tools/Ursa_Fortuna"
+ },
+ "Ursa Medivac": {
+  "L": 8.0,
+  "B": 5.5,
+  "H": 3.25,
+  "src": "https://starcitizen.tools/Ursa_Medivac"
+ },
+ "Vanguard Harbinger": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.0,
+  "src": "https://starcitizen.tools/Vanguard_Harbinger"
+ },
+ "Vanguard Hoplite": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://starcitizen.tools/Vanguard_Hoplite"
+ },
+ "Vanguard Sentinel": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://starcitizen.tools/Vanguard_Sentinel"
+ },
+ "Vanguard Warden": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://starcitizen.tools/Vanguard_Warden"
+ },
+ "X1": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://starcitizen.tools/X1"
+ },
+ "X1 Force": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://starcitizen.tools/X1_Force"
+ },
+ "X1 Velocity": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://starcitizen.tools/X1_Velocity"
+ },
+ "Zeus Mk II ES": {
+  "L": 45.7,
+  "B": 34.3,
+  "H": 7.0,
+  "src": "https://starcitizen.tools/Zeus_Mk_II_ES"
+ }
+}

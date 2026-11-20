@@ -137,3 +137,12 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Floating controls:** the selected-ship toolbar floats at the bottom of the drawing, and messages float at the top.
 - **Arrow:** drawn with its outer wing panels folded (`"crop": [0.237, 0.759]` in `tools/topdown_fix.json`). The fold line is estimated from the panel seams in the top-down.
 - **Off-ship warning:** external ships whose centre is off the hull get an "Off the ship" warning.
+
+## v10 update (Nov 20, 2026)
+- **Ship sizes from the wiki:** sizes now come from the starcitizen.tools infoboxes.
+  - `tools/fetch_wiki_dims.py` writes `wiki_dims.json`, and `build.py` applies it over the game data. A page is used only when its infobox uuid matches the game-data vehicle; that covers 121 of 168 variants, and the rest fall back to the API.
+  - The wiki corrects padded game-data boxes. Examples: the M80 is 32 × 17.3 m (store figures; an editor note says the API is "way off"), the Hornet Ghost Mk II 22.5 × 15, Cyclone 6 × 4, Nova 16 × 7, Mule 4.2 × 3.
+- **Drawing:** each ship's footprint is its length × width, and the top-down image is fitted inside it, keeping its own proportions. Cropped (wings-folded) ships use width × crop fraction. The v8 rule that sized ships from image proportions is gone.
+- **No scrolling while dragging:** the body is fixed in place with no overscroll, the drawing area ignores touch scrolling, and pointermove calls `preventDefault` while dragging. Dragging a ship never scrolls the page.
+- **Internal view:** ships can't go on the front pad; they're clamped to the door at 34 m from the bow, the start of the vehicle bay. The front pad is shaded red as "outside".
+- **Export image:** a PNG with the external view on the left and the internal view on the right. Each SVG is cloned with its styles inlined, then drawn to a canvas. A dialog shows the image with a Download link, and right-click or long-press also saves it.
