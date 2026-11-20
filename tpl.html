@@ -243,7 +243,7 @@ const fitS=(d,s)=>st(d,SL[s][1]);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 const byName=n=>D.find(d=>d.n===n);
-let OPT={pads:true,doors:true,cargo:true,bay:true,door:false,tint:true,warn:true,ostyle:'shape',oshow:'all',coll:'pixel'};try{const o=JSON.parse(localStorage.getItem('libopt')||'null');if(o)Object.assign(OPT,o);else{if(localStorage.getItem('libov')==='0')OPT.pads=OPT.doors=OPT.cargo=OPT.bay=false;if(localStorage.getItem('libbox')==='0')OPT.oshow='none'}}catch(e){}OPT.coll='pixel';OPT.ostyle='shape';
+let OPT={pads:true,doors:true,cargo:true,bay:true,door:true,tint:true,warn:true,ostyle:'shape',oshow:'all',coll:'pixel'};try{const o=JSON.parse(localStorage.getItem('libopt')||'null');if(o){Object.assign(OPT,o);if(!o.dv1){OPT.door=true;OPT.dv1=1}}else{if(localStorage.getItem('libov')==='0')OPT.pads=OPT.doors=OPT.cargo=OPT.bay=false;if(localStorage.getItem('libbox')==='0')OPT.oshow='none'}}catch(e){}OPT.coll='pixel';OPT.ostyle='shape';
 let OWN=new Set();try{OWN=new Set(JSON.parse(localStorage.getItem('libown')||'[]'))}catch(e){}
 const saveOwn=()=>{try{localStorage.setItem('libown',JSON.stringify([...OWN]))}catch(e){}};
 OWN=new Set([...OWN].map(n=>byName(n)?n:(fixName({n})||{n}).n));saveOwn();
