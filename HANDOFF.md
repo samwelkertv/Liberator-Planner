@@ -236,3 +236,14 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - **Clipper:** 26.5 × 16 m. Body and engine pods measure about 293 of 915 px in "Clipper in space - Front" (50 m span); the wings fold vertical beside the hull.
   - Override boxes are drawn exactly. Release rule: once everything the user has asked for is done and tested, push the testing branch to `main` (fast-forward) without waiting to be asked, unless the user says otherwise.
 - **v19.2:** Hornet Ghost Mk II size override, 22.5 × 22 × 6.5 m. The game data, the RSI ship matrix and scorg.tools agree, and scorg's top view matches the F7C Mk II outline; the wiki's 15 m width is wrong. The Ghost now merges back into the main Hornet item. `fixName()` also maps names of removed split items by variant, and owned tags are migrated the same way. The Marauder stays at the official 21 × 20.4 × 7 m (every other source says 20 × 19 × 6 m).
+
+## v20 update (Nov 20, 2026)
+- **Size rule (from the user): game data > RSI store page > wiki.**
+  - `tools/fetch_store_dims.py` reads the RSI store pages' structured specs into `store_dims.json` (157 of 168 variants). The store can differ from the ship-matrix JSON (M80: store 32 × 17.3 m, matrix 11.5 × 11).
+  - `build.py` keeps the game data and falls back to store, then wiki, only when game data is missing.
+  - `tools/dim_overrides.json` now holds only the measured landed widths for the Clipper and Arrow. The Ghost and Marauder overrides were removed, so they use game data: 22.5 × 22 m and 20 × 19 m.
+  - `tools/size_report.py` writes `docs/size-audit.md`, listing every store-vs-game conflict (63) with the wiki value.
+  - The older `tools/audit_sizes.py` also compares the RSI matrix and scorg.tools.
+- **ATLS / ATLS GEO:** each has its own top view from scorg.tools (`tools/variant_images.json`; split items can carry a variant-specific image).
+- **Ship lists merged:** one "+ Ships" panel. Each card has + Ext / + Int buttons (greyed out when the ship doesn't fit), plus the ★ owned toggle, filters and drag-and-drop. The separate Add panel is gone.
+- **Garage width is still unverified.** The fit sheet rates ships as wide as about 18 m with fixed wings (Hurricane, Gladius) as fitting inside, and wider folding-wing ships too. Game-data widths are flight boxes, so they can't pin down the bay width.

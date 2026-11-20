@@ -1,0 +1,944 @@
+{
+ "100i": {
+  "L": 19.3,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-100/100i"
+ },
+ "125a": {
+  "L": 19.3,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-100/125a"
+ },
+ "135c": {
+  "L": 19.3,
+  "B": 11.0,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-100/135c"
+ },
+ "300i": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-300/300i"
+ },
+ "315p": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-300/315p"
+ },
+ "325a": {
+  "L": 27.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-300/325a"
+ },
+ "350r": {
+  "L": 25.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/origin-300/350r"
+ },
+ "85X Limited": {
+  "L": 13.0,
+  "B": 10.0,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/85x/85X"
+ },
+ "ATLS": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://robertsspaceindustries.com/pledge/ships/atls/ATLS"
+ },
+ "ATLS GEO": {
+  "L": 1.8,
+  "B": 2.0,
+  "H": 2.8,
+  "src": "https://robertsspaceindustries.com/pledge/ships/atls/ATLS-GEO"
+ },
+ "Arrow": {
+  "L": 16.0,
+  "B": 12.0,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-arrow/Arrow"
+ },
+ "Aurora Mk I CL": {
+  "L": 19.0,
+  "B": 8.0,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-CL"
+ },
+ "Aurora Mk I ES": {
+  "L": 19.0,
+  "B": 8.7,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-ES"
+ },
+ "Aurora Mk I LN": {
+  "L": 19.0,
+  "B": 8.7,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-LN"
+ },
+ "Aurora Mk I LX": {
+  "L": 19.0,
+  "B": 8.7,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-LX"
+ },
+ "Aurora Mk I MR": {
+  "L": 19.0,
+  "B": 8.7,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-MR"
+ },
+ "Aurora Mk I SE": {
+  "L": 18.5,
+  "B": 8.2,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-aurora/Aurora-Mk-I-SE"
+ },
+ "Aurora Mk II": {
+  "L": 27.5,
+  "B": 10.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aurora-mk-ii/Aurora-Mk-II"
+ },
+ "Avenger Stalker": {
+  "L": 22.5,
+  "B": 16.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aegis-avenger/Avenger-Stalker"
+ },
+ "Avenger Titan": {
+  "L": 22.5,
+  "B": 16.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aegis-avenger/Avenger-Titan"
+ },
+ "Avenger Titan Renegade": {
+  "L": 22.5,
+  "B": 16.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aegis-avenger/Avenger-Titan-Renegade"
+ },
+ "Avenger Warlock": {
+  "L": 22.5,
+  "B": 16.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aegis-avenger/Avenger-Warlock"
+ },
+ "Basher": {
+  "L": 13.7,
+  "B": 11.3,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/basher/Basher"
+ },
+ "Blade": {
+  "L": 21.0,
+  "B": 21.0,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/vanduul-blade/Blade"
+ },
+ "Buccaneer": {
+  "L": 15.0,
+  "B": 16.0,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-buccaneer/Buccaneer"
+ },
+ "C8 Pisces": {
+  "L": 12.0,
+  "B": 10.0,
+  "H": 3.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-pisces/C8-Pisces"
+ },
+ "C8X Pisces Expedition": {
+  "L": 13.0,
+  "B": 10.0,
+  "H": 3.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-pisces/C8X-Pisces-Expedition"
+ },
+ "CSV-SM": {
+  "L": 5.4,
+  "B": 4.1,
+  "H": 2.8,
+  "src": "https://robertsspaceindustries.com/pledge/ships/csv/CSV-SM"
+ },
+ "Clipper": {
+  "L": 26.5,
+  "B": 18.0,
+  "H": 21.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/clipper/Clipper"
+ },
+ "Cutlass Black": {
+  "L": 29.0,
+  "B": 26.5,
+  "H": 10.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-cutlass/Cutlass-Black"
+ },
+ "Cutlass Blue": {
+  "L": 36.0,
+  "B": 26.0,
+  "H": 14.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-cutlass/Cutlass-Blue"
+ },
+ "Cutlass Red": {
+  "L": 36.0,
+  "B": 26.0,
+  "H": 14.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-cutlass/Cutlass-Red"
+ },
+ "Cutlass Steel": {
+  "L": 36.0,
+  "B": 26.5,
+  "H": 14.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-cutlass/Cutlass-Steel"
+ },
+ "Cutter": {
+  "L": 20.0,
+  "B": 13.0,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cutter/Cutter"
+ },
+ "Cutter Rambler": {
+  "L": 20.0,
+  "B": 13.0,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cutter/Cutter-Rambler"
+ },
+ "Cutter Scout": {
+  "L": 20.0,
+  "B": 13.0,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cutter/Cutter-Scout"
+ },
+ "Cyclone": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone"
+ },
+ "Cyclone AA": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone-AA"
+ },
+ "Cyclone MT": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone-MT"
+ },
+ "Cyclone RC": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone-RC"
+ },
+ "Cyclone RN": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 3.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone-RN"
+ },
+ "Cyclone TR": {
+  "L": 6.0,
+  "B": 4.0,
+  "H": 2.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/cyclone/Cyclone-TR"
+ },
+ "Defender": {
+  "L": 25.5,
+  "B": 20.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/defender/Defender"
+ },
+ "Dragonfly Yellowjacket": {
+  "L": 8.0,
+  "B": 3.0,
+  "H": 3.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-dragonfly/Dragonfly-Yellowjacket"
+ },
+ "Eclipse": {
+  "L": 20.5,
+  "B": 36.6,
+  "H": 4.4,
+  "src": "https://robertsspaceindustries.com/pledge/ships/eclipse/Eclipse"
+ },
+ "F7A Hornet Mk I": {
+  "L": 22.5,
+  "B": 21.0,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet/F7A-Hornet-Mk-I"
+ },
+ "F7A Hornet Mk II": {
+  "L": 22.5,
+  "B": 22.0,
+  "H": 6.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet-mkii/F7A-Hornet-Mk-II"
+ },
+ "F7C Hornet Mk I": {
+  "L": 22.5,
+  "B": 21.5,
+  "H": 6.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet/F7C-Hornet-Mk-I"
+ },
+ "F7C Hornet Mk II": {
+  "L": 22.2,
+  "B": 22.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet-mkii/F7C-Hornet-Mk-II"
+ },
+ "F7C-M Super Hornet Mk II": {
+  "L": 24.0,
+  "B": 19.0,
+  "H": 6.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet-mkii/F7C-M-Super-Hornet-Mk-II"
+ },
+ "F7C-R Hornet Tracker Mk II": {
+  "L": 22.5,
+  "B": 15.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet-mkii/F7C-R-Hornet-Tracker-Mk-II"
+ },
+ "F7C-S Hornet Ghost Mk II": {
+  "L": 22.5,
+  "B": 15.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-hornet-mkii/F7C-S-Hornet-Ghost-Mk-II"
+ },
+ "F8C Lightning": {
+  "L": 25.0,
+  "B": 24.0,
+  "H": 6.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/lightning/F8C-Lightning"
+ },
+ "Fury": {
+  "L": 7.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/fury/Fury"
+ },
+ "Fury LX": {
+  "L": 7.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/fury/Fury-LX"
+ },
+ "Fury MX": {
+  "L": 7.0,
+  "B": 5.4,
+  "H": 2.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/fury/Fury-MX"
+ },
+ "Gladiator": {
+  "L": 22.3,
+  "B": 22.0,
+  "H": 6.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-gladiator/Gladiator"
+ },
+ "Gladius": {
+  "L": 20.0,
+  "B": 17.0,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/gladius/Gladius"
+ },
+ "Gladius Valiant": {
+  "L": 20.0,
+  "B": 16.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/gladius/Gladius-Valiant"
+ },
+ "Glaive": {
+  "L": 31.0,
+  "B": 20.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/esperia-glaive/Glaive"
+ },
+ "Golem": {
+  "L": 15.5,
+  "B": 7.0,
+  "H": 4.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/golem/Golem"
+ },
+ "Golem OX": {
+  "L": 15.5,
+  "B": 10.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/golem/Golem-OX"
+ },
+ "Guardian": {
+  "L": 25.0,
+  "B": 16.5,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/guardian/Guardian"
+ },
+ "Guardian MX": {
+  "L": 25.0,
+  "B": 20.0,
+  "H": 11.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/guardian/Guardian-MX"
+ },
+ "Guardian QI": {
+  "L": 25.0,
+  "B": 16.5,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/guardian/Guardian-QI"
+ },
+ "HM6 Ballista": {
+  "L": 17.0,
+  "B": 7.0,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/anvil-ballista/Ballista"
+ },
+ "HM6 Centurion": {
+  "L": 17.0,
+  "B": 7.0,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/centurion/Centurion"
+ },
+ "HM6 Spartan": {
+  "L": 17.0,
+  "B": 7.0,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/spartan/Spartan"
+ },
+ "Hawk": {
+  "L": 17.0,
+  "B": 22.0,
+  "H": 6.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/hawk/Hawk"
+ },
+ "Herald": {
+  "L": 23.5,
+  "B": 12.5,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/herald/Herald"
+ },
+ "HoverQuad": {
+  "L": 4.5,
+  "B": 2.5,
+  "H": 1.1,
+  "src": "https://robertsspaceindustries.com/pledge/ships/hoverquad/HoverQuad"
+ },
+ "Hurricane": {
+  "L": 22.0,
+  "B": 14.5,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/hurricane/Hurricane"
+ },
+ "Intrepid": {
+  "L": 23.2,
+  "B": 20.3,
+  "H": 6.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/intrepid/Intrepid"
+ },
+ "Khartu-al": {
+  "L": 30.5,
+  "B": 13.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/khartu/Khartu-Al"
+ },
+ "L-21 Wolf": {
+  "L": 21.5,
+  "B": 10.5,
+  "H": 4.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/wolf/L-21-Wolf"
+ },
+ "L-22 Alpha Wolf": {
+  "L": 21.5,
+  "B": 10.5,
+  "H": 4.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/wolf/L-22-Alpha-Wolf"
+ },
+ "Lynx": {
+  "L": 7.7,
+  "B": 5.7,
+  "H": 3.1,
+  "src": "https://robertsspaceindustries.com/pledge/ships/ursa/Lynx"
+ },
+ "M80": {
+  "L": 32.0,
+  "B": 17.3,
+  "H": 6.4,
+  "src": "https://robertsspaceindustries.com/pledge/ships/m80/M80"
+ },
+ "MDC": {
+  "L": 7.0,
+  "B": 5.5,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mdc/MDC"
+ },
+ "MISC Fortune": {
+  "L": 26.0,
+  "B": 16.0,
+  "H": 7.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/fortune/Fortune"
+ },
+ "MISC Freelancer": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/misc-freelancer/Freelancer"
+ },
+ "MISC Freelancer DUR": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/misc-freelancer/Freelancer-DUR"
+ },
+ "MISC Freelancer MIS": {
+  "L": 38.0,
+  "B": 23.5,
+  "H": 9.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/misc-freelancer/Freelancer-MIS"
+ },
+ "MISC Hull A": {
+  "L": 24.0,
+  "B": 10.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/hull/Hull-A"
+ },
+ "MISC Hull B": {
+  "L": 46.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/hull/Hull-B"
+ },
+ "MISC Prospector": {
+  "L": 24.0,
+  "B": 15.0,
+  "H": 7.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/misc-prospector/Prospector"
+ },
+ "MISC Reliant Kore": {
+  "L": 14.5,
+  "B": 28.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/reliant/Reliant-Kore"
+ },
+ "MISC Reliant Mako": {
+  "L": 14.5,
+  "B": 28.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/reliant/Reliant-Mako"
+ },
+ "MISC Reliant Sen": {
+  "L": 14.5,
+  "B": 28.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/reliant/Reliant-Sen"
+ },
+ "MISC Reliant Tana": {
+  "L": 14.5,
+  "B": 28.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/reliant/Reliant-Tana"
+ },
+ "MISC Starlite": {
+  "L": 32.0,
+  "B": 19.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/starlite/Starlite"
+ },
+ "MPUV Cargo": {
+  "L": 9.0,
+  "B": 8.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/argo/MPUV-Cargo"
+ },
+ "MPUV Personnel": {
+  "L": 9.0,
+  "B": 6.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/argo/MPUV-Personnel"
+ },
+ "MPUV Tractor": {
+  "L": 9.0,
+  "B": 8.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/argo/MPUV-Tractor"
+ },
+ "MTC": {
+  "L": 7.0,
+  "B": 5.5,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mtc/MTC"
+ },
+ "Mantis": {
+  "L": 30.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-mantis/Mantis"
+ },
+ "Marauder": {
+  "L": 20.5,
+  "B": 18.5,
+  "H": 6.1,
+  "src": "https://robertsspaceindustries.com/pledge/ships/marauder/Marauder"
+ },
+ "Meteor": {
+  "L": 30.0,
+  "B": 17.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/rsi-meteor/Meteor"
+ },
+ "Mule": {
+  "L": 4.2,
+  "B": 3.0,
+  "H": 2.7,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mule/Mule"
+ },
+ "Mustang Alpha": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mustang/Mustang-Alpha"
+ },
+ "Mustang Beta": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mustang/Mustang-Beta"
+ },
+ "Mustang Delta": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mustang/Mustang-Delta"
+ },
+ "Mustang Gamma": {
+  "L": 21.5,
+  "B": 18.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mustang/Mustang-Gamma"
+ },
+ "Mustang Omega": {
+  "L": 17.5,
+  "B": 15.5,
+  "H": 5.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mustang/Mustang-Omega"
+ },
+ "Nomad": {
+  "L": 26.5,
+  "B": 18.3,
+  "H": 9.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/nomad/Nomad"
+ },
+ "Nova": {
+  "L": 16.0,
+  "B": 7.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/nova-tank/Nova"
+ },
+ "Nox": {
+  "L": 5.5,
+  "B": 1.5,
+  "H": 1.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/nox/Nox"
+ },
+ "Nox Kue": {
+  "L": 5.5,
+  "B": 1.5,
+  "H": 1.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/nox/Nox-Kue"
+ },
+ "P-52 Merlin": {
+  "L": 12.0,
+  "B": 7.7,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/p52-merlin/P-52-Merlin"
+ },
+ "P-72 Archimedes": {
+  "L": 12.0,
+  "B": 7.7,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/p72-archimedes/P-72-Archimedes"
+ },
+ "PTV": {
+  "L": 3.0,
+  "B": 2.0,
+  "H": 1.8,
+  "src": "https://robertsspaceindustries.com/pledge/ships/ptv/PTV"
+ },
+ "Pitbull": {
+  "L": 3.9,
+  "B": 5.9,
+  "H": 3.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/pitbull/Pitbull"
+ },
+ "Prowler": {
+  "L": 34.0,
+  "B": 32.0,
+  "H": 15.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/prowler/Prowler"
+ },
+ "Prowler Utility": {
+  "L": 34.0,
+  "B": 32.0,
+  "H": 15.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/prowler/Prowler-Utility"
+ },
+ "Pulse": {
+  "L": 3.1,
+  "B": 0.9,
+  "H": 1.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mirai-pulse/Pulse"
+ },
+ "Pulse LX": {
+  "L": 3.1,
+  "B": 0.9,
+  "H": 1.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/mirai-pulse/Pulse-LX"
+ },
+ "ROC": {
+  "L": 5.1,
+  "B": 3.8,
+  "H": 3.1,
+  "src": "https://robertsspaceindustries.com/pledge/ships/roc/ROC"
+ },
+ "ROC-DS": {
+  "L": 6.6,
+  "B": 5.0,
+  "H": 3.3,
+  "src": "https://robertsspaceindustries.com/pledge/ships/roc/ROC-DS"
+ },
+ "Razor": {
+  "L": 11.5,
+  "B": 8.2,
+  "H": 2.7,
+  "src": "https://robertsspaceindustries.com/pledge/ships/razor/Razor"
+ },
+ "Razor EX": {
+  "L": 11.5,
+  "B": 8.2,
+  "H": 2.7,
+  "src": "https://robertsspaceindustries.com/pledge/ships/razor/Razor-EX"
+ },
+ "Razor LX": {
+  "L": 11.5,
+  "B": 8.2,
+  "H": 2.7,
+  "src": "https://robertsspaceindustries.com/pledge/ships/razor/Razor-LX"
+ },
+ "Redeemer": {
+  "L": 51.0,
+  "B": 23.5,
+  "H": 14.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/redeemer/Redeemer"
+ },
+ "S-65 Stingray": {
+  "L": 24.5,
+  "B": 16.4,
+  "H": 8.7,
+  "src": "https://robertsspaceindustries.com/pledge/ships/s-65-stingray/S-65-Stingray"
+ },
+ "SRV": {
+  "L": 28.5,
+  "B": 19.5,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/argo-srv/SRV"
+ },
+ "STV": {
+  "L": 4.2,
+  "B": 2.8,
+  "H": 2.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/stv/STV"
+ },
+ "Sabre": {
+  "L": 26.0,
+  "B": 24.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/sabre/Sabre"
+ },
+ "Sabre Comet": {
+  "L": 24.0,
+  "B": 26.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/sabre/Sabre-Comet"
+ },
+ "Sabre Firebird": {
+  "L": 26.0,
+  "B": 30.0,
+  "H": 3.8,
+  "src": "https://robertsspaceindustries.com/pledge/ships/sabre/Sabre-Firebird"
+ },
+ "Sabre Peregrine": {
+  "L": 26.0,
+  "B": 24.0,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/sabre/Sabre-Peregrine"
+ },
+ "Sabre Raven": {
+  "L": 24.0,
+  "B": 20.5,
+  "H": 5.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/sabre/Sabre-Raven"
+ },
+ "Salvation": {
+  "L": 14.5,
+  "B": 8.5,
+  "H": 4.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/salvation/Salvation"
+ },
+ "San'tok.yāi": {
+  "L": 24.0,
+  "B": 23.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/aopoa-santokyai/Santoky-i"
+ },
+ "Scorpius": {
+  "L": 24.0,
+  "B": 32.0,
+  "H": 13.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/scorpius/Scorpius"
+ },
+ "Scorpius Antares": {
+  "L": 24.0,
+  "B": 32.0,
+  "H": 13.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/scorpius/Scorpius-Antares"
+ },
+ "Shiv": {
+  "L": 36.0,
+  "B": 28.0,
+  "H": 14.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/shiv/Shiv"
+ },
+ "Skylark": {
+  "L": 6.5,
+  "B": 4.0,
+  "H": 3.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/skylark/Skylark"
+ },
+ "Storm": {
+  "L": 10.5,
+  "B": 7.5,
+  "H": 3.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/storm/Storm"
+ },
+ "Storm AA": {
+  "L": 10.5,
+  "B": 7.5,
+  "H": 3.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/storm/Storm-AA"
+ },
+ "Talon": {
+  "L": 26.0,
+  "B": 23.5,
+  "H": 8.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/talon/Talon"
+ },
+ "Talon Shrike": {
+  "L": 26.0,
+  "B": 23.5,
+  "H": 8.6,
+  "src": "https://robertsspaceindustries.com/pledge/ships/talon/Talon-Shrike"
+ },
+ "Terrapin": {
+  "L": 19.5,
+  "B": 14.5,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/terrapin/Terrapin"
+ },
+ "Terrapin Medic": {
+  "L": 19.5,
+  "B": 16.7,
+  "H": 6.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/terrapin/Terrapin-Medic"
+ },
+ "UTV": {
+  "L": 4.0,
+  "B": 2.6,
+  "H": 2.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/utv/UTV"
+ },
+ "Ursa": {
+  "L": 7.6,
+  "B": 5.5,
+  "H": 2.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/ursa/Ursa"
+ },
+ "Ursa Fortuna": {
+  "L": 7.6,
+  "B": 5.5,
+  "H": 2.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/ursa/Ursa-Fortuna"
+ },
+ "Ursa Medivac": {
+  "L": 8.0,
+  "B": 5.5,
+  "H": 3.2,
+  "src": "https://robertsspaceindustries.com/pledge/ships/ursa/Ursa-Medivac"
+ },
+ "Vanduul Scythe": {
+  "L": 31.0,
+  "B": 23.0,
+  "H": 8.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/scythe/Scythe"
+ },
+ "Vanguard Harbinger": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/vanguard/Vanguard-Harbinger"
+ },
+ "Vanguard Hoplite": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/vanguard/Vanguard-Hoplite"
+ },
+ "Vanguard Sentinel": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/vanguard/Vanguard-Sentinel"
+ },
+ "Vanguard Warden": {
+  "L": 38.5,
+  "B": 40.0,
+  "H": 8.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/vanguard/Vanguard-Warden"
+ },
+ "Vulture": {
+  "L": 33.0,
+  "B": 16.0,
+  "H": 9.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/drake-vulture/Vulture"
+ },
+ "X1": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/x1/X1"
+ },
+ "X1 Force": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/x1/X1-Force"
+ },
+ "X1 Velocity": {
+  "L": 5.5,
+  "B": 1.3,
+  "H": 1.5,
+  "src": "https://robertsspaceindustries.com/pledge/ships/x1/X1-Velocity"
+ },
+ "Zeus Mk II CL": {
+  "L": 45.7,
+  "B": 34.3,
+  "H": 7.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/zeus-mk-ii/Zeus-Mk-II-CL"
+ },
+ "Zeus Mk II ES": {
+  "L": 45.7,
+  "B": 34.3,
+  "H": 7.0,
+  "src": "https://robertsspaceindustries.com/pledge/ships/zeus-mk-ii/Zeus-Mk-II-ES"
+ }
+}
