@@ -124,6 +124,8 @@ def main():
         walk(v.get("ports"), [])
         fuel, q = v.get("fuel") or {}, v.get("quantum") or {}
         ships[name] = {
+            "L": (v.get("sizes") or {}).get("length"), "B": (v.get("sizes") or {}).get("beam"),
+            "H": (v.get("sizes") or {}).get("height"),
             "role": v.get("role"), "crew": [(v.get("crew") or {}).get("min"), (v.get("crew") or {}).get("max")],
             "scm": (v.get("speed") or {}).get("scm"), "vmax": (v.get("speed") or {}).get("max"),
             "hull": v.get("health"), "cargo": v.get("cargo_capacity"),

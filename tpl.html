@@ -30,14 +30,14 @@ h1{font:700 clamp(32px,5vw,48px)/1.05 Rajdhani,sans-serif;margin:0 0 6px;text-wr
 .view[hidden]{display:none}
 .pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .zone{background:var(--deck);border:2px solid transparent;border-radius:12px;padding:10px 12px 12px;min-height:130px;display:flex;flex-direction:column;transition:border-color .15s,opacity .15s}
-.ship{display:block;width:100%;height:auto;margin:0 0 10px;overflow:visible}
+.ship{display:block;width:100%;height:auto;max-height:82vh;margin:0 0 10px;overflow:visible}
 .ship .hullp{fill:var(--hull);stroke:var(--line);stroke-width:.3}.ship .hullp.int{fill:color-mix(in srgb,var(--hull) 70%,var(--deck))}
 .ship .chan{fill:color-mix(in srgb,var(--deck) 60%,var(--bg))}.ship .ramp{fill:var(--deck);opacity:.6}.ship .eng{fill:var(--line);opacity:.5}
 .ship .pad{fill:var(--deck);stroke:var(--line);stroke-width:.3}.ship .hz{cursor:pointer}
 .ship .hz.ok .pad{stroke:var(--ok);stroke-width:.8}.ship .hz.warn .pad{stroke:var(--warn);stroke-width:.8}.ship .hz.no{opacity:.4}.ship .hz.hov .pad{stroke:var(--acc);stroke-width:1}
 .zones{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
 .ship .env{fill:color-mix(in srgb,var(--hull) 55%,transparent);stroke:var(--line);stroke-width:.25;stroke-dasharray:1 .7}
-.ship .el{font:600 2.5px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
+.ship .el{font:600 2.2px 'IBM Plex Sans',sans-serif;fill:var(--ink);opacity:.65}
 .ship .sh{fill:color-mix(in srgb,var(--ok) 30%,transparent);stroke:var(--ok);stroke-width:.35}
 .ship .sh.warn,.ship .sh.unk{fill:color-mix(in srgb,var(--warn) 30%,transparent);stroke:var(--warn)}
 .ship .sh.img{fill:none;stroke-dasharray:.8 .6;stroke-width:.3}
@@ -139,12 +139,12 @@ svg.ship.hov{outline:3px solid var(--acc);outline-offset:2px;border-radius:8px}
 <section class="plan" aria-label="Deck plan">
 <div class="tabs" role="tablist"><button role="tab" id="t-external" data-v="external" aria-selected="true"><span class="dot"></span>External</button><button role="tab" id="t-internal" data-v="internal" aria-selected="false"><span class="dot"></span>Internal</button></div>
 <div class="vtools"><button class="add" id="addbtn">+ Add ship</button><span class="hint">Drag ships to arrange them. Select one to turn it (R), nudge it (arrow keys), open its stats or remove it.</span></div>
-<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-2 -36 123 72" role="img" aria-label="Liberator top deck, bow on the left, drawn to scale"></svg></div>
-<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-2 -36 123 72" role="img" aria-label="Liberator vehicle bay, bow on the left, drawn to scale"></svg></div>
+<div class="view" id="v-external" role="tabpanel" aria-labelledby="t-external"><svg class="ship" data-v="external" viewBox="-36 -3 72 128" role="img" aria-label="Liberator top deck, bow at the top, drawn to scale"></svg></div>
+<div class="view" id="v-internal" role="tabpanel" aria-labelledby="t-internal" hidden><svg class="ship" data-v="internal" viewBox="-36 -3 72 128" role="img" aria-label="Liberator vehicle bay, bow at the top, drawn to scale"></svg></div>
 <div id="selbar" hidden><span id="seln"></span><button data-a="l" aria-label="Turn left 15 degrees">⟲ 15°</button><button data-a="r" aria-label="Turn right 15 degrees">⟳ 15°</button><button data-a="q">Turn 90°</button><button data-a="s">Stats</button><button data-a="x">Remove</button><button data-a="d" aria-label="Deselect">✕</button></div>
 <div id="placed"></div>
 <div class="tools"><button id="undo">Undo</button><button id="clear">Clear plan</button><button id="copy">Copy plan</button><span id="msg" role="status"></span></div>
-<p class="note">Liberator top-down: scorg.tools render. It is 1000 × 563 px, which matches the game-data 119 × 67 m, so it is used at true scale. Ships are drawn at the same scale from game-data length × beam (grouped rows use the largest variant). Overlapping ships are flagged red. The vehicle-bay outline on the internal view is approximate: it follows the centre channel, since the concept cutaway shows the bay beneath it. Fit ratings come from the sheet: deck-rated ships fit anywhere outside, and F ships only on the front pad.</p>
+<p class="note">Liberator top-down: scorg.tools render. It is 1000 × 563 px, which matches the game-data 119 × 67 m, so it is used at true scale. Ships are drawn at the same scale, using the shape of their top-down image, with the longest side set to the larger game-data dimension of the variant you picked in Stats. Game-data boxes are sometimes padded or square, so the image proportions are used instead. Grouped rows default to their first variant. The Clipper is drawn with its wings folded, as they are when landed. Overlapping ships are flagged red. The vehicle-bay outline on the internal view is approximate: it follows the centre channel, since the concept cutaway shows the bay beneath it. Fit ratings come from the sheet: deck-rated ships fit anywhere outside, and F ships only on the front pad.</p>
 </section>
 <section aria-label="Ships and vehicles">
 <input id="q" type="search" placeholder="Search ships or makers" aria-label="Search ships">
@@ -208,7 +208,11 @@ const fitV=(d,v)=>d[VS[v]];
 const sym=s=>({ok:'✓',unk:'?',warn:'!',no:'✕'})[cls(s)];
 const badge=(s,name)=>`<span class="b ${cls(s)}" title="${esc(name+': '+(s?L[s]:NF))}">${s&&s.startsWith('front')?'Front pad':name} ${sym(s)}</span>`;
 const desc=d=>`${dims(d)} · Deck: ${d.e?L[d.e]:NF} · Garage: ${d.i?L[d.i]:NF}`;
-function corners(p){const d=byName(p.n),a=p.r*Math.PI/180,u=[Math.cos(a),Math.sin(a)],w=[-u[1],u[0]],l=(d.L||4)/2,b=(d.B||3)/2;return[[1,1],[1,-1],[-1,-1],[-1,1]].map(([i,j])=>[p.x+i*l*u[0]+j*b*w[0],p.y+i*l*u[1]+j*b*w[1]])}
+const pv=p=>{const d=byName(p.n),vs=variants(d);return p.f&&vs.includes(p.f.v)?p.f.v:vs[0]};
+const sz=p=>{const d=byName(p.n),s=LD.ships[pv(p)];return s&&s.L?{L:s.L,B:s.B,H:s.H}:{L:d.L||4,B:d.B||3,H:d.H}};
+function dd(p){const d=byName(p.n),s=sz(p);if(!d.td||!d.ta)return{l:s.L,b:s.B};const fw=1/(d.cf||1),k=Math.max(s.L,s.B)/Math.max(fw,d.ta);return{l:d.ta*k,b:k}}
+const pdims=p=>{const s=sz(p);return `${m(s.L)} × ${m(s.B)}${s.H?' × '+m(s.H):''} m`};
+function corners(p){const z=dd(p),a=p.r*Math.PI/180,u=[Math.cos(a),Math.sin(a)],w=[-u[1],u[0]],l=z.l/2,b=z.b/2;return[[1,1],[1,-1],[-1,-1],[-1,1]].map(([i,j])=>[p.x+i*l*u[0]+j*b*w[0],p.y+i*l*u[1]+j*b*w[1]])}
 function hit(p,q){const A=corners(p),B=corners(q);for(const C of[A,B])for(let i=0;i<2;i++){const ax=[C[i+1][0]-C[i][0],C[i+1][1]-C[i][1]];const pr=K=>K.map(c=>c[0]*ax[0]+c[1]*ax[1]);const a=pr(A),b=pr(B);if(Math.max(...a)<=Math.min(...b)+1e-6||Math.max(...b)<=Math.min(...a)+1e-6)return false}return true}
 function issues(p){const d=byName(p.n),f=fitV(d,p.v),o=[];
 if(!f)o.push(['bad',`${p.v==='external'?'Deck':'Garage'}: ${NF}`]);else if(lvl(f)!=='ok')o.push([cls(f),L[f]]);
@@ -221,14 +225,16 @@ function renderCards(){const r=shown();$('#count').textContent=`${r.length} of $
 $('#cards').innerHTML=r.length?r.map(([d,i])=>`<div class="card${i===sel?' on':''}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===sel}"><span class="grip" aria-hidden="true">⠿</span>${thumb(d)}<span class="nm"><b>${esc(d.n)}</b><small>${esc(d.m)}${d.k==='ground'?' · ground':''} · ${dims(d)}</small></span><span class="bs">${badge(d.e,'Deck')}${badge(d.i,'Garage')}</span></div>`).join(''):'<p class="empty">No ships match that search.</p>'}
 function setView(v){view=v;for(const t of $$('[role=tab]'))t.setAttribute('aria-selected',String(t.dataset.v===v));$('#v-external').hidden=v!=='external';$('#v-internal').hidden=v!=='internal';const p=selId&&byId(selId);if(p&&p.v!==v)selId=null;try{localStorage.setItem('libview',v)}catch(e){}renderPlan()}
 function drawShips(){for(const sv of $$('svg.ship')){const v=sv.dataset.v,int=v==='internal';
-let h=`<image class="lib${int?' int':''}" href="${LIBIMG}" x="0" y="-33.5" width="119" height="67"/>`;
-h+=int?`<rect class="bay" x="${BAY.x0}" y="${-BAY.h}" width="${BAY.x1-BAY.x0}" height="${2*BAY.h}" rx="1"/><text class="el" x="${BAY.x0+1}" y="${-BAY.h-1.2}">Vehicle bay, approximate outline (deck 02)</text>`:`<text class="el lt" x="12" y="-13">Front pad</text><text class="el lt" x="51.5" y="-13">Upper pad 1</text><text class="el lt" x="85" y="-13">Upper pad 2</text>`;
-for(const p of P.filter(p=>p.v===v)){const d=byName(p.n),o=issues(p),w=worst(o),l=d.L||4,b=d.B||3,k=Math.min(1.6,b/3),n=Math.min(2.4,l/3);
-h+=`<g class="pc ${w}${p.id===selId?' on':''}" data-id="${p.id}" transform="translate(${p.x} ${p.y}) rotate(${p.r-90})"><title>${esc(d.n)}</title>`+(d.td?`<image href="${d.td}" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" preserveAspectRatio="xMidYMid meet"/><rect class="fpr img" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" rx=".6"/>`:`<rect class="fpr" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" rx="${Math.min(b,l)*.15}"/><path class="nose" d="M0 ${-l/2+.6}l${k} ${n}h${-2*k}z"/>`)+'</g>'}
-h+=`<path class="bar" d="M0 34h10M0 33v2M10 33v2"/><text class="el" x="11" y="35">10 m</text><text class="el" x="119" y="35" text-anchor="end">◀ bow · 119 × 67 m</text>`;
+let h=`<g transform="rotate(90)"><image class="lib${int?' int':''}" href="${LIBIMG}" x="0" y="-33.5" width="119" height="67"/>`;
+if(int)h+=`<rect class="bay" x="${BAY.x0}" y="${-BAY.h}" width="${BAY.x1-BAY.x0}" height="${2*BAY.h}" rx="1"/>`;
+for(const p of P.filter(p=>p.v===v)){const d=byName(p.n),o=issues(p),w=worst(o),z=dd(p),l=z.l,b=z.b,k=Math.min(1.6,b/3),n=Math.min(2.4,l/3);
+h+=`<g class="pc ${w}${p.id===selId?' on':''}" data-id="${p.id}" transform="translate(${p.x} ${p.y}) rotate(${p.r-90})"><title>${esc(d.n)}</title>`+(d.td?`<image href="${d.td}" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" preserveAspectRatio="none"/><rect class="fpr img" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" rx=".6"/>`:`<rect class="fpr" x="${-b/2}" y="${-l/2}" width="${b}" height="${l}" rx="${Math.min(b,l)*.15}"/><path class="nose" d="M0 ${-l/2+.6}l${k} ${n}h${-2*k}z"/>`)+'</g>'}
+h+='</g>';
+h+=int?`<text class="el" x="${-BAY.h}" y="${BAY.x0-1.2}">Vehicle bay, approximate (deck 02)</text>`:`<text class="el lt" x="-11" y="13.5">Front pad</text><text class="el lt" x="-11" y="53">Upper pad 1</text><text class="el lt" x="-11" y="86.5">Upper pad 2</text>`;
+h+=`<path class="bar" d="M-34 123h10M-34 122v2M-24 122v2"/><text class="el" x="-23" y="124">10 m</text><text class="el" x="34" y="124" text-anchor="end">▲ bow · 119 × 67 m</text>`;
 sv.innerHTML=h}}
 function renderPlan(){const vp=P.filter(p=>p.v===view);
-$('#placed').innerHTML=vp.length?vp.map(p=>{const d=byName(p.n),o=issues(p),c=cfg(p.id),S=c&&c.ship?stats(c):null;return `<div class="pl ${worst(o)}${p.id===selId?' on':''}" data-id="${p.id}"><button class="chg" data-id="${p.id}" aria-pressed="${p.id===selId}"><b>${esc(d.n)}</b><i>${dims(d)}${S?` · ${fmt(S.dps)} DPS · ${fmt(S.sh)} shield`:''}${nmod(c)?' · <span class="mod">modified</span>':''}</i>${o.map(([k,t])=>`<i class="is ${k}">${esc(t)}</i>`).join('')}</button><button class="ld" data-id="${p.id}">Stats</button><button class="rm" data-id="${p.id}" aria-label="Remove ${esc(d.n)}">✕</button></div>`}).join(''):`<p class="empty">No ships ${view==='external'?'on the deck':'in the bay'} yet. Use + Add ship or drag one in from the list.</p>`;
+$('#placed').innerHTML=vp.length?vp.map(p=>{const d=byName(p.n),o=issues(p),c=cfg(p.id),S=c&&c.ship?stats(c):null;return `<div class="pl ${worst(o)}${p.id===selId?' on':''}" data-id="${p.id}"><button class="chg" data-id="${p.id}" aria-pressed="${p.id===selId}"><b>${esc(d.n)}</b><i>${pdims(p)}${S?` · ${fmt(S.dps)} DPS · ${fmt(S.sh)} shield`:''}${nmod(c)?' · <span class="mod">modified</span>':''}</i>${o.map(([k,t])=>`<i class="is ${k}">${esc(t)}</i>`).join('')}</button><button class="ld" data-id="${p.id}">Stats</button><button class="rm" data-id="${p.id}" aria-label="Remove ${esc(d.n)}">✕</button></div>`}).join(''):`<p class="empty">No ships ${view==='external'?'on the deck':'in the bay'} yet. Use + Add ship or drag one in from the list.</p>`;
 const sp=selId&&byId(selId);$('#selbar').hidden=!sp;if(sp)$('#seln').textContent=`${sp.n} · ${Math.round(((sp.r%360)+360)%360)}°`;
 for(const t of $$('[role=tab]')){const dt=t.querySelector('.dot');dt.className='dot';if(sel>=0)dt.classList.add(lvl(fitV(D[sel],t.dataset.v)))}
 $('#bar').hidden=sel<0;document.body.classList.toggle('hasbar',sel>=0);
@@ -239,7 +245,7 @@ $('#sdt').textContent=`${c.d.n} · ${VL[c.p.v]}`;
 if(!c.ship){$('#sb').innerHTML='<p class="empty">No game-data loadout for this entry.</p>';return}
 const S=stats(c),sh=c.ship,row=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;
 let h=c.vs.length>1?`<label class="vr">Variant <select id="vsel">${c.vs.map(v=>`<option${v===c.f.v?' selected':''}>${esc(v)}</option>`).join('')}</select></label>`:`<p class="vr">${esc(c.f.v)}</p>`;
-h+=`<dl class="stats">${row('Role',esc(sh.role||'—'))}${row('Crew',sh.crew[0]===sh.crew[1]?fmt(sh.crew[0]):sh.crew.join('–'))}${row('Size L × B × H',dims(c.d))}${row('Speed SCM / max',`${fmt(sh.scm)} / ${fmt(sh.vmax)} m/s`)}${row('Hull HP',fmt(sh.hull))}${row('Shield HP',fmt(S.sh))}${row('Gun DPS / alpha',`${fmt(S.dps)} / ${fmt(S.a)}`)}${row('Missiles',S.ms?`${S.ms} · ${fmt(S.md)} dmg`:'none')}${row('Power / cooling',`${fmt(S.pw)} / ${fmt(S.cl)}`)}${row('Quantum drive',S.qd?`${esc(S.qd.n)} · ${fmt(S.qd.sp/1e6)} Mm/s`:'none')}${row('Fuel: hydrogen / quantum',`${sh.fuel??'—'} / ${sh.qfuel??'—'}`)}${row('Cargo',sh.cargo?sh.cargo+' SCU':'—')}</dl>`;
+h+=`<dl class="stats">${row('Role',esc(sh.role||'—'))}${row('Crew',sh.crew[0]===sh.crew[1]?fmt(sh.crew[0]):sh.crew.join('–'))}${row('Size L × B × H',pdims(c.p))}${row('Speed SCM / max',`${fmt(sh.scm)} / ${fmt(sh.vmax)} m/s`)}${row('Hull HP',fmt(sh.hull))}${row('Shield HP',fmt(S.sh))}${row('Gun DPS / alpha',`${fmt(S.dps)} / ${fmt(S.a)}`)}${row('Missiles',S.ms?`${S.ms} · ${fmt(S.md)} dmg`:'none')}${row('Power / cooling',`${fmt(S.pw)} / ${fmt(S.cl)}`)}${row('Quantum drive',S.qd?`${esc(S.qd.n)} · ${fmt(S.qd.sp/1e6)} Mm/s`:'none')}${row('Fuel: hydrogen / quantum',`${sh.fuel??'—'} / ${sh.qfuel??'—'}`)}${row('Cargo',sh.cargo?sh.cargo+' SCU':'—')}</dl>`;
 const g={};sh.slots.forEach((sl,i)=>(g[sl.t]=g[sl.t]||[]).push(i));
 for(const t of Object.keys(TN)){if(!g[t])continue;h+=`<h4>${TN[t]}</h4>`;
 for(const i of g[t]){const sl=sh.slots[i],k=cur(c,i),it=k!=null?IT[k]:null,lbl=`${esc(pretty(sl.id))} <small>S${sl.s}${sl.n>1?' × '+sl.n:''}</small>`;
@@ -295,13 +301,14 @@ $('#q').addEventListener('input',renderCards);
 $('.chips').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(!b)return;filt=b.dataset.f;for(const x of $$('.chips [data-f]'))x.setAttribute('aria-pressed',String(x===b));renderCards()});
 $('#undo').addEventListener('click',()=>{if(hist.length){P=JSON.parse(hist.pop());if(!byId(selId))selId=null;renderPlan();flash('Undone.')}});
 $('#clear').addEventListener('click',()=>{if(!P.length)return;hist.push(snap());P=[];selId=null;renderPlan();flash('Plan cleared. Undo brings it back.')});
-$('#copy').addEventListener('click',async()=>{const t=['Liberator plan',...['external','internal'].flatMap(v=>[`${VL[v]}:`,...(P.filter(p=>p.v===v).map(p=>{const d=byName(p.n),c=cfg(p.id),o=issues(p).filter(x=>x[0]!=='ok').map(x=>x[1]);return `  ${d.n} (${dims(d)})${c&&c.ship?` [${c.f.v}${nmod(c)?', modified: '+Object.keys(c.f.m).map(i=>{const k=c.f.m[i];return pretty(c.ship.slots[i].id)+' → '+(k==null?'empty':IT[k].n)}).join('; '):''}]`:''}${o.length?' — '+o.join('; '):''}`}).concat(P.some(p=>p.v===v)?[]:['  —']))])].join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
-const svgPt=(sv,x,y)=>new DOMPoint(x,y).matrixTransform(sv.getScreenCTM().inverse());
+$('#copy').addEventListener('click',async()=>{const t=['Liberator plan',...['external','internal'].flatMap(v=>[`${VL[v]}:`,...(P.filter(p=>p.v===v).map(p=>{const d=byName(p.n),c=cfg(p.id),o=issues(p).filter(x=>x[0]!=='ok').map(x=>x[1]);return `  ${d.n} (${pdims(p)})${c&&c.ship?` [${c.f.v}${nmod(c)?', modified: '+Object.keys(c.f.m).map(i=>{const k=c.f.m[i];return pretty(c.ship.slots[i].id)+' → '+(k==null?'empty':IT[k].n)}).join('; '):''}]`:''}${o.length?' — '+o.join('; '):''}`}).concat(P.some(p=>p.v===v)?[]:['  —']))])].join('\n');try{await navigator.clipboard.writeText(t);flash('Plan copied.')}catch(e){flash('Copy was blocked here.')}});
+const svgPt=(sv,x,y)=>{const r=new DOMPoint(x,y).matrixTransform(sv.getScreenCTM().inverse());return{x:r.y,y:-r.x}};
 const typing=()=>/input|select|textarea/i.test((document.activeElement||{}).tagName||'');
 document.addEventListener('keydown',e=>{if(pickView||shipId)return;if(e.key==='Escape'){if(selId){selId=null;renderPlan()}else if(sel>=0){sel=-1;render()}return}
-const p=selId&&byId(selId);if(!p||typing())return;const s=e.shiftKey?2:.5,mvk={ArrowLeft:[-s,0],ArrowRight:[s,0],ArrowUp:[0,-s],ArrowDown:[0,s]}[e.key];
+const p=selId&&byId(selId);if(!p||typing())return;const s=e.shiftKey?2:.5,mvk={ArrowLeft:[0,s],ArrowRight:[0,-s],ArrowUp:[-s,0],ArrowDown:[s,0]}[e.key];
 if(mvk){e.preventDefault();hist.push(snap());p.x=+(p.x+mvk[0]).toFixed(1);p.y=+(p.y+mvk[1]).toFixed(1);renderPlan()}else if(e.key==='r'||e.key==='R'){turn(e.key==='R'?-15:15)}else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();del(p.id)}});
 for(const sv of $$('svg.ship')){
+sv.addEventListener('touchstart',e=>{if(e.target.closest('.pc'))e.preventDefault()},{passive:false});
 sv.addEventListener('pointerdown',e=>{if(e.button>0)return;const g=e.target.closest('.pc');const pt=svgPt(sv,e.clientX,e.clientY);
 if(g){const p=byId(+g.dataset.id);e.preventDefault();mv={p,sx:pt.x,sy:pt.y,x0:p.x,y0:p.y,moved:false,sv};selId=p.id;sv.setPointerCapture(e.pointerId);drawShips();return}
 if(sel>=0){add(sv.dataset.v,sel,[pt.x,pt.y]);return}if(selId){selId=null;renderPlan()}});

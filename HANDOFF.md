@@ -116,3 +116,13 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - An F ship placed behind the front pad (more than 50 m from the bow).
   - A ship outside the approximate bay outline on the internal view.
 - **Source:** `tools/plan_block.js` is the source of the plan script; it was spliced into `tpl.html`, so edit `tpl.html` directly from now on.
+
+## v8 update (Nov 20, 2026)
+- **Orientation:** the drawing is vertical with the bow at the top (the model is wrapped in `rotate(90)`). Internally, coordinates are still `x` = metres from the bow and `y` = metres across. `svgPt()` converts from screen, and the arrow keys are remapped to match.
+- **Ship sizes:**
+  - Each placement uses the game-data size of its chosen variant. `loadouts.json` ships now carry L/B/H; grouped rows default to their first variant.
+  - Drawn size uses the top-down image's own proportions, with the longest side set to max(L, B) of the variant. Several game-data boxes are padded or square: the M80 is listed as 11.5 × 11 m but is long and narrow.
+  - The old "largest variant" group size made the Hornet Ghost Mk II draw as the 28.3 × 25.5 m Mk I.
+- **Clipper:** drawn wings-folded, as when landed. Its image is cropped to the fuselage and engine pods via `"crop"` in `tools/topdown_fix.json`; the crop fraction is kept in `cf` so the scale still comes from the full wingspan.
+- **Touch dragging:** a touch that starts on a placed ship no longer scrolls the page, so ships can be dragged on phones and tablets.
+- `tools/plan_block.js` is removed; the plan script lives in `tpl.html`.

@@ -56,7 +56,13 @@ def main(path):
                 d[k] = a[k]
         if a.get("img") and os.path.exists(a["img"]):
             d["t"] = "data:image/webp;base64," + base64.b64encode(open(a["img"], "rb").read()).decode()
+        v0 = next((load["ships"][n] for n in aliases.get(d["n"], []) if n in load["ships"]), None)
+        if v0 and v0.get("L"):
+            d["L"], d["B"], d["H"] = v0["L"], v0["B"], v0["H"]
         if a.get("top") and os.path.exists(a["top"]):
+            from PIL import Image
+            w, h = Image.open(a["top"]).size
+            d["ta"], d["cf"] = round(h / w, 4), a.get("cf", 1)
             d["td"] = "data:image/webp;base64," + base64.b64encode(open(a["top"], "rb").read()).decode()
         d["v"] = [n for n in aliases.get(d["n"], []) if n in load["ships"]]
         page.append(d)

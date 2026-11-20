@@ -105,9 +105,15 @@ def main(montage=None):
             im = im.rotate(270, expand=True)  # these wiki shots face left; turn nose up
         elif im.width > im.height:
             im = im.rotate(270, expand=True)
+        cf = 1
+        if "crop" in fix.get(k, {}):  # e.g. wings folded when landed
+            x0, x1 = fix[k]["crop"]
+            im = im.crop((round(x0 * im.width), 0, round(x1 * im.width), im.height))
+            cf = x1 - x0
         im.thumbnail((OUT, OUT), Image.LANCZOS)
         rel = "img/top/" + slug(k) + ".webp"
         im.save(os.path.join(ROOT, rel), "WEBP", quality=72, method=6)
+        assets[k]["cf"] = cf
         assets[k]["top"], assets[k]["topsrc"] = rel, "https://starcitizen.tools/" + urllib.parse.quote(t.replace(" ", "_"))
         tiles.append((k, im))
     for k in assets:
