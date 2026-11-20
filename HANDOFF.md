@@ -207,3 +207,8 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Cross-view drag:** dragging a placed ship onto the other view moves it there, if the sheet says it fits that view; the target view is highlighted while you drag. The selection bar also has "⇄ Other view" for phones.
 - **Labels:** pad, ramp and cargo labels now draw underneath ships. The drawing is built in three layers: base, then labels, then ships.
 - **Totals:** `loadouts.json` was re-fetched with `mass` and `price`.
+- **v17.1:** dragging a ship no longer selects it; only a click without movement does. Sizing rule (final, after user feedback):
+  - The length is always the wiki length.
+  - If the top-down picture shows the placed variant itself (`d.iv` = first alias), the width comes from the picture's own proportions, so nothing is squished. The width is capped at max(L, B) to catch padded boxes such as the Eclipse.
+  - Pictures borrowed from another variant (e.g. the Ghost uses the F7C Mk II picture) are fitted inside the wiki L × B box.
+  - The Golem OX's side pods make it about 9.8 m wide, against the wiki's 7 m.
