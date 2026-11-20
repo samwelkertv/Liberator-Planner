@@ -213,3 +213,4 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - Pictures borrowed from another variant (e.g. the Ghost uses the F7C Mk II picture) are fitted inside the wiki L × B box.
   - The Golem OX's side pods make it about 9.8 m wide, against the wiki's 7 m.
 - **v17.2:** dragging across views is now live. As soon as the pointer enters the other view, the ship switches to it and keeps following the pointer, so there's no separate drop step. A ship the sheet says doesn't fit that view stays put, with a message.
+- **v17.3:** a selected ship shows a rotation handle (line plus circle) beyond its nose. Dragging it rotates the ship freely (1° steps, Shift for 15°), and Undo reverts it. The selection bar gains "Reset rotation" (back to 0°, nose to the bow).
