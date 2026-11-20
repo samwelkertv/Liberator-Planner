@@ -214,3 +214,9 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
   - The Golem OX's side pods make it about 9.8 m wide, against the wiki's 7 m.
 - **v17.2:** dragging across views is now live. As soon as the pointer enters the other view, the ship switches to it and keeps following the pointer, so there's no separate drop step. A ship the sheet says doesn't fit that view stays put, with a message.
 - **v17.3:** a selected ship shows a rotation handle (line plus circle) beyond its nose. Dragging it rotates the ship freely (1° steps, Shift for 15°), and Undo reverts it. The selection bar gains "Reset rotation" (back to 0°, nose to the bow).
+
+## v18 update (Nov 20, 2026)
+- **Liberator size:** the hull now uses the wiki size, 122 × 68 × 24 m, instead of the game-data 119 × 67 × 25 (`LIBL`/`LIBW` in `tpl.html`). Image-measured geometry (pads, ramp, bay, cargo, labels) scales by SX = 122/119 and SY = 68/67. The base viewBox is now `-37.9 -6.6 75.8 141.1`.
+- **Vehicle bay width:** set in the ⓘ panel and saved in localStorage `libbayw`. It defaults to the top-deck channel width (23.7 m) because no source gives the garage width; a friend of the user says the garage is narrower than the top. Ships are clamped and warned against it. The front-pad and ramp overlays keep the channel width (`CH`).
+- **Local loadouts:** outside claude.ai there is no `window.claude`, so loadouts use a localStorage-backed store with the same API (`localDB()`, key `libloads`). Loadouts can be exported to and imported from a JSON file (`liberator-loadouts.json`). New visitors start empty.
+- **Hosting:** see README for GitHub Pages. The repo is currently private, so Pages needs a paid plan or a public repo.
