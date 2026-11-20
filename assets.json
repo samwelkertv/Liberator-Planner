@@ -106,7 +106,7 @@
   "img": "img/arrow.webp",
   "page": "https://starcitizen.tools/Arrow",
   "topsrc": "https://starcitizen.tools/File%3AArrow_in_space_-_Above.jpg",
-  "cf": 0.522,
+  "cf": 1,
   "top": "img/top/arrow.webp"
  },
  "C8 PIsces": {
@@ -433,8 +433,8 @@
   "img": "img/marauder.webp",
   "page": "https://starcitizen.tools/Marauder",
   "cf": 1,
-  "top": "img/top/marauder.webp",
-  "topsrc": "official Marauder top view, supplied by the user"
+  "topsrc": "official Marauder top view, supplied by the user",
+  "top": "img/top/marauder.webp"
  },
  "Pitbull": {
   "variants": [

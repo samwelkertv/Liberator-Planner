@@ -231,3 +231,7 @@ A simple web app for planning which Star Citizen ships and vehicles go where on 
 - **Loadouts auto-save:** the Save button is gone. Changes are written to the current loadout about 0.7 s after they happen. If no loadout exists yet, one is created ("Default", or "Loadout N").
 - **Overlays button:** toggles the pad, ramp, bay and cargo overlays and their labels (saved in localStorage `libov`). Exports follow it.
 - **Owned ships:** a ☆/★ button on each ship card tags it as owned (saved in localStorage `libown`, and included in loadout export/import). The ★ Owned filter shows only owned ships, and the Add panel lists owned ships first.
+- **v19.1:** landed widths are now measured from wiki images and stored as overrides (`landed` / `spread` in `tools/dim_overrides.json`):
+  - **Arrow:** 16 × 11.1 m, from "Arrow in Selfland - Above" (wings tilt up but stay out; 12 m spread in flight). The old fold-line crop was removed.
+  - **Clipper:** 26.5 × 16 m. Body and engine pods measure about 293 of 915 px in "Clipper in space - Front" (50 m span); the wings fold vertical beside the hull.
+  - Override boxes are drawn exactly. The user releases to `main` at the end of each working day unless they say otherwise.

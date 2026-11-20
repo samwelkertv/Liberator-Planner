@@ -4,5 +4,21 @@
   "B": 20.4,
   "H": 7.0,
   "src": "official Marauder dimension graphic (length 21.0 m, width 20.4 m, height 7.0 m), supplied by the user"
+ },
+ "Arrow": {
+  "L": 16.0,
+  "B": 11.1,
+  "H": 4.0,
+  "landed": true,
+  "spread": 12.0,
+  "src": "landed width measured from the wiki's 'Arrow in Selfland - Above' (wings folded, about 757 px long by 527 px wide, scaled to the wiki length of 16 m)"
+ },
+ "Clipper": {
+  "L": 26.5,
+  "B": 16.0,
+  "H": 18.0,
+  "landed": true,
+  "spread": 50.0,
+  "src": "landed width measured from the wiki's 'Clipper in space - Front' (body plus engine pods about 293 px of the 915 px, 50 m wingspan); folded wings stand vertical beside the hull"
  }
 }

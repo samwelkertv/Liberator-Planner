@@ -44,12 +44,6 @@
    0.617
   ]
  },
- "Arrow": {
-  "crop": [
-   0.237,
-   0.759
-  ]
- },
  "Marauder": {
   "file": "local:tools/img_src/marauder-top.png",
   "bluebg": 30,

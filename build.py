@@ -59,7 +59,7 @@ def main(path):
         for n, w in json.load(open("tools/dim_overrides.json", encoding="utf-8")).items():
             s = load["ships"].get(n)
             if s:
-                s.update(L=w["L"], B=w["B"], H=w.get("H", s.get("H")), ds="override")
+                s.update(L=w["L"], B=w["B"], H=w.get("H", s.get("H")), ds="override", **{k: w[k] for k in ("landed", "spread") if k in w})
     for d in out:
         a, d = assets.get(d["n"], {}), dict(d)
         for k in ("L", "B", "H"):
