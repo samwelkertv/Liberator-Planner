@@ -14,5 +14,11 @@
   "landed": true,
   "spread": 50.0,
   "src": "landed width measured from the wiki's 'Clipper in space - Front' (body plus engine pods about 293 px of the 915 px, 50 m wingspan); folded wings stand vertical beside the hull"
+ },
+ "MISC Hull B": {
+  "L": 46.0,
+  "B": 17.0,
+  "H": 10.7,
+  "src": "RSI store page, closed (stowed) length 46 x 17 m; game data 71 m is the extended cargo spine. Chosen by the user."
  }
 }

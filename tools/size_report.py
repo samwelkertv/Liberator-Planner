@@ -27,7 +27,7 @@ def main():
         g = game.get(n, {}) if game.get(n, {}).get("L") else {}
         s, w, o = store.get(n), wiki.get(n), over.get(n)
         used = o or g or s or w
-        frm = "landed override" if o else "game data" if g else "store page" if s else "wiki"
+        frm = "override" if o else "game data" if g else "store page" if s else "wiki"
         conflict = bool(g and s and not close((g["L"], g["B"]), (s["L"], s["B"])))
         rows.append((n, f(used), frm, f(g), f(s), f(w), conflict))
         if conflict:

@@ -88,7 +88,7 @@ Length × width in metres. The planner uses **game data > RSI store page > wiki*
 | Ares Star Fighter Ion | 30 × 27 | game data | 30 × 27 | — | 27 × 30 |  |
 | Argo ATLS GEO IKTI | 3.2 × 1.6 | game data | 3.2 × 1.6 | — | 1.8 × 2 |  |
 | Argo ATLS IKTI | 3.2 × 1.6 | game data | 3.2 × 1.6 | — | 1.8 × 2 |  |
-| Arrow | 16 × 11.1 | landed override | 17.25 × 12.25 | 16 × 12 | 16 × 12 |  |
+| Arrow | 16 × 11.1 | override | 17.25 × 12.25 | 16 × 12 | 16 × 12 |  |
 | Aurora Mk I CL | 19 × 8.75 | game data | 19 × 8.75 | 19 × 8 | 19 × 8.75 |  |
 | Aurora Mk I ES | 19 × 8.75 | game data | 19 × 8.75 | 19 × 8.7 | 19 × 8.75 |  |
 | Aurora Mk I LN | 19 × 8.75 | game data | 19 × 8.75 | 19 × 8.7 | 19 × 8.75 |  |
@@ -107,7 +107,7 @@ Length × width in metres. The planner uses **game data > RSI store page > wiki*
 | C8R Pisces Rescue | 16 × 12 | game data | 16 × 12 | — | 13 × 10 |  |
 | C8X Pisces Expedition | 16 × 12 | game data | 16 × 12 | 13 × 10 | 13 × 10 | ⚠ |
 | CSV-SM | 8.75 × 6 | game data | 8.75 × 6 | 5.4 × 4.1 | 5.44 × 4.13 | ⚠ |
-| Clipper | 26.5 × 16 | landed override | 26.5 × 21 | 26.5 × 18 | 26.5 × 50 | ⚠ |
+| Clipper | 26.5 × 16 | override | 26.5 × 21 | 26.5 × 18 | 26.5 × 50 | ⚠ |
 | Command Module | 20 × 16 | game data | 20 × 16 | — | 20 × 16 |  |
 | Cutlass Black | 37.5 × 26.5 | game data | 37.5 × 26.5 | 29 × 26.5 | 37.5 × 26.5 | ⚠ |
 | Cutlass Blue | 37.5 × 26.5 | game data | 37.5 × 26.5 | 36 × 26 | 37.5 × 26.5 |  |
@@ -169,7 +169,7 @@ Length × width in metres. The planner uses **game data > RSI store page > wiki*
 | MISC Freelancer DUR | 38 × 23.5 | game data | 38 × 23.5 | 38 × 23.5 | 38 × 23.5 |  |
 | MISC Freelancer MIS | 38 × 23.5 | game data | 38 × 23.5 | 38 × 23.5 | 38 × 23.5 |  |
 | MISC Hull A | 30 × 12.5 | game data | 30 × 12.5 | 24 × 10 | 24 × 10 | ⚠ |
-| MISC Hull B | 71 × 16.7 | game data | 71 × 16.7 | 46 × 17 | 71 × 17 | ⚠ |
+| MISC Hull B | 46 × 17 | override | 71 × 16.7 | 46 × 17 | 71 × 17 | ⚠ |
 | MISC Prospector | 26.5 × 16.5 | game data | 26.5 × 16.5 | 24 × 15 | 26 × 16 |  |
 | MISC Reliant Kore | 28.5 × 14.75 | game data | 28.5 × 14.75 | 14.5 × 28.5 | 14.5 × 10.8 |  |
 | MISC Reliant Mako | 28.5 × 14.75 | game data | 28.5 × 14.75 | 14.5 × 28.5 | 28.5 × 14.75 |  |
